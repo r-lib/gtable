@@ -3,6 +3,23 @@ neg_to_pos <- function(x, max) {
   ifelse(x >= 0, x, max + 1 + x)
 }
 
+compare.unit <- function(x, y, comp) {
+  if (length(x) == 0) return(y)
+  if (length(y) == 0) return(x)
+  
+  x_val <- unclass(x)
+  y_val <- unclass(y)
+  
+  x_unit <- attr(x, "unit")
+  y_unit <- attr(x, "unit")
+  
+  if (!all(x_unit == y_unit)) {
+    stop("Comparison of units with different types currently not supported")
+  }
+  
+  unit(comp(x_val, y_val), x_unit)
+}
+
 
 insert.unit <- function (x, values, after = length(x)) {
   lengx <- length(x)
