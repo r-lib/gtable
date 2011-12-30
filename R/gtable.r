@@ -40,6 +40,15 @@
 #' @export
 #' @seealso \code{\link{gtable_row}}, \code{\link{gtable_col}} and
 #'   \code{\link{gtable_matrix}} for convenient ways of creating gtables.
+#' @examples
+#' a <- gtable(unit(1:3, c("cm")), unit(5, "cm"))
+#' a
+#' gtable_show_layout(a)
+#'
+#' # Add a grob:
+#' a <- gtable_add_grob(a, rectGrob(gp = gpar(fill = "grey50")), 1, 1)
+#' a
+#' plot(a)
 gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "layout") {
   
   if (length(widths) > 0) stopifnot(is.unit(widths))

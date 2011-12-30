@@ -52,6 +52,16 @@
   You should not need to modify this data frame directly -
   instead use functions like \code{gtable_add_grob}.
 }
+\examples{
+a <- gtable(unit(1:3, c("cm")), unit(5, "cm"))
+a
+gtable_show_layout(a)
+
+# Add a grob:
+a <- gtable_add_grob(a, rectGrob(gp = gpar(fill = "grey50")), 1, 1)
+a
+plot(a)
+}
 \seealso{
   \code{\link{gtable_row}}, \code{\link{gtable_col}} and
   \code{\link{gtable_matrix}} for convenient ways of
