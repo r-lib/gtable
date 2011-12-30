@@ -10,6 +10,17 @@
 #'
 #' It constructs both the viewports and the gTree needed to display the table.
 #'
+#' @section Components:
+#'
+#' There are three basics components to a grob table: the specification of 
+#' table (cell heights and widths), the layout (for each grob, its position,
+#' name and other settings), and global parameters.
+#' 
+#' It's easier to understand how \code{gtable} works if in your head you keep
+#' the table separate from it's contents.  Each cell can have 0, 1, or many
+#' grobs inside. Each grob must belong to at least one cell, but can span
+#' accross many cells.
+#'
 #' @section Layout:
 #' 
 #' The layout details are stored in a data frame with one row for each grob,
@@ -49,6 +60,11 @@
 #' a <- gtable_add_grob(a, rectGrob(gp = gpar(fill = "grey50")), 1, 1)
 #' a
 #' plot(a)
+#' 
+#' # gtables behave like matrices:
+#' dim(a)
+#' t(a)
+#' plot(t(a))
 gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "layout") {
   
   if (length(widths) > 0) stopifnot(is.unit(widths))
