@@ -13,7 +13,8 @@
   \item{size}{How should the widths (for rbind) and the
   heights (for cbind) be combined across the gtables: take
   values from \code{first}, or \code{last} gtable, or
-  compute the \code{min} or \code{max} values.}
+  compute the \code{min} or \code{max} values.  Defaults to
+  \code{max}.}
 }
 \description{
   Row and column binding for gtables.

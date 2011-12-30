@@ -57,10 +57,12 @@
   \itemize{ \item \code{t} top extent of grob \item
   \code{r} right extent of grob \item \code{b} bottom
   extent of \item \code{l} left extent of grob \item
-  \code{clip} a string, specifying how the grob should be
-  clipped: either \code{"on"}, \code{"off"} or
-  \code{"inherit"} \item \code{name}, a character vector
-  used to name each grob and its viewport }
+  \code{z} the z-order of the grob - used to reorder the
+  grobs before they are rendered \item \code{clip} a
+  string, specifying how the grob should be clipped: either
+  \code{"on"}, \code{"off"} or \code{"inherit"} \item
+  \code{name}, a character vector used to name each grob
+  and its viewport }
 
   You should not need to modify this data frame directly -
   instead use functions like \code{gtable_add_grob}.
