@@ -17,3 +17,30 @@ insert.unit <- function (x, values, after = length(x)) {
     unit.c(x[1L:after], values, x[(after + 1L):lengx])
   }
 }
+
+"%||%" <- function(a, b) {
+  if (!is.null(a)) a else b
+}
+
+width_cm <- function(x) {
+  if (is.grob(x)) {
+    convertWidth(grobWidth(x), "cm", TRUE)
+  } else if (is.list(x)) {
+    vapply(x, width_cm, numeric(1))
+  } else if (is.unit(x)) {
+    convertWidth(x, "cm", TRUE)
+  } else {
+    stop("Unknown input")
+  }  
+}
+height_cm <- function(x) {
+  if (is.grob(x)) {
+    convertWidth(grobHeight(x), "cm", TRUE)
+  } else if (is.list(x)) {
+    vapply(x, height_cm, numeric(1))
+  } else if (is.unit(x)) {
+    convertHeight(x, "cm", TRUE)
+  } else {
+    stop("Unknown input")
+  }  
+}

@@ -2,7 +2,7 @@
 #'
 #' @export
 gtable_col <- function(name, grobs, width = NULL, heights = NULL) {
-  width <- width %||% unit(max(unlist(llply(grobs, width_cm))), "cm")
+  width <- width %||% unit(max(unlist(lapply(grobs, width_cm))), "cm")
   heights <- heights %||% rep(unit(1, "null"), length(grobs))
 
   table <- gtable(name = name)
@@ -18,8 +18,16 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL) {
 #' Create a single row gtable.
 #'
 #' @export
+#' @examples
+#' a <- rectGrob(gp = gpar(fill = "red"))
+#' b <- circleGrob()
+#' c <- linesGrob()
+#' gt <- gtable_row("demo", list(a, b, c))
+#' gt
+#' plot(gt)
+#' gtable_show_layout(gt)
 gtable_row <- function(name, grobs, height = NULL, widths = NULL) {
-  height <- height %||% unit(max(unlist(llply(grobs, height_cm))), "cm")
+  height <- height %||% unit(max(unlist(lapply(grobs, height_cm))), "cm")
   widths <- widths %||% rep(unit(1, "null"), length(grobs))
     
   table <- gtable(name = name)

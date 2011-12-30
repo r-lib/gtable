@@ -26,14 +26,14 @@ gtable_viewport <- function(x) {
       clip = vp$clip
     )
   }
-  children_vp <- do.call("vpList", llply(seq_along(x$grobs), vp))
+  children_vp <- do.call("vpList", lapply(seq_along(x$grobs), vp))
   vpTree(layout_vp, children_vp)
 }
 
 gtable_gList <- function(x) {
   names <- with(x$layout, paste(name, t, l, sep = "-"))
 
-  grobs <- llply(seq_along(names), function(i) {
+  grobs <- lapply(seq_along(names), function(i) {
     editGrob(x$grobs[[i]], vp = vpPath(x$name, names[i]), 
       name = names[i])
   })
