@@ -9,6 +9,7 @@
 #' @export
 gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, clip = "on", name = x$name) 
 {
+  stopifnot(is.gtable(x))
   if (is.grob(grobs)) grobs <- list(grobs)
   x$grobs <- c(x$grobs, grobs)
   

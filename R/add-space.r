@@ -6,6 +6,7 @@
 #' @param width a vector of units of length 1 or ncol - 1
 #' @export
 gtable_add_col_space <- function(x, width) {
+  stopifnot(is.gtable(x))
   n <- ncol(x) - 1
   if (n == 0) return(x)
   
@@ -27,6 +28,7 @@ gtable_add_col_space <- function(x, width) {
 #' @param width a vector of units of length 1 or nrow - 1
 #' @export
 gtable_add_row_space <- function(x, height) {
+  stopifnot(is.gtable(x))
   n <- nrow(x) - 1
   if (n == 0) return(x)
   
