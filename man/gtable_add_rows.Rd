@@ -5,11 +5,36 @@
   gtable_add_rows(x, heights, pos = -1)
 }
 \arguments{
+  \item{x}{a \code{\link{gtable}} object}
+
+  \item{heights}{a unit vector giving the heights of the
+  new rows}
+
   \item{pos}{new row will be added below this position.
   Defaults to adding row on bottom. \code{0} adds on the
   top.}
 }
 \description{
   Add new rows in specified position.
+}
+\examples{
+rect <- rectGrob(gp = gpar(fill = "#00000080"))
+tab <- gtable(unit(rep(1, 3), "null"), unit(rep(1, 3), "null"))
+tab <- gtable_add_grob(tab, rect, t = 1, l = 1, r = 3)
+tab <- gtable_add_grob(tab, rect, t = 1, b = 3, l = 1)
+tab <- gtable_add_grob(tab, rect, t = 1, b = 3, l = 3)
+dim(tab)
+plot(tab)
+
+# Grobs will continue to span over new rows if added in the middle
+tab2 <- gtable_add_rows(tab, unit(1, "null"), 1)
+dim(tab2)
+plot(tab2)
+
+# But not when added to top (0) or bottom (-1, the default)
+tab3 <- gtable_add_rows(tab, unit(1, "null"))
+tab3 <- gtable_add_rows(tab3, unit(1, "null"), 0)
+dim(tab3)
+plot(tab3)
 }
 
