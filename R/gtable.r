@@ -57,7 +57,8 @@
 #' gtable_show_layout(a)
 #'
 #' # Add a grob:
-#' a <- gtable_add_grob(a, rectGrob(gp = gpar(fill = "grey50")), 1, 1)
+#' rect <- rectGrob(gp = gpar(fill = "black"))
+#' a <- gtable_add_grob(a, rect, 1, 1)
 #' a
 #' plot(a)
 #' 
@@ -65,6 +66,15 @@
 #' dim(a)
 #' t(a)
 #' plot(t(a))
+#' 
+#' # when subsetting, grobs are retained in their extends lie in the 
+#' # rows/columns that retained.
+#' 
+#' b <- gtable(unit(c(2, 2, 2), "cm"), unit(c(2, 2, 2), "cm"))
+#' b <- gtable_add_grob(b, rect, 2, 2)
+#' b[1, ]
+#' b[, 1]
+
 gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "layout") {
   
   if (length(widths) > 0) stopifnot(is.unit(widths))
@@ -128,4 +138,32 @@ t.gtable <- function(x) {
   new$heights <- x$widths
   
   new
+}
+
+#' @S3method [ gtable
+"[.gtable" <- function(x, i, j) {
+  # Convert indicies to logical
+  i <- seq_along(x$heights) %in% seq_along(x$heights)[i]
+  j <- seq_along(x$widths) %in% seq_along(x$widths)[j]
+  
+  rows <- which(i)
+  cols <- which(j)
+  
+  x$heights <- x$heights[i]
+  x$widths <- x$widths[j]
+  
+  keep <- x$layout$t %in% rows & x$layout$b %in% rows & 
+          x$layout$l %in% cols & x$layout$r %in% cols
+  x$layout <- x$layout[keep, , drop = FALSE]
+  x$grobs <- x$grobs[keep]
+  
+  adj_rows <- cumsum(!i)
+  adj_cols <- cumsum(!j)
+  
+  x$layout$r <- x$layout$r - adj_cols[x$layout$r]
+  x$layout$l <- x$layout$l - adj_cols[x$layout$l]
+  x$layout$t <- x$layout$t - adj_rows[x$layout$t]
+  x$layout$b <- x$layout$b - adj_rows[x$layout$b]
+  
+  x
 }
