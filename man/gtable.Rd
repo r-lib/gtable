@@ -44,4 +44,9 @@
   It constructs both the viewports and the gTree needed to
   display the table.
 }
+\seealso{
+  \code{\link{gtable_row}}, \code{\link{gtable_col}} and
+  \code{\link{gtable_matrix}} for convenient ways of
+  creating gtables.
+}
 

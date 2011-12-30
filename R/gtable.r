@@ -24,6 +24,8 @@
 #' @param name a string giving the name of the table. This is used to name
 #'   the layout viewport
 #' @export
+#' @seealso \code{\link{gtable_row}}, \code{\link{gtable_col}} and
+#'   \code{\link{gtable_matrix}} for convenient ways of creating gtables.
 gtable <- function(grobs = list(), layout = NULL, widths = list(), heights = list(), respect = FALSE, name = "layout") {
   
   if (is.null(layout)) {
@@ -57,3 +59,17 @@ print.gtable <- function(x, ...) {
 
 #' @S3method dim gtable
 dim.gtable <- function(x) c(length(x$heights), length(x$widths))
+
+#' @S3method plot gtable
+plot.gtable <- function(x) {
+  grid.newpage()
+  grid.draw(x)
+}
+
+#' Is this a gtable?
+#' 
+#' @param x object to test
+#' @export
+is.gtable <- function(x) {
+  inherits(x, "gtable")
+}
