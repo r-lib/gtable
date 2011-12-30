@@ -1,6 +1,15 @@
 #' Create a single column gtable.
 #'
+#' @inheritParams gtable
 #' @export
+#' @examples
+#' a <- rectGrob(gp = gpar(fill = "red"))
+#' b <- circleGrob()
+#' c <- linesGrob()
+#' gt <- gtable_col("demo", list(a, b, c))
+#' gt
+#' plot(gt)
+#' gtable_show_layout(gt)
 gtable_col <- function(name, grobs, width = NULL, heights = NULL) {
   width <- width %||% unit(max(unlist(lapply(grobs, width_cm))), "cm")
   heights <- heights %||% rep(unit(1, "null"), length(grobs))
@@ -17,6 +26,7 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL) {
 
 #' Create a single row gtable.
 #'
+#' @inheritParams gtable
 #' @export
 #' @examples
 #' a <- rectGrob(gp = gpar(fill = "red"))
@@ -42,8 +52,24 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL) {
 #' Create a gtable from a matrix of grobs.
 #'
 #' @export
+#' @inheritParams gtable
+#' @examples
+#' a <- rectGrob(gp = gpar(fill = "red"))
+#' b <- circleGrob()
+#' c <- linesGrob()
+#' 
+#' row <- matrix(list(a, b, c), nrow = 1)
+#' col <- matrix(list(a, b, c), ncol = 1)
+#' mat <- matrix(list(a, b, c, nullGrob()), nrow = 2)
+#'
+#' gtable_matrix("demo", row, unit(c(1, 1, 1), "null"), unit(1, "null"))
+#' gtable_matrix("demo", col, unit(1, "null"), unit(c(1, 1, 1), "null"))
+#' gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"))
 gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL, respect = FALSE, clip = "on") {  
   table <- gtable(name = name, respect = respect)
+
+  stopifnot(length(widths) == ncol(grobs))
+  stopifnot(length(heights) == nrow(grobs))
 
   table <- gtable_add_cols(table, widths)
   table <- gtable_add_rows(table, heights)

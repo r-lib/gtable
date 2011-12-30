@@ -5,7 +5,34 @@
   gtable_matrix(name, grobs, widths = NULL, heights = NULL,
     respect = FALSE, clip = "on")
 }
+\arguments{
+  \item{name}{a string giving the name of the table. This
+  is used to name the layout viewport}
+
+  \item{grobs}{a list of grobs}
+
+  \item{widths}{a unit vector giving the width of each
+  column}
+
+  \item{respect}{a logical vector of length 1: should the
+  aspect ratio of height and width specified in null units
+  be respected.  See \code{\link{grid.layout}} for more
+  details}
+}
 \description{
   Create a gtable from a matrix of grobs.
+}
+\examples{
+a <- rectGrob(gp = gpar(fill = "red"))
+b <- circleGrob()
+c <- linesGrob()
+
+row <- matrix(list(a, b, c), nrow = 1)
+col <- matrix(list(a, b, c), ncol = 1)
+mat <- matrix(list(a, b, c, nullGrob()), nrow = 2)
+
+gtable_matrix("demo", row, unit(c(1, 1, 1), "null"), unit(1, "null"))
+gtable_matrix("demo", col, unit(1, "null"), unit(c(1, 1, 1), "null"))
+gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"))
 }
 
