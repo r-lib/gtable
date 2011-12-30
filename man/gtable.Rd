@@ -71,7 +71,8 @@ a
 gtable_show_layout(a)
 
 # Add a grob:
-a <- gtable_add_grob(a, rectGrob(gp = gpar(fill = "grey50")), 1, 1)
+rect <- rectGrob(gp = gpar(fill = "black"))
+a <- gtable_add_grob(a, rect, 1, 1)
 a
 plot(a)
 
@@ -79,6 +80,14 @@ plot(a)
 dim(a)
 t(a)
 plot(t(a))
+
+# when subsetting, grobs are retained in their extends lie in the
+# rows/columns that retained.
+
+b <- gtable(unit(c(2, 2, 2), "cm"), unit(c(2, 2, 2), "cm"))
+b <- gtable_add_grob(b, rect, 2, 2)
+b[1, ]
+b[, 1]
 }
 \seealso{
   \code{\link{gtable_row}}, \code{\link{gtable_col}} and

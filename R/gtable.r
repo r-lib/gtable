@@ -167,3 +167,6 @@ t.gtable <- function(x) {
   
   x
 }
+
+#' @S3method length gtable
+length.gtable <- function(x) length(x$grobs)
