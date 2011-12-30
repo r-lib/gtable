@@ -31,6 +31,8 @@
 #'   \item \code{r} right extent of grob
 #'   \item \code{b} bottom extent of
 #'   \item \code{l} left extent of grob
+#'   \item \code{z} the z-order of the grob - used to reorder the grobs 
+#'     before they are rendered
 #'   \item \code{clip} a string, specifying how the grob should be clipped:
 #'     either \code{"on"}, \code{"off"} or \code{"inherit"}
 #'   \item \code{name}, a character vector used to name each grob and its
@@ -82,7 +84,7 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "l
   
   grobs <- list()
   layout <- data.frame(
-    t = numeric(), r = numeric(), b = numeric(), l = numeric(), 
+    t = numeric(), r = numeric(), b = numeric(), l = numeric(), z = numeric(),
     clip = character(), name = character(), stringsAsFactors = FALSE)
   
   stopifnot(length(grobs) == nrow(layout))
@@ -99,6 +101,9 @@ print.gtable <- function(x, ...) {
     length(x$grobs), " grobs\n", sep = "")
   
   if (nrow(x$layout) == 0) return()
+  
+  x$layout <- x$layout[order(x$layout$z), , drop = FALSE]
+  
   pos <- as.data.frame(format(as.matrix(x$layout[c("t", "r", "b", "l")])), 
     stringsAsFactors = FALSE)
   grobNames <- vapply(x$grobs, as.character, character(1))

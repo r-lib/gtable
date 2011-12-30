@@ -39,8 +39,11 @@ gtable_viewport <- function(x) {
 }
 
 gtable_gList <- function(x) {
-  names <- vpname(x$layout)
+  z_order <- order(x$layout$z)
+  x$layout <- x$layout[z_order, , drop = FALSE]
+  x$grobs <- x$grobs[z_order]
 
+  names <- vpname(x$layout)
   grobs <- lapply(seq_along(names), function(i) {
     editGrob(x$grobs[[i]], vp = vpPath(x$name, names[i]), 
       name = names[i])

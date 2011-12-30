@@ -7,7 +7,7 @@
 #'   (\code{"on"}), the entire table (\code{"inherit"}), or not at all 
 #'   (\code{"off"})
 #' @export
-gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, clip = "on", name = x$name) 
+gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = 1, clip = "on", name = x$name) 
 {
   stopifnot(is.gtable(x))
   if (is.grob(grobs)) grobs <- list(grobs)
@@ -22,7 +22,8 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, clip = "on", name = x$
   stopifnot(l > 0 && l <= ncol(x))
   stopifnot(r > 0 && r <= ncol(x))
   
-  layout <- data.frame(t = t, l = l, b = b, r = r, clip = clip, name = name,
+  layout <- data.frame(t = t, l = l, b = b, r = r, z = z, 
+    clip = clip, name = name, 
     stringsAsFactors = FALSE)
   stopifnot(length(grobs) == nrow(layout))
   

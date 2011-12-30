@@ -7,7 +7,7 @@ gtable_find <- function(x, grob) {
 }
 
 loc_df <- function(t, l, b, r) {
-  data.frame(t, l, b, r, clip = "on", name = "layout", 
+  data.frame(t, l, b, r, z = 1, clip = "on", name = "layout", 
     stringsAsFactors = FALSE)
 }
 
