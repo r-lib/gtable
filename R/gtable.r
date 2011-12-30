@@ -1,4 +1,4 @@
-#' Create a new table grid.
+#' Create a new grob table.
 #'
 #' A table grid captures all the information needed to layout grobs in a table
 #' structure. It supports row and column spanning, and offers some tools to
@@ -10,12 +10,26 @@
 #'
 #' It constructs both the viewports and the gTree needed to display the table.
 #'
+#' @section Layout:
+#' 
+#' The layout details are stored in a data frame with one row for each grob,
+#' and columns:
+#'
+#' \itemize{
+#'   \item \code{t} top extent of grob
+#'   \item \code{r} right extent of grob
+#'   \item \code{b} bottom extent of
+#'   \item \code{l} left extent of grob
+#'   \item \code{clip} a string, specifying how the grob should be clipped:
+#'     either \code{"on"}, \code{"off"} or \code{"inherit"}
+#'   \item \code{name}, a character vector used to name each grob and its
+#'     viewport
+#' }
+#' 
+#' You should not need to modify this data frame directly - instead use
+#' functions like \code{gtable_add_grob}.
+#'
 #' @param grobs a list of grobs
-#' @param layout a data frame with one row for each grob, and columns
-#'   \code{t}, \code{r}, \code{b}, \code{l} giving top, right, bottom and left
-#'   positions respectively, \code{clip} a string, either \code{"on"},
-#'   \code{"off"} or \code{"inherit"}, and \code{name}, a character
-#'   vector used to name each grob as it is plotted.
 #' @param widths a unit vector giving the width of each column
 #' @param height a unit vector giving the height of each row
 #' @param respect a logical vector of length 1: should the aspect ratio of 
@@ -26,13 +40,12 @@
 #' @export
 #' @seealso \code{\link{gtable_row}}, \code{\link{gtable_col}} and
 #'   \code{\link{gtable_matrix}} for convenient ways of creating gtables.
-gtable <- function(grobs = list(), layout = NULL, widths = list(), heights = list(), respect = FALSE, name = "layout") {
+gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "layout") {
   
-  if (is.null(layout)) {
-    layout <- data.frame(
-      t = numeric(), r = numeric(), b = numeric(), l = numeric(), 
-      clip = character(), name = character(), stringsAsFactors = FALSE)
-  }
+  grobs <- list()
+  layout <- data.frame(
+    t = numeric(), r = numeric(), b = numeric(), l = numeric(), 
+    clip = character(), name = character(), stringsAsFactors = FALSE)
   
   stopifnot(length(grobs) == nrow(layout))
   
@@ -41,7 +54,6 @@ gtable <- function(grobs = list(), layout = NULL, widths = list(), heights = lis
     heights = heights, respect = respect, name = name), 
     class = "gtable")
 }
-
 
 #' @S3method print gtable
 print.gtable <- function(x, ...) {

@@ -1,19 +1,12 @@
 \name{gtable}
 \alias{gtable}
-\title{Create a new table grid.}
+\title{Create a new grob table.}
 \usage{
-  gtable(grobs = list(), layout = NULL, widths = list(),
-    heights = list(), respect = FALSE, name = "layout")
+  gtable(widths = list(), heights = list(),
+    respect = FALSE, name = "layout")
 }
 \arguments{
   \item{grobs}{a list of grobs}
-
-  \item{layout}{a data frame with one row for each grob,
-  and columns \code{t}, \code{r}, \code{b}, \code{l} giving
-  top, right, bottom and left positions respectively,
-  \code{clip} a string, either \code{"on"}, \code{"off"} or
-  \code{"inherit"}, and \code{name}, a character vector
-  used to name each grob as it is plotted.}
 
   \item{widths}{a unit vector giving the width of each
   column}
@@ -43,6 +36,21 @@
 
   It constructs both the viewports and the gTree needed to
   display the table.
+}
+\section{Layout}{
+  The layout details are stored in a data frame with one
+  row for each grob, and columns:
+
+  \itemize{ \item \code{t} top extent of grob \item
+  \code{r} right extent of grob \item \code{b} bottom
+  extent of \item \code{l} left extent of grob \item
+  \code{clip} a string, specifying how the grob should be
+  clipped: either \code{"on"}, \code{"off"} or
+  \code{"inherit"} \item \code{name}, a character vector
+  used to name each grob and its viewport }
+
+  You should not need to modify this data frame directly -
+  instead use functions like \code{gtable_add_grob}.
 }
 \seealso{
   \code{\link{gtable_row}}, \code{\link{gtable_col}} and
