@@ -1,49 +1,70 @@
-#' @S3method rbind gtable
-rbind.gtable <- function(..., pos = nrow(x)) {
-  tables <- list(...)
-  stopifnot(length(tables) == 2)
+#' Row and column binding for gtables.
+#'
+#' @param ... gtables to combine (\code{x} and \code{y})
+#' @param size How should the widths (for rbind) and the heights (for cbind)
+#'   be combined across the gtables: take values from \code{first},
+#'   or \code{last} gtable, or compute the \code{min} or \code{max} values.
+#'   Defaults to \code{max}.
+#' @name bind
 
-  x <- tables[[1]]
-  y <- tables[[2]]
+#' @rdname bind
+#' @method rbind gtable
+#' @export
+rbind.gtable <- function(..., size = "max") {
+  Reduce(function(x, y) rbind_gtable(x, y, size = size), list(...))
+}
 
+rbind_gtable <- function(x, y, size = "max") {
   stopifnot(ncol(x) == ncol(y))
   if (nrow(x) == 0) return(y)
   if (nrow(y) == 0) return(x)
   
-  x$heights <- insert.unit(x$heights, y$heights, pos)
+  x$heights <- insert.unit(x$heights, y$heights)
+
+  size <- match.arg(size, c("first", "last", "max", "min"))
+  x$widths <- switch(size,
+    first = x$widths,
+    last = y$widths,
+    min = pmin(x$widths, y$widths),
+    max = pmax(x$widths, y$widths)
+  )
+
   x$grobs <- append(x$grobs, y$grobs)
   
-  y$layout$t <- y$layout$t + pos 
-  y$layout$b <- y$layout$b + pos
-
-  x$layout$t <- ifelse(x$layout$t > pos, x$layout$t + nrow(y), x$layout$t)
-  x$layout$b <- ifelse(x$layout$b > pos, x$layout$b + nrow(y), x$layout$b)
-
+  y$layout$t <- y$layout$t + nrow(x)
+  y$layout$b <- y$layout$b + nrow(x)
   x$layout <- rbind(x$layout, y$layout)
+
   x
 }
 
-#' @S3method cbind gtable
-cbind.gtable <- function(..., pos = ncol(x)) {
-  tables <- list(...)
-  stopifnot(length(tables) == 2)
+#' @rdname bind
+#' @method cbind gtable
+#' @export
+cbind.gtable <- function(..., size = "max") {
+  Reduce(function(x, y) cbind_gtable(x, y, size = size), list(...))
+}
 
-  x <- tables[[1]]
-  y <- tables[[2]]
-
+cbind_gtable <- function(x, y, size = "max") {
   stopifnot(nrow(x) == nrow(y))
   if (ncol(x) == 0) return(y)
   if (ncol(y) == 0) return(x)
   
-  x$widths <- insert.unit(x$widths, y$widths, pos)
+  x$widths <- insert.unit(x$widths, y$widths)
+
+  size <- match.arg(size, c("first", "last", "max", "min"))
+  x$heights <- switch(size,
+    first = x$heights,
+    last = y$heights,
+    min = pmin(x$heights, y$heights),
+    max = pmax(x$heights, y$heights)
+  )
+
   x$grobs <- append(x$grobs, y$grobs)
   
-  y$layout$l <- y$layout$l + pos 
-  y$layout$r <- y$layout$r + pos
-  
-  x$layout$l <- ifelse(x$layout$l > pos, x$layout$l + ncol(y), x$layout$l)
-  x$layout$r <- ifelse(x$layout$r > pos, x$layout$r + ncol(y), x$layout$r)  
-
+  y$layout$l <- y$layout$l + ncol(x)
+  y$layout$r <- y$layout$r + ncol(x)
   x$layout <- rbind(x$layout, y$layout)
+
   x
 }
