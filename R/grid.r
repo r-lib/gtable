@@ -50,6 +50,8 @@ gtable_gList <- function(x) {
 }
 
 gtable_gTree <- function(x, ...) {
+  if (length(x) == 0) return(nullGrob())
+
   children <- gtable_gList(x)
   vp <- gtable_viewport(x)
   gTree(children = children, childrenvp = vp, ...)
