@@ -42,6 +42,9 @@
 #'   \code{\link{gtable_matrix}} for convenient ways of creating gtables.
 gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "layout") {
   
+  if (length(widths) > 0) stopifnot(is.unit(widths))
+  if (length(heights) > 0) stopifnot(is.unit(heights))
+  
   grobs <- list()
   layout <- data.frame(
     t = numeric(), r = numeric(), b = numeric(), l = numeric(), 
