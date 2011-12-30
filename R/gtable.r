@@ -23,7 +23,7 @@
 #'   \code{\link{grid.layout}} for more details
 #' @param name a string giving the name of the table. This is used to name
 #'   the layout viewport
-#' @keywords internal
+#' @export
 gtable <- function(grobs = list(), layout = NULL, widths = list(), heights = list(), respect = FALSE, name = "layout") {
   
   if (is.null(layout)) {

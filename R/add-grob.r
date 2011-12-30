@@ -1,11 +1,12 @@
-# Add a single grob, possibly spanning multiple rows or columns.
-# 
-# Does not affect height/width
-# 
-# @param grobs a single grob or a list of grobs
-# @param clip should drawing be clipped to the specified cells
-#   (\code{"on"}), the entire table (\code{"inherit"}), or not at all 
-#   (\code{"off"})
+#' Add a single grob, possibly spanning multiple rows or columns.
+#' 
+#' Does not affect height/width
+#' 
+#' @param grobs a single grob or a list of grobs
+#' @param clip should drawing be clipped to the specified cells
+#'   (\code{"on"}), the entire table (\code{"inherit"}), or not at all 
+#'   (\code{"off"})
+#' @export
 gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, clip = "on", name = x$name) 
 {
   if (is.grob(grobs)) grobs <- list(grobs)

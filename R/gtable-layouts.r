@@ -1,4 +1,7 @@
-layout_col <- function(name, grobs, width = NULL, heights = NULL) {
+#' Create a single column gtable.
+#'
+#' @export
+gtable_col <- function(name, grobs, width = NULL, heights = NULL) {
   width <- width %||% unit(max(unlist(llply(grobs, width_cm))), "cm")
   heights <- heights %||% rep(unit(1, "null"), length(grobs))
 
@@ -12,7 +15,10 @@ layout_col <- function(name, grobs, width = NULL, heights = NULL) {
   table
 }
 
-layout_row <- function(name, grobs, height = NULL, widths = NULL) {
+#' Create a single row gtable.
+#'
+#' @export
+gtable_row <- function(name, grobs, height = NULL, widths = NULL) {
   height <- height %||% unit(max(unlist(llply(grobs, height_cm))), "cm")
   widths <- widths %||% rep(unit(1, "null"), length(grobs))
     
@@ -25,7 +31,10 @@ layout_row <- function(name, grobs, height = NULL, widths = NULL) {
   table
 }
 
-layout_matrix <- function(name, grobs, widths = NULL, heights = NULL, respect = FALSE, clip = "on") {  
+#' Create a gtable from a matrix of grobs.
+#'
+#' @export
+gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL, respect = FALSE, clip = "on") {  
   table <- gtable(name = name, respect = respect)
 
   table <- gtable_add_cols(table, widths)
@@ -37,10 +46,16 @@ layout_matrix <- function(name, grobs, widths = NULL, heights = NULL, respect = 
   table
 }
 
-layout_empty_row <- function(widths) {
+#' Create a row spacer gtable.
+#'
+#' @export
+gtable_row_spacer <- function(widths) {
   gtable_add_cols(gtable(), widths)
 }
 
-layout_empty_col <- function(heights) {
+#' Create a column spacer gtable.
+#'
+#' @export
+gtable_col_spacer <- function(heights) {
   gtable_add_rows(gtable(), heights)
 }
