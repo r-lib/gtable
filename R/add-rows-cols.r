@@ -3,7 +3,7 @@
 #' @param pos new row will be added below this position. Defaults to
 #'   adding row on bottom. \code{0} adds on the top.
 #' @export
-gtable_add_rows <- function(x, heights, clip = "inherit", pos = -1) {
+gtable_add_rows <- function(x, heights, pos = -1) {
   stopifnot(is.gtable(x))
   stopifnot(length(pos) == 1)
   n <- length(heights)
@@ -23,7 +23,7 @@ gtable_add_rows <- function(x, heights, clip = "inherit", pos = -1) {
 #' @param pos new row will be added below this position. Defaults to
 #'   adding col on right. \code{0} adds on the left.
 #' @export
-gtable_add_cols <- function(x, widths, clip = "inherit", pos = -1) {
+gtable_add_cols <- function(x, widths, pos = -1) {
   stopifnot(is.gtable(x))
   stopifnot(length(pos) == 1)
   n <- length(widths)

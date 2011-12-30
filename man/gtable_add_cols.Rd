@@ -2,7 +2,7 @@
 \alias{gtable_add_cols}
 \title{Add new columns in specified position.}
 \usage{
-  gtable_add_cols(x, widths, clip = "inherit", pos = -1)
+  gtable_add_cols(x, widths, pos = -1)
 }
 \arguments{
   \item{pos}{new row will be added below this position.
