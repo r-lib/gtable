@@ -60,6 +60,7 @@ print.gtable <- function(x, ...) {
   cat("TableGrob (", nrow(x), " x ", ncol(x), ") \"", x$name, "\": ", 
     length(x$grobs), " grobs\n", sep = "")
   
+  if (nrow(x$layout) == 0) return()
   pos <- as.data.frame(format(as.matrix(x$layout[c("t", "r", "b", "l")])), 
     stringsAsFactors = FALSE)
   grobNames <- vapply(x$grobs, as.character, character(1))
