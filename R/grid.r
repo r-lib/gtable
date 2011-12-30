@@ -19,12 +19,16 @@ gtable_layout <- function(x) {
   )
 }
 
+vpname <- function(row) {
+  paste(row$name, row$t, row$r, row$b, row$l, sep = "-")
+}
+
 gtable_viewport <- function(x) {
   layout_vp <- viewport(layout = gtable_layout(x), name = x$name)
   vp <- function(i) {
     vp <- x$layout[i, ]
     viewport(
-      name = paste(vp$name, vp$t, vp$l, sep = "-"), 
+      name = vpname(vp), 
       layout.pos.row = vp$t:vp$b, 
       layout.pos.col = vp$l:vp$r, 
       clip = vp$clip
@@ -35,7 +39,7 @@ gtable_viewport <- function(x) {
 }
 
 gtable_gList <- function(x) {
-  names <- with(x$layout, paste(name, t, l, sep = "-"))
+  names <- vpname(x$layout)
 
   grobs <- lapply(seq_along(names), function(i) {
     editGrob(x$grobs[[i]], vp = vpPath(x$name, names[i]), 
