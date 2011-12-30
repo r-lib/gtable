@@ -18,3 +18,4 @@ Collate:
     'gtable.r'
     'rbind-cbind.r'
     'utils.r'
+    'trim.r'
