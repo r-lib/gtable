@@ -18,6 +18,11 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, clip = "on", name = x$
   l <- neg_to_pos(l, ncol(x))
   r <- neg_to_pos(r, ncol(x))
   
+  stopifnot(t > 0 && t <= nrow(x))
+  stopifnot(b > 0 && b <= nrow(x))
+  stopifnot(l > 0 && l <= ncol(x))
+  stopifnot(r > 0 && r <= ncol(x))
+  
   layout <- data.frame(t = t, l = l, b = b, r = r, clip = clip, name = name,
     stringsAsFactors = FALSE)
     
