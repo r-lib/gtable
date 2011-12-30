@@ -73,3 +73,18 @@ plot.gtable <- function(x) {
 is.gtable <- function(x) {
   inherits(x, "gtable")
 }
+
+#' @S3method t gtable
+t.gtable <- function(x) {
+  new <- x
+  
+  new$layout$t <- x$layout$l
+  new$layout$r <- x$layout$b
+  new$layout$b <- x$layout$r
+  new$layout$l <- x$layout$t
+  
+  new$widths <- x$heights
+  new$heights <- x$widths
+  
+  new
+}
