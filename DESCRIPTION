@@ -19,3 +19,4 @@ Collate:
     'rbind-cbind.r'
     'utils.r'
     'trim.r'
+    'filter.r'
