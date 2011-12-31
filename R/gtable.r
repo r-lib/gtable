@@ -76,11 +76,24 @@
 #' b <- gtable_add_grob(b, rect, 2, 2)
 #' b[1, ]
 #' b[, 1]
-
-gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "layout") {
+#'
+#' # gtable have row and column names
+#' rownames(b) <- 1:3
+#' rownames(b)[2] <- 200
+#' colnames(b) <- letters[1:3]
+#' dimnames(b)
+gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "layout", rownames = NULL, colnames = NULL) {
   
-  if (length(widths) > 0) stopifnot(is.unit(widths))
-  if (length(heights) > 0) stopifnot(is.unit(heights))
+  if (length(widths) > 0) {
+    stopifnot(is.unit(widths))
+    stopifnot(is.null(colnames) || length(colnames == length(widths)))
+  }
+  if (length(heights) > 0) {
+    stopifnot(is.unit(heights))
+    stopifnot(is.null(rownames) || length(rownames == length(heights)))
+  }
+  
+  if (length(widt))
   
   grobs <- list()
   layout <- data.frame(
@@ -91,7 +104,8 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "l
   
   structure(list(
     grobs = grobs, layout = layout, widths = widths, 
-    heights = heights, respect = respect, name = name), 
+    heights = heights, respect = respect, name = name,
+    rownames = rownames, colnames = colnames),
     class = "gtable")
 }
 
@@ -115,6 +129,15 @@ print.gtable <- function(x, ...) {
 
 #' @S3method dim gtable
 dim.gtable <- function(x) c(length(x$heights), length(x$widths))
+
+#' @S3method dimnames gtable
+dimnames.gtable <- function(x, ...) list(x$rownames, x$colnames)
+
+"dimnames<-.gtable" <- function(x, value) {
+  x$rownames <- value[[1]]
+  x$colnames <- value[[2]]
+  x
+}
 
 #' @S3method plot gtable
 plot.gtable <- function(x) {

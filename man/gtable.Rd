@@ -3,7 +3,8 @@
 \title{Create a new grob table.}
 \usage{
   gtable(widths = list(), heights = list(),
-    respect = FALSE, name = "layout")
+    respect = FALSE, name = "layout", rownames = NULL,
+    colnames = NULL)
 }
 \arguments{
   \item{grobs}{a list of grobs}
@@ -90,6 +91,12 @@ b <- gtable(unit(c(2, 2, 2), "cm"), unit(c(2, 2, 2), "cm"))
 b <- gtable_add_grob(b, rect, 2, 2)
 b[1, ]
 b[, 1]
+
+# gtable have row and column names
+rownames(b) <- 1:3
+rownames(b)[2] <- 200
+colnames(b) <- letters[1:3]
+dimnames(b)
 }
 \seealso{
   \code{\link{gtable_row}}, \code{\link{gtable_col}} and
