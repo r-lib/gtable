@@ -20,6 +20,7 @@ rbind_gtable <- function(x, y, size = "max") {
   if (nrow(y) == 0) return(x)
   
   x$heights <- insert.unit(x$heights, y$heights)
+  x$rownames <- c(x$rownames, y$rownames)
 
   size <- match.arg(size, c("first", "last", "max", "min"))
   x$widths <- switch(size,
@@ -51,6 +52,7 @@ cbind_gtable <- function(x, y, size = "max") {
   if (ncol(y) == 0) return(x)
   
   x$widths <- insert.unit(x$widths, y$widths)
+  x$colnames <- c(x$colnames, y$colnames)
 
   size <- match.arg(size, c("first", "last", "max", "min"))
   x$heights <- switch(size,

@@ -20,3 +20,4 @@ Collate:
     'utils.r'
     'trim.r'
     'filter.r'
+    'align.r'
