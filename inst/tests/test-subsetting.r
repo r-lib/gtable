@@ -1,15 +1,19 @@
 context("Subsetting")
 
 base <- gtable(unit(rep(1, 3), "null"), unit(rep(1, 3), "null"))
+rownames(base) <- LETTERS[1:3]
+colnames(base) <- letters[1:3]
 
 test_that("dimensions correct after subsetting", {
   expect_equal(dim(base[, ]), c(3, 3))
   expect_equal(dim(base[1:3, 1:3]), c(3, 3))
   expect_equal(dim(base[T, T]), c(3, 3))
+  expect_equal(dim(base[c("A", "B", "C"), c("a", "b", "c")]), c(3, 3))
 
   expect_equal(dim(base[1, 1]), c(1, 1))
   expect_equal(dim(base[c(T, F, F), c(T, F, F)]), c(1, 1))
   expect_equal(dim(base[-(2:3), -(2:3)]), c(1, 1))
+  expect_equal(dim(base["A", "b"]), c(1, 1))
 
   expect_equal(dim(base[1:2, 2:3]), c(2, 2))
 })

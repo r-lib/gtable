@@ -174,15 +174,17 @@ t.gtable <- function(x) {
 
 #' @S3method [ gtable
 "[.gtable" <- function(x, i, j) {
-  # Convert indicies to logical
-  i <- seq_along(x$heights) %in% seq_along(x$heights)[i]
-  j <- seq_along(x$widths) %in% seq_along(x$widths)[j]
+  # Convert indicies to (named) numeric
+  rows <- setNames(seq_along(x$heights), rownames(x))[i]
+  cols <- setNames(seq_along(x$widths), colnames(x))[j]
+
+  i <- seq_along(x$heights) %in% seq_along(x$heights)[rows]
+  j <- seq_along(x$widths) %in% seq_along(x$widths)[cols]  
   
-  rows <- which(i)
-  cols <- which(j)
-  
-  x$heights <- x$heights[i]
-  x$widths <- x$widths[j]
+  x$heights <- x$heights[rows]
+  x$rownames <- x$rownames[rows]
+  x$widths <- x$widths[cols]
+  x$colnames <- x$colnames[cols]
   
   keep <- x$layout$t %in% rows & x$layout$b %in% rows & 
           x$layout$l %in% cols & x$layout$r %in% cols
