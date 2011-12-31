@@ -93,8 +93,6 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "l
     stopifnot(is.null(rownames) || length(rownames == length(heights)))
   }
   
-  if (length(widt))
-  
   grobs <- list()
   layout <- data.frame(
     t = numeric(), r = numeric(), b = numeric(), l = numeric(), z = numeric(),
@@ -136,6 +134,12 @@ dimnames.gtable <- function(x, ...) list(x$rownames, x$colnames)
 "dimnames<-.gtable" <- function(x, value) {
   x$rownames <- value[[1]]
   x$colnames <- value[[2]]
+  
+  if (anyDuplicated(x$rownames)) stop("rownames must be distinct", 
+    call. = FALSE)
+  if (anyDuplicated(x$colnames)) stop("colnames must be distinct", 
+    call. = FALSE)
+  
   x
 }
 
