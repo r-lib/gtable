@@ -63,6 +63,7 @@ test_that("Spanning grobs continue to span after row insertion", {
   
   within <- gtable_add_rows(gtable_add_cols(layout, cm, pos = 2), cm, pos = 2)  
   loc <- gtable_find(within, grob1)
+  
   expect_that(loc, equals(loc_df(t = 1, l = 1, b = 4, r = 4)))
   
   top_left <- layout

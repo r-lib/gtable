@@ -2,7 +2,7 @@
 \alias{gtable_add_grob}
 \title{Add a single grob, possibly spanning multiple rows or columns.}
 \usage{
-  gtable_add_grob(x, grobs, t, l, b = t, r = l, z = 1,
+  gtable_add_grob(x, grobs, t, l, b = t, r = l, z = Inf,
     clip = "on", name = x$name)
 }
 \arguments{
@@ -23,7 +23,10 @@
   grobs}
 
   \item{z}{a numeric vector giving the order in which the
-  grobs should be plotted}
+  grobs should be plotted.  Use \code{Inf} (the default) to
+  plot above or \code{-Inf} below all existing grobs. By
+  default positions are on the integers, giving plenty of
+  room to insert new grobs between existing grobs.}
 
   \item{clip}{should drawing be clipped to the specified
   cells (\code{"on"}), the entire table (\code{"inherit"}),
@@ -33,6 +36,9 @@
   name before it's plotted.}
 }
 \description{
-  Does not affect height/width
+  This only adds grobs into the table - it doesn't affect
+  the table in any way.  In the gtable model, grobs always
+  fill up the complete table cell.  If you want custom
+  justification you might need to
 }
 
