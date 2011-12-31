@@ -52,6 +52,11 @@ gtable_gList <- function(x) {
   do.call("gList", grobs)
 }
 
+#' Generate a grob (gTree) to render a gtable.
+#' 
+#' @param x a \code{\link{gtable}} object
+#' @param ... other parameters passed on to \code{\link[grid]{gTree}}
+#' @export
 gtable_gTree <- function(x, ...) {
   if (length(x) == 0) return(nullGrob())
 
