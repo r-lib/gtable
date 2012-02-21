@@ -21,3 +21,4 @@ Collate:
     'trim.r'
     'filter.r'
     'align.r'
+    'padding.r'
