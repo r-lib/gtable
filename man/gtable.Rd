@@ -1,5 +1,6 @@
 \name{gtable}
 \alias{gtable}
+\alias{gtable-package}
 \title{Create a new grob table.}
 \usage{
   gtable(widths = list(), heights = list(),
@@ -27,10 +28,11 @@
   \code{\link{gtable_join}}.}
 }
 \description{
-  A table grid captures all the information needed to
+  A grob table captures all the information needed to
   layout grobs in a table structure. It supports row and
-  column spanning, and offers some tools to automatically
-  figure out correct dimensions.
+  column spanning, offers some tools to automatically
+  figure out the correct dimensions, and makes it easy to
+  align and combine multiple tables.
 }
 \details{
   Each grob is put in its own viewport - grobs in the same

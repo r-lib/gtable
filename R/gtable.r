@@ -1,8 +1,9 @@
 #' Create a new grob table.
 #'
-#' A table grid captures all the information needed to layout grobs in a table
-#' structure. It supports row and column spanning, and offers some tools to
-#' automatically figure out correct dimensions.
+#' A grob table captures all the information needed to layout grobs in a table
+#' structure. It supports row and column spanning, offers some tools to
+#' automatically figure out the correct dimensions, and makes it easy to
+#' align and combine multiple tables.
 #'
 #' Each grob is put in its own viewport - grobs in the same location are 
 #' not combined into one cell. Each grob takes up the entire cell viewport
@@ -53,6 +54,7 @@
 #'   for characteric subsetting, particularly for \code{\link{gtable_align}},
 #'   and \code{\link{gtable_join}}. 
 #' @export
+#' @aliases gtable-package
 #' @seealso \code{\link{gtable_row}}, \code{\link{gtable_col}} and
 #'   \code{\link{gtable_matrix}} for convenient ways of creating gtables.
 #' @examples
