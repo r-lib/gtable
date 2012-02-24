@@ -24,6 +24,8 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
 {
   stopifnot(is.gtable(x))
   if (is.grob(grobs)) grobs <- list(grobs)
+  stopifnot(is.list(grobs))
+  
   
   if (nrow(x$layout) == 0) z <- 1L
   if (z == Inf) z <- max(x$layout$z) + 1L
