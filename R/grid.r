@@ -66,6 +66,7 @@ gtable_gTree <- function(x, ...) {
 }
 
 #' @S3method grid.draw gtable
+#' @importFrom grid grid.draw
 grid.draw.gtable <- function(x, recording = TRUE) {
   grid.draw(gtable_gTree(x), recording)
 }

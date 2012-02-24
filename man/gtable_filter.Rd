@@ -7,6 +7,9 @@
 \arguments{
   \item{x}{a gtable object}
 
+  \item{trim}{if \code{TRUE}, \code{\link{gtable_trim}}
+  will be used to trim off any empty cells.}
+
   \item{pattern}{character string containing a
   \link{regular expression} (or character string for
   \code{fixed = TRUE}) to be matched in the given character

@@ -6,6 +6,7 @@
 #'   or \code{last} gtable, or compute the \code{min} or \code{max} values.
 #'   Defaults to \code{max}.
 #' @name bind
+NULL
 
 #' @rdname bind
 #' @method rbind gtable

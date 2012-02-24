@@ -1,6 +1,7 @@
 \name{bind}
 \alias{bind}
 \alias{cbind.gtable}
+\alias{rbind.gtable}
 \title{Row and column binding for gtables.}
 \usage{
   \method{rbind}{gtable} (..., size = "max")

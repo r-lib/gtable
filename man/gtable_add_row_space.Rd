@@ -7,7 +7,7 @@
 \arguments{
   \item{x}{a gtable object}
 
-  \item{width}{a vector of units of length 1 or nrow - 1}
+  \item{height}{a vector of units of length 1 or nrow - 1}
 }
 \description{
   Adds \code{height} space between the rows

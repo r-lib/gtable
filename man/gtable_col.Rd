@@ -5,10 +5,16 @@
   gtable_col(name, grobs, width = NULL, heights = NULL)
 }
 \arguments{
+  \item{width}{a unit vector giving the width of this
+  column}
+
   \item{name}{a string giving the name of the table. This
   is used to name the layout viewport}
 
-  \item{grobs}{a list of grobs}
+  \item{heights}{a unit vector giving the height of each
+  row}
+
+  \item{grobs}{a single grob or a list of grobs}
 }
 \description{
   Create a single column gtable.

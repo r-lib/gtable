@@ -42,14 +42,16 @@
 #' You should not need to modify this data frame directly - instead use
 #' functions like \code{gtable_add_grob}.
 #'
-#' @param grobs a list of grobs
 #' @param widths a unit vector giving the width of each column
-#' @param height a unit vector giving the height of each row
+#' @param heights a unit vector giving the height of each row
 #' @param respect a logical vector of length 1: should the aspect ratio of 
 #'   height and width specified in null units be respected.  See
 #'   \code{\link{grid.layout}} for more details
 #' @param name a string giving the name of the table. This is used to name
 #'   the layout viewport
+#' @param rownames,colnames character vectors of row and column names, used
+#'   for characteric subsetting, particularly for \code{\link{gtable_align}},
+#'   and \code{\link{gtable_join}}. 
 #' @export
 #' @seealso \code{\link{gtable_row}}, \code{\link{gtable_col}} and
 #'   \code{\link{gtable_matrix}} for convenient ways of creating gtables.
@@ -144,7 +146,7 @@ dimnames.gtable <- function(x, ...) list(x$rownames, x$colnames)
 }
 
 #' @S3method plot gtable
-plot.gtable <- function(x) {
+plot.gtable <- function(x, ...) {
   grid.newpage()
   grid.draw(x)
 }

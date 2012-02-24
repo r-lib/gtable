@@ -8,9 +8,9 @@ gtable_add_padding <- function(x, padding) {
   padding <- rep(padding, length = 4)
   
   gtable_add_rows(x, pos = 1, height = padding[1])
-  gtable_add_col(x, pos = -1, width = padding[2])  
+  gtable_add_cols(x, pos = -1, width = padding[2])  
   gtable_add_rows(x, pos = -1, height = padding[3])
-  gtable_add_col(x, pos = 1, width = padding[4])
+  gtable_add_cols(x, pos = 1, width = padding[4])
   x
 }
 

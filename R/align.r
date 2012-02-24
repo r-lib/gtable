@@ -1,6 +1,6 @@
 #' Join two gtable together based on row/column names.
 #'
-#' @inheritParams gtable_align.
+#' @inheritParams gtable_align
 #' @export
 gtable_join <- function(x, y, along = 1L, join = "left") {
   aligned <- gtable_align(x, y, along = along, join = join)
@@ -10,7 +10,7 @@ gtable_join <- function(x, y, along = 1L, join = "left") {
     stop("along > 2 no implemented"))
 }
 
-#' Align two gtables based on their row/col names
+#' Align two gtables based on their row/col names.
 #'
 #' @param x \code{\link{gtable}}
 #' @param y \code{\link{gtable}}
@@ -27,8 +27,8 @@ gtable_join <- function(x, y, along = 1L, join = "left") {
 gtable_align <- function(x, y, along = 1L, join = "left") {
   join <- match.arg(join, c("left", "right", "inner", "outer"))
   
-  names_x <- dimnames(x)[[align]]
-  names_y <- dimnames(y)[[align]]
+  names_x <- dimnames(x)[[along]]
+  names_y <- dimnames(y)[[along]]
   
   if (is.null(names_x) || is.null(names_y)) {
     stop("Both gtables must have names along dimension to be aligned")

@@ -1,6 +1,6 @@
 \name{gtable_align}
 \alias{gtable_align}
-\title{Align two gtables based on their row/col names}
+\title{Align two gtables based on their row/col names.}
 \usage{
   gtable_align(x, y, along = 1L, join = "left")
 }
@@ -24,7 +24,7 @@
   now align.
 }
 \description{
-  Align two gtables based on their row/col names
+  Align two gtables based on their row/col names.
 }
 \seealso{
   \code{\link{gtable_join}} to return the two gtables

@@ -1,6 +1,8 @@
 #' Create a single column gtable.
 #'
 #' @inheritParams gtable
+#' @inheritParams gtable_add_grob
+#' @param width a unit vector giving the width of this column
 #' @export
 #' @examples
 #' a <- rectGrob(gp = gpar(fill = "red"))
@@ -27,6 +29,8 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL) {
 #' Create a single row gtable.
 #'
 #' @inheritParams gtable
+#' @inheritParams gtable_add_grob
+#' @param height a unit vector giving the height of this row
 #' @export
 #' @examples
 #' a <- rectGrob(gp = gpar(fill = "red"))
@@ -53,6 +57,7 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL) {
 #'
 #' @export
 #' @inheritParams gtable
+#' @inheritParams gtable_add_grob
 #' @examples
 #' a <- rectGrob(gp = gpar(fill = "red"))
 #' b <- circleGrob()
@@ -80,15 +85,20 @@ gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL, respect = 
   table
 }
 
-#' Create a row spacer gtable.
+#' Create a row/col spacer gtable.
 #'
+#' @name gtable_spacer
+NULL
+
+#' @param widths unit vector of widths
+#' @rdname gtable_spacer
 #' @export
 gtable_row_spacer <- function(widths) {
   gtable_add_cols(gtable(), widths)
 }
 
-#' Create a column spacer gtable.
-#'
+#' @param heights unit vector of heights
+#' @rdname gtable_spacer
 #' @export
 gtable_col_spacer <- function(heights) {
   gtable_add_rows(gtable(), heights)

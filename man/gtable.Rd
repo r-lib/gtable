@@ -7,12 +7,10 @@
     colnames = NULL)
 }
 \arguments{
-  \item{grobs}{a list of grobs}
-
   \item{widths}{a unit vector giving the width of each
   column}
 
-  \item{height}{a unit vector giving the height of each
+  \item{heights}{a unit vector giving the height of each
   row}
 
   \item{respect}{a logical vector of length 1: should the
@@ -22,6 +20,11 @@
 
   \item{name}{a string giving the name of the table. This
   is used to name the layout viewport}
+
+  \item{rownames,colnames}{character vectors of row and
+  column names, used for characteric subsetting,
+  particularly for \code{\link{gtable_align}}, and
+  \code{\link{gtable_join}}.}
 }
 \description{
   A table grid captures all the information needed to

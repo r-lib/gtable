@@ -25,7 +25,7 @@ gtable_add_col_space <- function(x, width) {
 #' Adds \code{height} space between the rows
 #' 
 #' @param x a gtable object
-#' @param width a vector of units of length 1 or nrow - 1
+#' @param height a vector of units of length 1 or nrow - 1
 #' @export
 gtable_add_row_space <- function(x, height) {
   stopifnot(is.gtable(x))

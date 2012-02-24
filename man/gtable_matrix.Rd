@@ -9,15 +9,22 @@
   \item{name}{a string giving the name of the table. This
   is used to name the layout viewport}
 
-  \item{grobs}{a list of grobs}
-
   \item{widths}{a unit vector giving the width of each
   column}
+
+  \item{heights}{a unit vector giving the height of each
+  row}
 
   \item{respect}{a logical vector of length 1: should the
   aspect ratio of height and width specified in null units
   be respected.  See \code{\link{grid.layout}} for more
   details}
+
+  \item{grobs}{a single grob or a list of grobs}
+
+  \item{clip}{should drawing be clipped to the specified
+  cells (\code{"on"}), the entire table (\code{"inherit"}),
+  or not at all (\code{"off"})}
 }
 \description{
   Create a gtable from a matrix of grobs.
