@@ -52,10 +52,10 @@ gtable_align <- function(x, y, along = 1L, join = "left") {
 #' @keywords internal
 #' @examples
 #' gt <- gtable(heights = unit(rep(1, 3), "cm"), rownames = c("a", "b", "c"))
-#' rownames(reindex_rows(gt, c("a", "b", "c")))
-#' rownames(reindex_rows(gt, c("a", "b")))
-#' rownames(reindex_rows(gt, c("a")))
-#' rownames(reindex_rows(gt, c("a", "d", "e")))
+#' rownames(gtable:::gtable_reindex(gt, c("a", "b", "c")))
+#' rownames(gtable:::gtable_reindex(gt, c("a", "b")))
+#' rownames(gtable:::gtable_reindex(gt, c("a")))
+#' rownames(gtable:::gtable_reindex(gt, c("a", "d", "e")))
 gtable_reindex <- function(x, index, along = 1) {
   stopifnot(is.character(index))
   if (length(dim(x)) > 2L || along > 2L) {

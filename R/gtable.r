@@ -133,6 +133,7 @@ dim.gtable <- function(x) c(length(x$heights), length(x$widths))
 #' @S3method dimnames gtable
 dimnames.gtable <- function(x, ...) list(x$rownames, x$colnames)
 
+#' @S3method dimnames<- gtable
 "dimnames<-.gtable" <- function(x, value) {
   x$rownames <- value[[1]]
   x$colnames <- value[[2]]
