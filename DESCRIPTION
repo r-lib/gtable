@@ -8,6 +8,8 @@ Description: Tools to make it easier to work with "tables" of grobs.
 Depends:
     R (>= 2.14),
     grid
+Suggests:
+    testthat
 License: GPL-2
 Collate:
     'add-grob.r'
