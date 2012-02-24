@@ -20,6 +20,10 @@ rbind_gtable <- function(x, y, size = "max") {
   if (nrow(x) == 0) return(y)
   if (nrow(y) == 0) return(x)
   
+  y$layout$t <- y$layout$t + nrow(x)
+  y$layout$b <- y$layout$b + nrow(x)
+  x$layout <- rbind(x$layout, y$layout)
+
   x$heights <- insert.unit(x$heights, y$heights)
   x$rownames <- c(x$rownames, y$rownames)
 
@@ -32,10 +36,6 @@ rbind_gtable <- function(x, y, size = "max") {
   )
 
   x$grobs <- append(x$grobs, y$grobs)
-  
-  y$layout$t <- y$layout$t + nrow(x) - 1
-  y$layout$b <- y$layout$b + nrow(x) - 1
-  x$layout <- rbind(x$layout, y$layout)
 
   x
 }
@@ -52,6 +52,10 @@ cbind_gtable <- function(x, y, size = "max") {
   if (ncol(x) == 0) return(y)
   if (ncol(y) == 0) return(x)
   
+  y$layout$l <- y$layout$l + ncol(x)
+  y$layout$r <- y$layout$r + ncol(x)
+  x$layout <- rbind(x$layout, y$layout)
+  
   x$widths <- insert.unit(x$widths, y$widths)
   x$colnames <- c(x$colnames, y$colnames)
 
@@ -64,10 +68,6 @@ cbind_gtable <- function(x, y, size = "max") {
   )
 
   x$grobs <- append(x$grobs, y$grobs)
-  
-  y$layout$l <- y$layout$l + ncol(x) - 1
-  y$layout$r <- y$layout$r + ncol(x) - 1
-  x$layout <- rbind(x$layout, y$layout)
 
   x
 }
