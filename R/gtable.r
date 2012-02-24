@@ -153,6 +153,9 @@ dimnames.gtable <- function(x, ...) list(x$rownames, x$colnames)
 #' @importFrom grid grid.newpage grid.draw
 plot.gtable <- function(x, ...) {
   grid.newpage()
+  grid.rect(gp = gpar(fill = "grey95"))
+  grid <- seq(0, 1, length = 20)
+  grid.grill(h = grid, v = grid, gp = gpar(col = "white"))
   grid.draw(x)
 }
 
