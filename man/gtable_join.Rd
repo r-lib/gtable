@@ -1,16 +1,17 @@
 \name{gtable_join}
 \alias{gtable_join}
-\title{Join two gtable together based on row/column names.}
+\title{Join two gtables together based on row/column names.}
 \usage{
   gtable_join(x, y, along = 1L, join = "left")
 }
 \arguments{
+  \item{along}{dimension to align along, \code{1} = rows,
+  \code{2} = cols.  Join will occur perpendicular to this
+  direction.}
+
   \item{x}{\code{\link{gtable}}}
 
   \item{y}{\code{\link{gtable}}}
-
-  \item{along}{dimension to align along, \code{1} = rows,
-  \code{2} = cols.}
 
   \item{join}{when x and y have different names, how should
   the difference be resolved? \code{inner} keep names that
@@ -19,6 +20,16 @@
   \code{right} keep names from \code{y}.}
 }
 \description{
-  Join two gtable together based on row/column names.
+  Join two gtables together based on row/column names.
+}
+\examples{
+rect <- rectGrob(gp = gpar(fill = "black"))
+circ <- circleGrob(gp = gpar(fill = "red"))
+a <- gtable_col("a", list(rect, circ), width = unit(5, "cm"))
+rownames(a) <- c("top", "mid")
+b <- gtable_col("b", list(circ, rect), width = unit(5, "cm"))
+rownames(b) <- c("mid", "bot")
+
+gtable_join(a, b)
 }
 

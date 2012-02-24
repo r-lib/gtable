@@ -1,12 +1,26 @@
-#' Join two gtable together based on row/column names.
+# Code does not currently work - need to thinking about how indexing a gtable
+# should work in more detail.  How do the grobs move around?
+
+#' Join two gtables together based on row/column names.
 #'
 #' @inheritParams gtable_align
+#' @param along dimension to align along, \code{1} = rows, \code{2} = cols.
+#'   Join will occur perpendicular to this direction.
 #' @export
+#' @examples
+#' rect <- rectGrob(gp = gpar(fill = "black"))
+#' circ <- circleGrob(gp = gpar(fill = "red"))
+#' a <- gtable_col("a", list(rect, circ), width = unit(5, "cm"))
+#' rownames(a) <- c("top", "mid")
+#' b <- gtable_col("b", list(circ, rect), width = unit(5, "cm"))
+#' rownames(b) <- c("mid", "bot")
+#'
+#' gtable_join(a, b)
 gtable_join <- function(x, y, along = 1L, join = "left") {
   aligned <- gtable_align(x, y, along = along, join = join)
   switch(along,
-    rbind(aligned$x, aligned$y), 
-    cbind(aligned$x, aligned$y),
+    cbind(aligned$x, aligned$y), 
+    rbind(aligned$x, aligned$y),
     stop("along > 2 no implemented"))
 }
 
@@ -74,7 +88,7 @@ gtable_reindex <- function(x, index, along = 1) {
 
     if (along == 1L) {
       spacer <- gtable(
-        widths = rep(0, ncol(x)), 
+        widths = unit(rep(0, ncol(x)), "cm"), 
         heights = rep_along(unit(0, "cm"), missing),
         rownames = missing)
       # spacer <- x[rep_along(NA, missing), ]
@@ -82,7 +96,7 @@ gtable_reindex <- function(x, index, along = 1) {
       x <- rbind(x, spacer, size = "first")
     } else {
       spacer <- gtable(
-        heights = rep(0, ncol(x)), 
+        heights = unit(rep(0, ncol(x)), "cm"), 
         widths = rep_along(unit(0, "cm"), missing),
         colnames = missing)
       # spacer <- x[, rep_along(NA, missing)]

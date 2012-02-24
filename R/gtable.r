@@ -198,7 +198,6 @@ t.gtable <- function(x) {
   
   keep <- x$layout$t %in% rows & x$layout$b %in% rows & 
           x$layout$l %in% cols & x$layout$r %in% cols
-  x$layout <- x$layout[keep, , drop = FALSE]
   x$grobs <- x$grobs[keep]
   
   adj_rows <- cumsum(!i)
