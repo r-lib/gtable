@@ -1,10 +1,15 @@
-#' Add column spacing.
+#' Add row/column spacing.
 #'
-#' Adds \code{width} space between the columns
-#' 
+#' Adds \code{width} space between the columns or \code{height} space between
+#' the rows.
+#'
+#' @name gtable_add_space
 #' @param x a gtable object
+NULL
+
 #' @param width a vector of units of length 1 or ncol - 1
 #' @export
+#' @rdname gtable_add_space
 gtable_add_col_space <- function(x, width) {
   stopifnot(is.gtable(x))
   n <- ncol(x) - 1
@@ -20,13 +25,9 @@ gtable_add_col_space <- function(x, width) {
   x
 }
 
-#' Add row spacing.
-#'
-#' Adds \code{height} space between the rows
-#' 
-#' @param x a gtable object
 #' @param height a vector of units of length 1 or nrow - 1
 #' @export
+#' @rdname gtable_add_space
 gtable_add_row_space <- function(x, height) {
   stopifnot(is.gtable(x))
   n <- nrow(x) - 1

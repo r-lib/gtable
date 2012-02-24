@@ -87,13 +87,14 @@ dim(a)
 t(a)
 plot(t(a))
 
-# when subsetting, grobs are retained in their extends lie in the
+# when subsetting, grobs are retained if their extents lie in the
 # rows/columns that retained.
 
 b <- gtable(unit(c(2, 2, 2), "cm"), unit(c(2, 2, 2), "cm"))
 b <- gtable_add_grob(b, rect, 2, 2)
 b[1, ]
 b[, 1]
+b[2, 2]
 
 # gtable have row and column names
 rownames(b) <- 1:3
