@@ -2,6 +2,7 @@
 #' 
 #' @export
 #' @param x a gtable object
+#' @importFrom grid grid.show.layout
 gtable_show_layout <- function(x) {
   stopifnot(is.gtable(x))
 
@@ -9,6 +10,7 @@ gtable_show_layout <- function(x) {
 }
 
 
+#' @importFrom grid grid.layout
 gtable_layout <- function(x) {
   stopifnot(is.gtable(x))
 

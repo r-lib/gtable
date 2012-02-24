@@ -148,6 +148,7 @@ dimnames.gtable <- function(x, ...) list(x$rownames, x$colnames)
 }
 
 #' @S3method plot gtable
+#' @importFrom grid grid.newpage grid.draw
 plot.gtable <- function(x, ...) {
   grid.newpage()
   grid.draw(x)
