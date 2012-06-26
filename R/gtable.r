@@ -98,15 +98,12 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "l
     stopifnot(is.null(rownames) || length(rownames == length(heights)))
   }
   
-  grobs <- list()
   layout <- data.frame(
     t = numeric(), r = numeric(), b = numeric(), l = numeric(), z = numeric(),
     clip = character(), name = character(), stringsAsFactors = FALSE)
   
-  stopifnot(length(grobs) == nrow(layout))
-  
   structure(list(
-    grobs = grobs, layout = layout, widths = widths, 
+    grobs = list(), layout = layout, widths = widths,
     heights = heights, respect = respect, name = name,
     rownames = rownames, colnames = colnames),
     class = "gtable")
