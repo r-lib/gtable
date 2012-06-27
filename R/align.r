@@ -6,7 +6,6 @@
 #' @inheritParams gtable_align
 #' @param along dimension to align along, \code{1} = rows, \code{2} = cols.
 #'   Join will occur perpendicular to this direction.
-#' @export
 #' @examples
 #' rect <- rectGrob(gp = gpar(fill = "black"))
 #' circ <- circleGrob(gp = gpar(fill = "red"))
@@ -37,7 +36,6 @@ gtable_join <- function(x, y, along = 1L, join = "left") {
 #'   in to a single gtable.
 #' @return a list with elements \code{x} and \code{y} corresponding to the 
 #'   input gtables with extra rows/columns so that they now align.
-#' @export
 gtable_align <- function(x, y, along = 1L, join = "left") {
   join <- match.arg(join, c("left", "right", "inner", "outer"))
   
