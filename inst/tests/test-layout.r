@@ -123,3 +123,32 @@ test_that("Negative positions place from end", {
   expect_that(gtable_find(row_span, grob1), 
     equals(loc_df(t = 1, l = 1, b = 3, r = 1)))
 })
+
+test_that("Adding multiple grobs", {
+  grobs <- rep(list(grob1), 8)
+
+  # With z = Inf, and t value for each grob
+  tval <- c(1, 2, 3, 1, 2, 3, 1, 2)
+  layout <- gtable_add_cols(gtable_add_rows(gtable(), rep(cm, 3)), rep(cm, 3))
+  layout <- gtable_add_grob(layout, grobs, tval, 1, 3, 3, z = Inf)
+  expect_equal(layout$layout$t, tval)
+  expect_equal(layout$layout$z, 1:8)
+
+  # With z = -Inf
+  layout <- gtable_add_cols(gtable_add_rows(gtable(), rep(cm, 3)), rep(cm, 3))
+  layout <- gtable_add_grob(layout, grobs, 1, 1, 3, 3, z = -Inf)
+  expect_equal(layout$layout$z, -7:0)
+
+  # Mixing Inf and non-Inf z values
+  zval <- c(Inf, Inf, 6, 0, -Inf, Inf, -2, -Inf)
+  layout <- gtable_add_cols(gtable_add_rows(gtable(), rep(cm, 3)), rep(cm, 3))
+  layout <- gtable_add_grob(layout, grobs, 1, 1, 3, 3, z = zval)
+  expect_equal(layout$layout$z, c(7, 8, 6, 0, -4, 9, -2, -3))
+
+  # Error if inputs are not length 1 or same length as grobs
+  layout <- gtable_add_cols(gtable_add_rows(gtable(), rep(cm, 3)), rep(cm, 3))
+  expect_error(gtable_add_grob(layout, grobs, c(1:3), 1, 3, 3))
+  expect_error(gtable_add_grob(layout, grobs, tval, 1:2, 3, 3))
+  expect_error(gtable_add_grob(layout, grobs, tval, 1, 3, 3, z = 1:4))
+
+})

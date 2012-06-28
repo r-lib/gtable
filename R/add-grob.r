@@ -25,21 +25,37 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
   stopifnot(is.gtable(x))
   if (is.grob(grobs)) grobs <- list(grobs)
   stopifnot(is.list(grobs))
-  
-  
-  if (nrow(x$layout) == 0) z <- 1L
-  if (z == Inf) z <- max(x$layout$z) + 1L
-  if (z == -Inf) z <- min(x$layout$z) - 1L
-  
+
+  # Check that inputs have the right length
+  if(!all(vapply(list(t, r, b, l, z, clip, name), len_same_or_1,
+    logical(1), grobs))) {
+    stop("Not all inputs have either length 1 or same length same as 'grobs'")
+  }
+
+  # If z is just one value, replicate to same length as grobs
+  if (length(z) == 1) {
+    z <- rep(z, length(grobs))
+  }
+
+  # Get the existing z values from x$layout, and new non-Inf z-values
+  zval <- c(x$layout$z, z[!is.infinite(z)])
+  if (length(zval) == 0) {
+    # If there are no existing finite z values, set these so that
+    # -Inf values get assigned ..., -2, -1, 0 and
+    # +Inf values get assigned 1, 2, 3, ...
+    zmin <- 1
+    zmax <- 0
+  } else {
+    zmin <- min(zval)
+    zmax <- max(zval)
+  }
+  z[z == -Inf] <- zmin - rev(seq_len(sum(z == -Inf)))
+  z[z == Inf] <- zmax + seq_len(sum(z == Inf))
+
   t <- neg_to_pos(t, nrow(x))
   b <- neg_to_pos(b, nrow(x))
   l <- neg_to_pos(l, ncol(x))
   r <- neg_to_pos(r, ncol(x))
-  
-  stopifnot(t > 0 && t <= nrow(x))
-  stopifnot(b > 0 && b <= nrow(x))
-  stopifnot(l > 0 && l <= ncol(x))
-  stopifnot(r > 0 && r <= ncol(x))
   
   layout <- data.frame(t = t, l = l, b = b, r = r, z = z, 
     clip = clip, name = name, 
