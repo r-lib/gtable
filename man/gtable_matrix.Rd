@@ -3,9 +3,13 @@
 \title{Create a gtable from a matrix of grobs.}
 \usage{
   gtable_matrix(name, grobs, widths = NULL, heights = NULL,
-    respect = FALSE, clip = "on")
+    z = NULL, respect = FALSE, clip = "on")
 }
 \arguments{
+  \item{z}{a numeric matrix of the same dimensions as
+  \code{grobs}, specifying the order that the grobs are
+  drawn.}
+
   \item{name}{a string giving the name of the table. This
   is used to name the layout viewport}
 
@@ -41,5 +45,9 @@ mat <- matrix(list(a, b, c, nullGrob()), nrow = 2)
 gtable_matrix("demo", row, unit(c(1, 1, 1), "null"), unit(1, "null"))
 gtable_matrix("demo", col, unit(1, "null"), unit(c(1, 1, 1), "null"))
 gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"))
+
+# Can specify z ordering
+z <- matrix(c(3, 1, 2, 4), nrow = 2)
+gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
 }
 
