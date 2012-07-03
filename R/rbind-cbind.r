@@ -5,14 +5,22 @@
 #'   be combined across the gtables: take values from \code{first},
 #'   or \code{last} gtable, or compute the \code{min} or \code{max} values.
 #'   Defaults to \code{max}.
+#' @param z A numeric vector indicating the relative z values of each gtable.
+#'   The z values of each object in the resulting gtable will be modified
+#'   to fit this order. If \code{NULL}, then the z values of obects within
+#'   each gtable will not be modified.
 #' @name bind
 NULL
 
 #' @rdname bind
 #' @method rbind gtable
 #' @export
-rbind.gtable <- function(..., size = "max") {
-  Reduce(function(x, y) rbind_gtable(x, y, size = size), list(...))
+rbind.gtable <- function(..., size = "max", z = NULL) {
+  gtables <- list(...)
+  if (!is.null(z)) {
+    gtables <- z_arrange_gtables(gtables, z)
+  }
+  Reduce(function(x, y) rbind_gtable(x, y, size = size), gtables)
 }
 
 rbind_gtable <- function(x, y, size = "max") {
@@ -43,8 +51,12 @@ rbind_gtable <- function(x, y, size = "max") {
 #' @rdname bind
 #' @method cbind gtable
 #' @export
-cbind.gtable <- function(..., size = "max") {
-  Reduce(function(x, y) cbind_gtable(x, y, size = size), list(...))
+cbind.gtable <- function(..., size = "max", z = NULL) {
+  gtables <- list(...)
+  if (!is.null(z)) {
+    gtables <- z_arrange_gtables(gtables, z)
+  }
+  Reduce(function(x, y) cbind_gtable(x, y, size = size), gtables)
 }
 
 cbind_gtable <- function(x, y, size = "max") {
