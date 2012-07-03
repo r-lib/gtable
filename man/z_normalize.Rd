@@ -12,4 +12,8 @@
   values. This function will change them to integers
   (starting from 1), preserving the original order.
 }
+\details{
+  Ties are handled by the \code{"first"} method: the first
+  occurrence of a value wins.
+}
 

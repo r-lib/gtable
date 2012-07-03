@@ -14,4 +14,8 @@
   gtables together. The resulting z values will be
   normalized.
 }
+\details{
+  Ties are handled by the \code{"first"} method: the first
+  occurrence of a value wins.
+}
 
