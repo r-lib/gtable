@@ -34,8 +34,11 @@ z_arrange_gtables <- function(gtables, z) {
   zmax <- 0
   # Go through each gtable, in the order of z
   for (i in order(z)) {
-    gtables[[i]]<- z_normalise(gtables[[i]], zmax + 1)
-    zmax <- max(gtables[[i]]$layout$z)
+    # max() gives a warning if zero-length input
+    if (nrow(gtables[[i]]$layout) > 0) {
+      gtables[[i]] <- z_normalise(gtables[[i]], zmax + 1)
+      zmax <- max(gtables[[i]]$layout$z)
+    }
   }
 
   gtables
