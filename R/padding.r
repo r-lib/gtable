@@ -19,10 +19,10 @@
 gtable_add_padding <- function(x, padding) {
   padding <- rep(padding, length = 4)
   
-  x <- gtable_add_rows(x, pos = 0, height = padding[1])
-  x <- gtable_add_cols(x, pos = -1, width = padding[2])  
-  x <- gtable_add_rows(x, pos = -1, height = padding[3])
-  x <- gtable_add_cols(x, pos = 0, width = padding[4])
+  x <- gtable_add_rows(x, pos = 0, heights = padding[1])
+  x <- gtable_add_cols(x, pos = -1, widths = padding[2])
+  x <- gtable_add_rows(x, pos = -1, heights = padding[3])
+  x <- gtable_add_cols(x, pos = 0, widths = padding[4])
   x
 }
 

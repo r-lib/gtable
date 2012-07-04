@@ -14,7 +14,10 @@
 #' b <- gtable_col("b", list(circ, rect), width = unit(5, "cm"))
 #' rownames(b) <- c("mid", "bot")
 #'
-#' gtable_join(a, b)
+#' # Commented out example below because it causes R CMD check to fail
+#' # when this function is not exported. Uncomment when this function
+#' # is fixed and exported again.
+#' # gtable_join(a, b)
 gtable_join <- function(x, y, along = 1L, join = "left") {
   aligned <- gtable_align(x, y, along = along, join = join)
   switch(along,
