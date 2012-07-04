@@ -2,7 +2,8 @@
 \alias{gtable_col}
 \title{Create a single column gtable.}
 \usage{
-  gtable_col(name, grobs, width = NULL, heights = NULL)
+  gtable_col(name, grobs, width = NULL, heights = NULL,
+    z = NULL)
 }
 \arguments{
   \item{width}{a unit vector giving the width of this
@@ -15,6 +16,12 @@
   row}
 
   \item{grobs}{a single grob or a list of grobs}
+
+  \item{z}{a numeric vector giving the order in which the
+  grobs should be plotted.  Use \code{Inf} (the default) to
+  plot above or \code{-Inf} below all existing grobs. By
+  default positions are on the integers, giving plenty of
+  room to insert new grobs between existing grobs.}
 }
 \description{
   Create a single column gtable.

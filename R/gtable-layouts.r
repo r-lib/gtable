@@ -12,16 +12,21 @@
 #' gt
 #' plot(gt)
 #' gtable_show_layout(gt)
-gtable_col <- function(name, grobs, width = NULL, heights = NULL) {
+gtable_col <- function(name, grobs, width = NULL, heights = NULL, z = NULL) {
   width <- width %||% unit(max(unlist(lapply(grobs, width_cm))), "cm")
   heights <- heights %||% rep(unit(1, "null"), length(grobs))
+
+  # z is either NULL, or a vector of the same length as grobs
+  stopifnot(is.null(z) || length(z) == length(grobs))
+  if (is.null(z))
+    z <- Inf
 
   table <- gtable(name = name)
   
   table <- gtable_add_rows(table, heights)
   table <- gtable_add_cols(table, width)
   table <- gtable_add_grob(table, grobs, t = seq_along(grobs), l = 1, 
-    clip = "off")
+    z = z, clip = "off")
   
   table
 }
@@ -40,15 +45,21 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL) {
 #' gt
 #' plot(gt)
 #' gtable_show_layout(gt)
-gtable_row <- function(name, grobs, height = NULL, widths = NULL) {
+gtable_row <- function(name, grobs, height = NULL, widths = NULL, z = NULL) {
   height <- height %||% unit(max(unlist(lapply(grobs, height_cm))), "cm")
   widths <- widths %||% rep(unit(1, "null"), length(grobs))
+
+  # z is either NULL, or a vector of the same length as grobs
+  stopifnot(is.null(z) || length(z) == length(grobs))
+  if (is.null(z))
+    z <- Inf
     
   table <- gtable(name = name)
 
   table <- gtable_add_cols(table, widths)
   table <- gtable_add_rows(table, height)
-  table <- gtable_add_grob(table, grobs, l = seq_along(grobs), t = 1, clip = "off")
+  table <- gtable_add_grob(table, grobs, l = seq_along(grobs), t = 1,
+    z = z, clip = "off")
   
   table
 }
@@ -58,6 +69,8 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL) {
 #' @export
 #' @inheritParams gtable
 #' @inheritParams gtable_add_grob
+#' @param z a numeric matrix of the same dimensions as \code{grobs},
+#'   specifying the order that the grobs are drawn.
 #' @examples
 #' a <- rectGrob(gp = gpar(fill = "red"))
 #' b <- circleGrob()
@@ -70,17 +83,27 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL) {
 #' gtable_matrix("demo", row, unit(c(1, 1, 1), "null"), unit(1, "null"))
 #' gtable_matrix("demo", col, unit(1, "null"), unit(c(1, 1, 1), "null"))
 #' gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"))
-gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL, respect = FALSE, clip = "on") {  
+#'
+#' # Can specify z ordering
+#' z <- matrix(c(3, 1, 2, 4), nrow = 2)
+#' gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
+gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL,
+  z = NULL, respect = FALSE, clip = "on") {
+
   table <- gtable(name = name, respect = respect)
 
   stopifnot(length(widths) == ncol(grobs))
   stopifnot(length(heights) == nrow(grobs))
+  # z is either NULL or a matrix of the same dimensions as grobs
+  stopifnot(is.null(z) || identical(dim(grobs), dim(z)))
+  if (is.null(z))
+    z <- Inf
 
   table <- gtable_add_cols(table, widths)
   table <- gtable_add_rows(table, heights)
   
   table <- gtable_add_grob(table, grobs, t = c(row(grobs)), l = c(col(grobs)),
-    clip = clip)
+    z = as.vector(z), clip = clip)
 
   table
 }
