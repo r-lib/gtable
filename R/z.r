@@ -1,4 +1,4 @@
-#' Normalize z values within a gtable object
+#' Normalise z values within a gtable object
 #'
 #' The z values within a gtable object can be any numeric values.
 #' This function will change them to integers (starting from 1),
@@ -8,8 +8,9 @@
 #' of a value wins.
 #'
 #' @param x A gtable object
-z_normalize <- function(x) {
-  x$layout$z <- rank(x$layout$z, ties.method = "first")
+#' @param i The z value to start counting up from (default is 1)
+z_normalise <- function(x, i = 1) {
+  x$layout$z <- rank(x$layout$z, ties.method = "first") + i - 1
   x
 }
 
@@ -33,8 +34,7 @@ z_arrange_gtables <- function(gtables, z) {
   zmax <- 0
   # Go through each gtable, in the order of z
   for (i in order(z)) {
-    gtables[[i]]$layout$z <- rank(gtables[[i]]$layout$z,
-      ties.method = "first") + zmax
+    gtables[[i]]<- z_normalise(gtables[[i]], zmax + 1)
     zmax <- max(gtables[[i]]$layout$z)
   }
 
