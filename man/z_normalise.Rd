@@ -1,11 +1,14 @@
-\name{z_normalize}
-\alias{z_normalize}
-\title{Normalize z values within a gtable object}
+\name{z_normalise}
+\alias{z_normalise}
+\title{Normalise z values within a gtable object}
 \usage{
-  z_normalize(x)
+  z_normalise(x, i = 1)
 }
 \arguments{
   \item{x}{A gtable object}
+
+  \item{i}{The z value to start counting up from (default
+  is 1)}
 }
 \description{
   The z values within a gtable object can be any numeric
