@@ -29,9 +29,6 @@ z_arrange_gtables <- function(gtables, z) {
     stop("'gtables' and 'z' must be the same length")
   }
 
-  # Make sure z is vector of integers starting from 1
-  z <- rank(z, ties.method = "first")
-
   # Keep track of largest z value encountered so far
   zmax <- 0
   # Go through each gtable, in the order of z
