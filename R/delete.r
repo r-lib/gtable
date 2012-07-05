@@ -3,6 +3,7 @@
 #' @name delete
 #' @param x a gtable object
 #' @param rows,cols numeric vector that indicates rows/cols to be deleted
+#' @param force logical indicates how the grobs are removed.
 #' @examples
 #' r <- lapply(rainbow(6), function(c) rectGrob(gp = gpar(fill = c)))
 #' g <- gtable(unit(rep(2, 6), "cm"), unit(rep(2, 6), "cm"))
@@ -21,11 +22,14 @@
 #' 
 #' plot(gtable_delete_cols(g, c(2:4)))
 #' plot(gtable_delete_cols(g, c(2, 4)))
+#'
+#' plot(gtable_delete_rows(g, 3, TRUE))
+#' plot(gtable_delete_rows(g, 3, FALSE))
 NULL
 
 #' @rdname delete
 #' @export
-gtable_delete_rows <- function(x, rows = NULL) {
+gtable_delete_rows <- function(x, rows = NULL, force = FALSE) {
   stopifnot(is.gtable(x))
   if (is.null(rows)) return(x)
   rows <- sort(unique(rows[rows <= nrow(x)]))
@@ -33,30 +37,35 @@ gtable_delete_rows <- function(x, rows = NULL) {
   # rows of grobs
   gr <- mapply(seq, x$layout$t, x$layout$b, SIMPLIFY = FALSE)
   
-  # previous and new matrix
-  lm0 <- sapply(gr, function(y) seq_len(nrow(x)) %in% y)
-  lm1 <- lm0[-rows, ]
-  
+  # layout matrix
+  lm <- sapply(gr, function(y) seq_len(nrow(x)) %in% y)
+
   # keep the grob?
-  kp <- apply(lm1, 2, any)
-  
-  # new t/b
-  tb <- apply(lm1[, kp], 2, function(z) c(min(which(z)), max(which(z))))
-  
+  if (force) {
+    kp <- !apply(lm[ rows, , drop = FALSE], 2, any)
+  } else {
+    kp <-  apply(lm[-rows, , drop = FALSE], 2, any)
+  }
+
   # delete grobs/rows
   x$layout <- x$layout[kp, ]
   x$grobs <- x$grobs[kp]
   x$heights <- x$heights[-rows]
+  
   # re-index
-  x$layout$t <- tb[1, ]
-  x$layout$b <- tb[2, ]
+  if (length(x$grobs)) {
+    # new t/b
+    tb <- apply(lm[-rows, ][, kp], 2, function(z) c(min(which(z)), max(which(z))))
+    x$layout$t <- tb[1, ]
+    x$layout$b <- tb[2, ]
+  }
   x
 }
 
 #' @rdname delete
 #' @export
-gtable_delete_cols <- function(x, cols = NULL) {
-  t(gtable_delete_rows(t(x), cols))
+gtable_delete_cols <- function(x, cols = NULL, force = FALSE) {
+  t(gtable_delete_rows(t(x), cols, force))
 }
 
 #' @rdname delete
