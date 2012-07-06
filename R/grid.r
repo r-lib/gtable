@@ -22,7 +22,7 @@ gtable_layout <- function(x) {
 }
 
 vpname <- function(row) {
-  paste(row$name, row$t, row$r, row$b, row$l, sep = "-")
+  paste(row$name, ".", row$t, "-", row$r, "-", row$b, "-", row$l, sep = "")
 }
 
 gtable_viewport <- function(x) {
@@ -44,11 +44,15 @@ gtable_gList <- function(x) {
   z_order <- order(x$layout$z)
   x$layout <- x$layout[z_order, , drop = FALSE]
   x$grobs <- x$grobs[z_order]
+  
+  vp_names <- vpname(x$layout)
 
-  names <- vpname(x$layout)
-  grobs <- lapply(seq_along(names), function(i) {
-    editGrob(x$grobs[[i]], vp = vpPath(x$name, names[i]), 
-      name = names[i])
+  classes <- vapply(x$grobs, function(x) class(x)[1], character(1))
+  grob_names <- make.unique(paste(vp_names, classes, sep = "."))
+  
+  grobs <- lapply(seq_along(x$grobs), function(i) {
+    editGrob(x$grobs[[i]], vp = vpPath(x$name, vp_names[i]), 
+      name = grob_names[i])
   })
   
   do.call("gList", grobs)
