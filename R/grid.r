@@ -2,7 +2,6 @@
 #' 
 #' @export
 #' @param x a gtable object
-#' @importFrom grid grid.show.layout
 gtable_show_layout <- function(x) {
   stopifnot(is.gtable(x))
 
@@ -10,7 +9,6 @@ gtable_show_layout <- function(x) {
 }
 
 
-#' @importFrom grid grid.layout
 gtable_layout <- function(x) {
   stopifnot(is.gtable(x))
 
@@ -72,7 +70,6 @@ gtable_gTree <- function(x, ...) {
 }
 
 #' @S3method grid.draw gtable
-#' @importFrom grid grid.draw
 grid.draw.gtable <- function(x, recording = TRUE) {
   grid.draw(gtable_gTree(x), recording)
 }

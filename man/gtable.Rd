@@ -1,7 +1,8 @@
+\docType{package}
 \name{gtable}
 \alias{gtable}
 \alias{gtable-package}
-\title{Create a new grob table.}
+\title{gtable}
 \usage{
   gtable(widths = list(), heights = list(),
     respect = FALSE, name = "layout", rownames = NULL,
@@ -28,6 +29,8 @@
   \code{\link{gtable_join}}.}
 }
 \description{
+  gtable
+
   A grob table captures all the information needed to
   layout grobs in a table structure. It supports row and
   column spanning, offers some tools to automatically

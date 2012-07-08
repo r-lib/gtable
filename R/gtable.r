@@ -1,3 +1,11 @@
+#' gtable
+#'
+#' @import grid
+#' @docType package
+#' @name gtable
+#' @aliases gtable gtable-package
+NULL
+
 #' Create a new grob table.
 #'
 #' A grob table captures all the information needed to layout grobs in a table
@@ -147,7 +155,6 @@ dimnames.gtable <- function(x, ...) list(x$rownames, x$colnames)
 }
 
 #' @S3method plot gtable
-#' @importFrom grid grid.newpage grid.draw
 plot.gtable <- function(x, ...) {
   grid.newpage()
   grid.rect(gp = gpar(fill = "grey95"))
