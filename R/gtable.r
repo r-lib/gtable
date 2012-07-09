@@ -59,8 +59,8 @@ NULL
 #' @param name a string giving the name of the table. This is used to name
 #'   the layout viewport
 #' @param rownames,colnames character vectors of row and column names, used
-#'   for characteric subsetting, particularly for \code{\link{gtable_align}},
-#'   and \code{\link{gtable_join}}. 
+#'   for characteric subsetting, particularly for \code{gtable_align},
+#'   and \code{gtable_join}.
 #' @export
 #' @aliases gtable-package
 #' @seealso \code{\link{gtable_row}}, \code{\link{gtable_col}} and
