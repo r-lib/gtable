@@ -25,8 +25,8 @@
 
   \item{rownames,colnames}{character vectors of row and
   column names, used for characteric subsetting,
-  particularly for \code{\link{gtable_align}}, and
-  \code{\link{gtable_join}}.}
+  particularly for \code{gtable_align}, and
+  \code{gtable_join}.}
 }
 \description{
   gtable
