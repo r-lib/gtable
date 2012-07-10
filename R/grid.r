@@ -23,6 +23,28 @@ vpname <- function(row) {
   paste(row$name, ".", row$t, "-", row$r, "-", row$b, "-", row$l, sep = "")
 }
 
+#' @internal
+#'
+#' generate vpTree
+#'
+#' For parent, i.e., the gtable itself, the elements of vp are respected,
+#' and name and layout are added.
+#'
+#' For children, if a child has vp, the vp are also respected.
+#' In this case, a wrapper vp is generated that contains the vp of the child.
+#' The wrapper and child's vp are stacked by vpStack.
+#' The wrapper vp has the info of layout.pos.row/col, and it spans entire region
+#' of the cell of gtable.
+#' The elements of child's vp is unchanged except for the name/clip.
+#' The name will be: vpname.gtwrap -> vpname
+#'
+#' If a child does not have vp, a new viewport is generated.
+#' There is no wrapper.
+#' The name will be: vpaname
+#'
+#' *IMPORTANT*
+#' the order of childrenvp is the order of grob.
+#' So this function does not care about z-order.
 gtable_viewport <- function(x, pvp = NULL) {
   # respect parent vp with setting name and layout
   if (is.null(pvp)) {
@@ -51,7 +73,7 @@ gtable_viewport <- function(x, pvp = NULL) {
     vp <- x$layout[i, ]
     p <- x$grobs[[i]]$vp
     if (!is.null(p)) {
-      vpStack(viewport(name = paste0(vpname(vp), ".frame"),
+      vpStack(viewport(name = paste0(vpname(vp), ".gtwrap"),
                        layout.pos.row = vp$t:vp$b, 
                        layout.pos.col = vp$l:vp$r, 
                        ),
@@ -73,7 +95,16 @@ gtable_viewport <- function(x, pvp = NULL) {
   vpTree(layout_vp, children_vp)
 }
 
+#' @internal
+#'
+#' Convert list of grobs of gtable into official gList object.
+#' grobs of gtable, ie., a chidl can be either official grobs OR gtable.
+#' If a child is gtable, conversion from gtable to gTree of the child
+#' takes place here.
+#'
+#' Finally, th vp slot of a grob is replaced by vpPath string.
 gtable_gList <- function(x, vp) {
+  # reorder along z index
   z_order <- order(x$layout$z)
   x$layout <- x$layout[z_order, , drop = FALSE]
   x$grobs <- x$grobs[z_order]
@@ -84,6 +115,11 @@ gtable_gList <- function(x, vp) {
   classes <- vapply(x$grobs, function(x) class(x)[1], character(1))
   grob_names <- make.unique(paste(vp_names, classes, sep = "."))
   grobs <- lapply(seq_along(x$grobs), function(i) {
+    
+    # convert gtable into gTree
+    if (inherits(x$grobs[[i]], "gtable")) x$grobs[[i]] <- gtable_gTree(x$grobs[[i]])
+    
+    # set the vp of grob 
     editGrob(x$grobs[[i]],
              # If a child does not have vp, then there is only one vp
              # Otherwise, the child's vp is vpStack,
@@ -108,15 +144,21 @@ gtable_gTree <- function(x, vp = NULL, ...) {
   # accept vp param as grobs.
   
   if (length(x) == 0) return(nullGrob())
+  if (is.null(vp) && !is.null(x$vp)) vp <- x$vp
 
-  cvp <- gtable_viewport(x, vp)
-  children <- gtable_gList(x, cvp)
-  gTree(children = children, childrenvp = cvp, ...)
+  # construct vpTree
+  childrenvp <- gtable_viewport(x, vp)
+  children <- gtable_gList(x, childrenvp)
+
+  # NOTE
+  # the order of the childrenvp$children and
+  # that of the children is different, but no problem.
+  # Look-up of the vp is based on the text matching between
+  # vpPath name of childrenvp$child and vp slot of a children.
+  gTree(children = children, childrenvp = childrenvp, ...)
 }
 
 #' @S3method grid.draw gtable
 grid.draw.gtable <- function(x, recording = TRUE) {
   grid.draw(gtable_gTree(x), recording)
 }
-
-
