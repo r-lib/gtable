@@ -45,6 +45,8 @@ vpname <- function(row) {
 #' *IMPORTANT*
 #' the order of childrenvp is the order of grob.
 #' So this function does not care about z-order.
+#'
+#' @param pvp Parent viewport
 gtable_viewport <- function(x, pvp = NULL) {
   # respect parent vp with setting name and layout
   if (is.null(pvp)) {
@@ -52,43 +54,30 @@ gtable_viewport <- function(x, pvp = NULL) {
   } else {
     layout_vp <-
       viewport(layout = gtable_layout(x), name = x$name,
-               x=pvp$x,
-               y=pvp$y,
-               width=pvp$width,
-               height=pvp$height,
-               just=pvp$just,
-               gp=pvp$gp,
-               xscale=pvp$xscale,
-               yscale=pvp$yscale, 
-               angle=pvp$angle,
-               clip = pvp$clip)
+        x = pvp$x, y = pvp$y, width = pvp$width, height = pvp$height,
+        just = pvp$just, gp = pvp$gp, xscale = pvp$xscale,
+        yscale = pvp$yscale, angle = pvp$angle, clip = pvp$clip)
   }
 
   # children vp
   #
-  # If a child has alrealy vp, it will be repsected.
+  # If a child already has vp, it will be respected.
   # However, we cannot use it directly. Instead, a wrapper vp
   # is necessary. vpStack is used for this purpose.
   vp <- function(i) {
     vp <- x$layout[i, ]
     p <- x$grobs[[i]]$vp
     if (!is.null(p)) {
-      vpStack(viewport(name = paste0(vpname(vp), ".gtwrap"),
-                       layout.pos.row = vp$t:vp$b, 
-                       layout.pos.col = vp$l:vp$r, 
-                       ),
-              viewport(name = vpname(vp),
-                       x=p$x, y=p$y, width=p$width, height=p$height,
-                       just=p$just, gp=p$gp, xscale=p$xscale, yscale=p$yscale, 
-                       angle=p$angle, layout=p$layout,
-                       clip = vp$clip))
+      vpStack(
+        viewport(name = paste0(vpname(vp), ".gtwrap"),
+          layout.pos.row = vp$t:vp$b, layout.pos.col = vp$l:vp$r),
+        viewport(name = vpname(vp),
+          x = p$x, y = p$y, width = p$width, height = p$height,
+          just = p$just, gp = p$gp, xscale = p$xscale, yscale = p$yscale,
+          angle = p$angle, layout = p$layout, clip = vp$clip))
     } else {
-      viewport(
-               name = vpname(vp), 
-               layout.pos.row = vp$t:vp$b, 
-               layout.pos.col = vp$l:vp$r, 
-               clip = vp$clip
-               )
+      viewport(name = vpname(vp), layout.pos.row = vp$t:vp$b,
+        layout.pos.col = vp$l:vp$r, clip = vp$clip)
     }
   }
   children_vp <- do.call("vpList", lapply(seq_along(x$grobs), vp))
@@ -114,23 +103,18 @@ gtable_gList <- function(x, vp) {
 
   classes <- vapply(x$grobs, function(x) class(x)[1], character(1))
   grob_names <- make.unique(paste(vp_names, classes, sep = "."))
-  grobs <- lapply(seq_along(x$grobs), function(i) {
-    
-    # convert gtable into gTree
-    if (inherits(x$grobs[[i]], "gtable")) x$grobs[[i]] <- gtable_gTree(x$grobs[[i]])
-    
-    # set the vp of grob 
-    editGrob(x$grobs[[i]],
-             # If a child does not have vp, then there is only one vp
-             # Otherwise, the child's vp is vpStack,
-             # so vpname should be list parent::wrapper::vp
-             vp = do.call("vpPath",
-               c(list(vp$parent$name),
-                 if (inherits(vp$children[[i]], "vpStack")) lapply(vp$children[[i]], function(x)x$name)
-                 else vp$children[[i]]$name)),
-             name = grob_names[i])
+
+  # Find paths for the children
+  vp_child_paths <- find_vp_child_paths(vp)
+
+  # convert gtables to gTrees
+  x$grobs <- lapply(x$grobs, function(g) {
+    ifelse(is.gtable(g), gtable_gTree(g), g)
   })
-  
+
+  grobs <- mapply(editGrob, x$grobs, vp = vp_child_paths, name = grob_names,
+    SIMPLIFY = FALSE)
+
   do.call("gList", grobs)
 }
 
@@ -141,8 +125,6 @@ gtable_gList <- function(x, vp) {
 #' @param ... other parameters passed on to \code{\link[grid]{gTree}}
 #' @export
 gtable_gTree <- function(x, vp = NULL, ...) {
-  # accept vp param as grobs.
-  
   if (length(x) == 0) return(nullGrob())
   if (is.null(vp) && !is.null(x$vp)) vp <- x$vp
 
@@ -161,4 +143,31 @@ gtable_gTree <- function(x, vp = NULL, ...) {
 #' @S3method grid.draw gtable
 grid.draw.gtable <- function(x, recording = TRUE) {
   grid.draw(gtable_gTree(x), recording)
+}
+
+
+# Return a list of vp paths for the children of vp
+# so vpname should be list parent::wrapper::vp
+find_vp_child_paths <- function(vp) {
+  vp_childpaths <- lapply(vp$children, find_vp_path)
+
+  lapply(vp_childpaths, append_vp_parent_path, vp$parent$name)
+}
+
+# If vp is a vpStack, return a list of names of the vp's in the stack
+# Otherwise, return the name of the vp (not in a list)
+find_vp_path <- function(vp) {
+  if (inherits(vp, "vpStack")) {
+    # Get the names of each frame in the vpStack
+    lapply(vp, function(x) x$name)
+  } else {
+    vp$name
+  }
+}
+
+# @param childname A list of strings that specifies the child path
+# @param parentname A string that specifies the parent path
+append_vp_parent_path <- function (childpath, parentpath) {
+  # Make sure that the args are a flat list
+  do.call("vpPath", c(list(parentpath), childpath))
 }
