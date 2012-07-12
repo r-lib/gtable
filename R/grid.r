@@ -109,9 +109,13 @@ gtable_gList <- function(x, vp) {
 
   # convert gtables to gTrees
   x$grobs <- lapply(x$grobs, function(g) {
-    ifelse(is.gtable(g), gtable_gTree(g), g)
+    if (is.gtable(g)) {
+      gtable_gTree(g)
+    } else {
+      g
+    }
   })
-
+  
   grobs <- mapply(editGrob, x$grobs, vp = vp_child_paths, name = grob_names,
     SIMPLIFY = FALSE)
 
