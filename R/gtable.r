@@ -110,11 +110,11 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "l
     t = numeric(), r = numeric(), b = numeric(), l = numeric(), z = numeric(),
     clip = character(), name = character(), stringsAsFactors = FALSE)
   
-  structure(list(
+  grob(
     grobs = list(), layout = layout, widths = widths,
     heights = heights, respect = respect, name = name,
-    rownames = rownames, colnames = colnames),
-    class = "gtable")
+    rownames = rownames, colnames = colnames,
+    cl = "gtable")
 }
 
 #' @S3method print gtable

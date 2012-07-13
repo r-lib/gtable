@@ -69,9 +69,9 @@ gtable_gTree <- function(x, ...) {
   gTree(children = children, childrenvp = vp, ...)
 }
 
-#' @S3method grid.draw gtable
-grid.draw.gtable <- function(x, recording = TRUE) {
-  grid.draw(gtable_gTree(x), recording)
+#' @S3method drawDetails gtable
+drawDetails.gtable <- function(x, recording = TRUE, ...){
+  # set up a gTree for drawing
+  g <- gTree(children = gtable_gList(x), childrenvp = gtable_viewport(x), ...)
+  grid.draw(g, recording)
 }
-
-
