@@ -61,6 +61,7 @@ NULL
 #' @param rownames,colnames character vectors of row and column names, used
 #'   for characteric subsetting, particularly for \code{gtable_align},
 #'   and \code{gtable_join}.
+#' @param vp a grid viewport object (or NULL).
 #' @export
 #' @aliases gtable-package
 #' @seealso \code{\link{gtable_row}}, \code{\link{gtable_col}} and
@@ -95,7 +96,8 @@ NULL
 #' rownames(b)[2] <- 200
 #' colnames(b) <- letters[1:3]
 #' dimnames(b)
-gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "layout", rownames = NULL, colnames = NULL) {
+gtable <- function(widths = list(), heights = list(), respect = FALSE,
+  name = "layout", rownames = NULL, colnames = NULL, vp = NULL) {
   
   if (length(widths) > 0) {
     stopifnot(is.unit(widths))
@@ -113,7 +115,7 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "l
   grob(
     grobs = list(), layout = layout, widths = widths,
     heights = heights, respect = respect, name = name,
-    rownames = rownames, colnames = colnames,
+    rownames = rownames, colnames = colnames, vp = vp,
     cl = "gtable")
 }
 
