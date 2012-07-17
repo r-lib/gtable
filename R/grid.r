@@ -51,13 +51,13 @@ gtable_viewport <- function(x) {
     layout_vp <- x$vp
   }
 
-  # Convert each row of x$layout to a list item
-  layouts <- split(x$layout, seq_len(nrow(x$layout)))
+  children_vps <- mapply(find_child_vp,
+    grob = x$grobs, vp_name = vpname(x$layout),
+    t = x$layout$t, r = x$layout$r, b = x$layout$b, l = x$layout$l,
+    clip = x$layout$clip,
+    SIMPLIFY = FALSE)
 
-  childvps <- mapply(find_child_vp, x$grobs, layouts, SIMPLIFY = FALSE)
-
-  children_vp <- do.call("vpList", childvps)
-  vpTree(layout_vp, children_vp)
+  vpTree(layout_vp, do.call("vpList", children_vps))
 }
 
 # Convert list of grobs of gtable into official gList object.
@@ -104,26 +104,33 @@ widthDetails.gtable <- function(x) absolute.size(sum(x$widths))
 heightDetails.gtable <- function(x) absolute.size(sum(x$heights))
 
 
-# children vp
+# Return the viewport for a child grob in a gtable
 #
 # If a child already has vp, it will be respected.
 # However, we cannot use it directly. Instead, a wrapper vp
 # is necessary. vpStack is used for this purpose.
-find_child_vp <- function(grob, layout) {
+# @param grob The child grob
+# @param vp_name The name of the viewport for the grob
+# @param t Top cell of the grob
+# @param r Right cell of the grob
+# @param b Bottom cell of the grob
+# @param l Left cell of the grob
+# @param clip Clip (TRUE or FALSE)
+find_child_vp <- function(grob, vp_name, t, r, b, l, clip) {
   vp <- grob$vp
 
   if (is.null(vp)) {
-    viewport(name = vpname(layout), layout.pos.row = layout$t:layout$b,
-      layout.pos.col = layout$l:layout$r, clip = layout$clip)
+    viewport(name = vp_name, layout.pos.row = t:b,
+      layout.pos.col = l:r, clip = clip)
   } else {
     vpStack(
-      viewport(name = paste0(vpname(layout), ".gtwrap"),
-        layout.pos.row = layout$t:layout$b,
-        layout.pos.col = layout$l:layout$r),
-      viewport(name = vpname(layout),
+      viewport(name = paste0(vp_name, ".gtwrap"),
+        layout.pos.row = t:b,
+        layout.pos.col = l:r),
+      viewport(name = vp_name,
         x = vp$x, y = vp$y, width = vp$width, height = vp$height,
         just = vp$just, gp = vp$gp, xscale = vp$xscale, yscale = vp$yscale,
-        angle = vp$angle, layout = vp$layout, clip = layout$clip))
+        angle = vp$angle, layout = vp$layout, clip = clip))
   }
 }
 
