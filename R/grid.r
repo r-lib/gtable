@@ -48,11 +48,7 @@ gtable_viewport <- function(x) {
   if (is.null(x$vp)) {
     layout_vp <- viewport(layout = gtable_layout(x), name = x$name)
   } else {
-    layout_vp <-
-      viewport(layout = gtable_layout(x), name = x$name,
-        x = x$vp$x, y = x$vp$y, width = x$vp$width, height = x$vp$height,
-        just = x$vp$just, gp = x$vp$gp, xscale = x$vp$xscale,
-        yscale = x$vp$yscale, angle = x$vp$angle, clip = x$vp$clip)
+    layout_vp <- x$vp
   }
 
   # Convert each row of x$layout to a list item

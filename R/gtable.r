@@ -111,7 +111,15 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
   layout <- data.frame(
     t = numeric(), r = numeric(), b = numeric(), l = numeric(), z = numeric(),
     clip = character(), name = character(), stringsAsFactors = FALSE)
-  
+
+  if (!is.null(vp)) {
+    vp <- viewport(layout = layout, name = name,
+      x = vp$x, y = vp$y,
+      width = vp$width, height = vp$height,
+      just = vp$just, gp = vp$gp, xscale = vp$xscale,
+      yscale = vp$yscale, angle = vp$angle, clip = vp$clip)
+  }
+
   grob(
     grobs = list(), layout = layout, widths = widths,
     heights = heights, respect = respect, name = name,
