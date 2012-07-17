@@ -63,3 +63,9 @@ drawDetails.gtable <- function(x, recording = TRUE) {
   g <- gTree(children = gtable_gList(x), childrenvp = gtable_viewport(x))
   grid.draw(g, recording)
 }
+
+#' S3method widthDetails gtable
+widthDetails.gtable <- function(x) absolute.size(sum(x$widths))
+
+#' S3method heightDetails gtable
+heightDetails.gtable <- function(x) absolute.size(sum(x$heights))
