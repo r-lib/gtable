@@ -95,7 +95,7 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
 gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL,
   z = NULL, respect = FALSE, clip = "on", vp = NULL) {
 
-  table <- gtable(name = name, respect = respect, vp = NULL)
+  table <- gtable(name = name, respect = respect, vp = vp)
 
   stopifnot(length(widths) == ncol(grobs))
   stopifnot(length(heights) == nrow(grobs))
