@@ -61,6 +61,7 @@ NULL
 #' @param rownames,colnames character vectors of row and column names, used
 #'   for characteric subsetting, particularly for \code{gtable_align},
 #'   and \code{gtable_join}.
+#' @param vp a grid viewport object (or NULL).
 #' @export
 #' @aliases gtable-package
 #' @seealso \code{\link{gtable_row}}, \code{\link{gtable_col}} and
@@ -95,7 +96,8 @@ NULL
 #' rownames(b)[2] <- 200
 #' colnames(b) <- letters[1:3]
 #' dimnames(b)
-gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "layout", rownames = NULL, colnames = NULL) {
+gtable <- function(widths = list(), heights = list(), respect = FALSE,
+  name = "layout", rownames = NULL, colnames = NULL, vp = NULL) {
   
   if (length(widths) > 0) {
     stopifnot(is.unit(widths))
@@ -109,12 +111,20 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE, name = "l
   layout <- data.frame(
     t = numeric(), r = numeric(), b = numeric(), l = numeric(), z = numeric(),
     clip = character(), name = character(), stringsAsFactors = FALSE)
-  
-  structure(list(
+
+  if (!is.null(vp)) {
+    vp <- viewport(name = name,
+      x = vp$x, y = vp$y,
+      width = vp$width, height = vp$height,
+      just = vp$just, gp = vp$gp, xscale = vp$xscale,
+      yscale = vp$yscale, angle = vp$angle, clip = vp$clip)
+  }
+
+  grob(
     grobs = list(), layout = layout, widths = widths,
     heights = heights, respect = respect, name = name,
-    rownames = rownames, colnames = colnames),
-    class = "gtable")
+    rownames = rownames, colnames = colnames, vp = vp,
+    cl = "gtable")
 }
 
 #' @S3method print gtable
@@ -217,3 +227,15 @@ t.gtable <- function(x) {
 
 #' @S3method length gtable
 length.gtable <- function(x) length(x$grobs)
+
+#' Returns the height of a gtable, in the gtable's units
+#'
+#' Note that unlike heightDetails.gtable, this can return relative units.
+#' @export
+gtable_height <- function(x) sum(x$heights)
+
+#' Returns the width of a gtable, in the gtable's units
+#'
+#' Note that unlike widthDetails.gtable, this can return relative units.
+#' @export
+gtable_width <- function(x) sum(x$widths)

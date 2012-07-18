@@ -3,6 +3,7 @@
 #' @inheritParams gtable
 #' @inheritParams gtable_add_grob
 #' @param width a unit vector giving the width of this column
+#' @param vp a grid viewport object (or NULL).
 #' @export
 #' @examples
 #' a <- rectGrob(gp = gpar(fill = "red"))
@@ -12,7 +13,8 @@
 #' gt
 #' plot(gt)
 #' gtable_show_layout(gt)
-gtable_col <- function(name, grobs, width = NULL, heights = NULL, z = NULL) {
+gtable_col <- function(name, grobs, width = NULL, heights = NULL,
+  z = NULL, vp = NULL) {
   width <- width %||% unit(max(unlist(lapply(grobs, width_cm))), "cm")
   heights <- heights %||% rep(unit(1, "null"), length(grobs))
 
@@ -21,7 +23,7 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL, z = NULL) {
   if (is.null(z))
     z <- Inf
 
-  table <- gtable(name = name)
+  table <- gtable(name = name, vp = vp)
   
   table <- gtable_add_rows(table, heights)
   table <- gtable_add_cols(table, width)
@@ -36,6 +38,7 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL, z = NULL) {
 #' @inheritParams gtable
 #' @inheritParams gtable_add_grob
 #' @param height a unit vector giving the height of this row
+#' @param vp a grid viewport object (or NULL).
 #' @export
 #' @examples
 #' a <- rectGrob(gp = gpar(fill = "red"))
@@ -45,7 +48,8 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL, z = NULL) {
 #' gt
 #' plot(gt)
 #' gtable_show_layout(gt)
-gtable_row <- function(name, grobs, height = NULL, widths = NULL, z = NULL) {
+gtable_row <- function(name, grobs, height = NULL, widths = NULL,
+  z = NULL, vp = NULL) {
   height <- height %||% unit(max(unlist(lapply(grobs, height_cm))), "cm")
   widths <- widths %||% rep(unit(1, "null"), length(grobs))
 
@@ -54,7 +58,7 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL, z = NULL) {
   if (is.null(z))
     z <- Inf
     
-  table <- gtable(name = name)
+  table <- gtable(name = name, vp = vp)
 
   table <- gtable_add_cols(table, widths)
   table <- gtable_add_rows(table, height)
@@ -71,6 +75,7 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL, z = NULL) {
 #' @inheritParams gtable_add_grob
 #' @param z a numeric matrix of the same dimensions as \code{grobs},
 #'   specifying the order that the grobs are drawn.
+#' @param vp a grid viewport object (or NULL).
 #' @examples
 #' a <- rectGrob(gp = gpar(fill = "red"))
 #' b <- circleGrob()
@@ -88,9 +93,9 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL, z = NULL) {
 #' z <- matrix(c(3, 1, 2, 4), nrow = 2)
 #' gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
 gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL,
-  z = NULL, respect = FALSE, clip = "on") {
+  z = NULL, respect = FALSE, clip = "on", vp = NULL) {
 
-  table <- gtable(name = name, respect = respect)
+  table <- gtable(name = name, respect = respect, vp = vp)
 
   stopifnot(length(widths) == ncol(grobs))
   stopifnot(length(heights) == nrow(grobs))

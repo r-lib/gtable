@@ -6,7 +6,7 @@
 \usage{
   gtable(widths = list(), heights = list(),
     respect = FALSE, name = "layout", rownames = NULL,
-    colnames = NULL)
+    colnames = NULL, vp = NULL)
 }
 \arguments{
   \item{widths}{a unit vector giving the width of each
@@ -27,6 +27,8 @@
   column names, used for characteric subsetting,
   particularly for \code{gtable_align}, and
   \code{gtable_join}.}
+
+  \item{vp}{a grid viewport object (or NULL).}
 }
 \description{
   gtable

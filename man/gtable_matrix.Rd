@@ -3,12 +3,14 @@
 \title{Create a gtable from a matrix of grobs.}
 \usage{
   gtable_matrix(name, grobs, widths = NULL, heights = NULL,
-    z = NULL, respect = FALSE, clip = "on")
+    z = NULL, respect = FALSE, clip = "on", vp = NULL)
 }
 \arguments{
   \item{z}{a numeric matrix of the same dimensions as
   \code{grobs}, specifying the order that the grobs are
   drawn.}
+
+  \item{vp}{a grid viewport object (or NULL).}
 
   \item{name}{a string giving the name of the table. This
   is used to name the layout viewport}
