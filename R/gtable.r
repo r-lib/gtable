@@ -113,7 +113,7 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
     clip = character(), name = character(), stringsAsFactors = FALSE)
 
   if (!is.null(vp)) {
-    vp <- viewport(layout = layout, name = name,
+    vp <- viewport(name = name,
       x = vp$x, y = vp$y,
       width = vp$width, height = vp$height,
       just = vp$just, gp = vp$gp, xscale = vp$xscale,
