@@ -4,6 +4,9 @@
 \usage{
   gtable_width(x)
 }
+\arguments{
+  \item{x}{A gtable object}
+}
 \description{
   Note that unlike widthDetails.gtable, this can return
   relative units.
