@@ -3,11 +3,13 @@
 \title{Create a single row gtable.}
 \usage{
   gtable_row(name, grobs, height = NULL, widths = NULL,
-    z = NULL)
+    z = NULL, vp = NULL)
 }
 \arguments{
   \item{height}{a unit vector giving the height of this
   row}
+
+  \item{vp}{a grid viewport object (or NULL).}
 
   \item{name}{a string giving the name of the table. This
   is used to name the layout viewport}
