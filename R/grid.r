@@ -45,10 +45,10 @@ vpname <- function(row) {
 # So this function does not care about z-order.
 gtable_viewport <- function(x) {
   # respect parent vp with setting name and layout
-  if (is.null(x$vp)) {
-    layout_vp <- viewport(layout = gtable_layout(x), name = x$name)
-  } else {
+  if (!is.null(x$vp) && inherits(x$vp, "viewport")) {
     layout_vp <- x$vp
+  } else {
+    layout_vp <- viewport(layout = gtable_layout(x), name = x$name)
   }
 
   children_vps <- mapply(find_child_vp,
