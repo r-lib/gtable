@@ -98,10 +98,10 @@ drawDetails.gtable <- function(x, recording = TRUE) {
 }
 
 #' @S3method widthDetails gtable
-widthDetails.gtable <- function(x) absolute.size(sum(x$widths))
+widthDetails.gtable <- function(x) absolute.size(gtable_width(x))
 
 #' @S3method heightDetails gtable
-heightDetails.gtable <- function(x) absolute.size(sum(x$heights))
+heightDetails.gtable <- function(x) absolute.size(gtable_height(x))
 
 
 # Return the viewport for a child grob in a gtable

@@ -227,3 +227,15 @@ t.gtable <- function(x) {
 
 #' @S3method length gtable
 length.gtable <- function(x) length(x$grobs)
+
+#' Returns the height of a gtable, in the gtable's units
+#'
+#' Note that unlike heightDetails.gtable, this can return relative units.
+#' @export
+gtable_height <- function(x) sum(x$heights)
+
+#' Returns the width of a gtable, in the gtable's units
+#'
+#' Note that unlike widthDetails.gtable, this can return relative units.
+#' @export
+gtable_width <- function(x) sum(x$widths)
