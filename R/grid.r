@@ -97,10 +97,10 @@ drawDetails.gtable <- function(x, recording = TRUE) {
   grid.draw(g, recording)
 }
 
-#' S3method widthDetails gtable
+#' @S3method widthDetails gtable
 widthDetails.gtable <- function(x) absolute.size(sum(x$widths))
 
-#' S3method heightDetails gtable
+#' @S3method heightDetails gtable
 heightDetails.gtable <- function(x) absolute.size(sum(x$heights))
 
 
