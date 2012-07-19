@@ -63,20 +63,30 @@ grid.draw.gtable <- function(x, recording = TRUE) {
   invisible(gt)
 }
 
+preDraw <- function (x) {
+    UseMethod("preDraw")
+}
+postDraw <- function (x) {
+    UseMethod("postDraw")
+}
+
+#' @S3method preDraw gTableChild
 preDraw.gTableChild <- function(x) {
   pushViewport(x$wrapvp, recording = FALSE)
   NextMethod()
 }
-
+#' @S3method postDraw gTableChild
 postDraw.gTableChild <- function(x) {
   NextMethod()
   upViewport(recording = FALSE)
 }
 
+#' @S3method preDrawDetails gTableParent
 preDrawDetails.gTableParent <- function(x) {
   pushViewport(x$layoutvp, recording = FALSE)
 }
 
+#' @S3method postDrawDetails gTableParent
 postDrawDetails.gTableParent <- function(x) {
   upViewport(recording = FALSE)
 }
