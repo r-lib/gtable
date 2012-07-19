@@ -44,12 +44,7 @@ vpname <- function(row) {
 # the order of childrenvp is the order of grob.
 # So this function does not care about z-order.
 gtable_viewport <- function(x) {
-  # respect parent vp with setting name and layout
-  if (!is.null(x$vp) && inherits(x$vp, "viewport")) {
-    layout_vp <- x$vp
-  } else {
-    layout_vp <- viewport(layout = gtable_layout(x), name = x$name)
-  }
+  layout_vp <- viewport(layout = gtable_layout(x), name = x$name)
 
   children_vps <- mapply(find_child_vp,
     grob = x$grobs, vp_name = vpname(x$layout),
@@ -67,23 +62,24 @@ gtable_viewport <- function(x) {
 #
 # Finally, the vp slot of a grob is replaced by vpPath string.
 gtable_gList <- function(x) {
-  vp <- gtable_viewport(x)
 
   # reorder along z index
   z_order <- order(x$layout$z)
   x$layout <- x$layout[z_order, , drop = FALSE]
   x$grobs <- x$grobs[z_order]
-  vp$children <- vp$children[z_order]
 
   vp_names <- vpname(x$layout)
 
   classes <- vapply(x$grobs, function(x) class(x)[1], character(1))
   grob_names <- make.unique(paste(vp_names, classes, sep = "."))
 
-  # Find paths for the children
-  vp_child_paths <- find_vp_child_paths(vp)
+  vp <- gtable_viewport(x)
 
-  grobs <- mapply(editGrob, x$grobs, vp = vp_child_paths, name = grob_names,
+  # A function wrapper that reverses arg order, for use with lapply
+  stack_vp <- function(cvp, pvp) vpStack(pvp, cvp)
+  vps <- lapply(vp$children, stack_vp, vp$parent)
+
+  grobs <- mapply(editGrob, x$grobs, vp = vps, name = grob_names,
     SIMPLIFY = FALSE)
 
   do.call("gList", grobs)
@@ -93,7 +89,7 @@ gtable_gList <- function(x) {
 #' @S3method drawDetails gtable
 drawDetails.gtable <- function(x, recording = TRUE) {
   # set up a gTree for drawing
-  g <- gTree(children = gtable_gList(x), childrenvp = gtable_viewport(x))
+  g <- gTree(children = gtable_gList(x))
   grid.draw(g, recording)
 }
 
@@ -132,30 +128,6 @@ find_child_vp <- function(grob, vp_name, t, r, b, l, clip) {
         just = vp$just, gp = vp$gp, xscale = vp$xscale, yscale = vp$yscale,
         angle = vp$angle, layout = vp$layout, clip = clip))
   }
+
 }
 
-# Return a list of vp paths for the children of vp
-# so vpname should be list parent::wrapper::vp
-find_vp_child_paths <- function(vp) {
-  vp_childpaths <- lapply(vp$children, find_vp_path)
-
-  lapply(vp_childpaths, append_vp_parent_path, vp$parent$name)
-}
-
-# If vp is a vpStack, return a list of names of the vp's in the stack
-# Otherwise, return the name of the vp (not in a list)
-find_vp_path <- function(vp) {
-  if (inherits(vp, "vpStack")) {
-    # Get the names of each frame in the vpStack
-    lapply(vp, function(x) x$name)
-  } else {
-    vp$name
-  }
-}
-
-# @param childname A list of strings that specifies the child path
-# @param parentname A string that specifies the parent path
-append_vp_parent_path <- function (childpath, parentpath) {
-  # Make sure that the args are a flat list
-  do.call("vpPath", c(list(parentpath), childpath))
-}
