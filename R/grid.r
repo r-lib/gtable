@@ -28,6 +28,7 @@ widthDetails.gtable <- function(x) absolute.size(gtable_width(x))
 #' @S3method heightDetails gtable
 heightDetails.gtable <- function(x) absolute.size(gtable_height(x))
 
+#' @S3method grid.draw gtable
 grid.draw.gtable <- function(x, recording = TRUE) {
   # Return the viewport for a child grob in a gtable
   child_vp <- function(grob, vp_name, t, r, b, l, clip) {
@@ -63,20 +64,9 @@ grid.draw.gtable <- function(x, recording = TRUE) {
   invisible(gt)
 }
 
-preDraw <- function (x) {
-    UseMethod("preDraw")
-}
-postDraw <- function (x) {
-    UseMethod("postDraw")
-}
-
-#' @S3method preDraw gTableChild
-preDraw.gTableChild <- function(x) {
+#' @S3method grid.draw gTableChild
+grid.draw.gTableChild <- function(x, recording) {
   pushViewport(x$wrapvp, recording = FALSE)
-  NextMethod()
-}
-#' @S3method postDraw gTableChild
-postDraw.gTableChild <- function(x) {
   NextMethod()
   upViewport(recording = FALSE)
 }
