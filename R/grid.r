@@ -30,7 +30,6 @@ heightDetails.gtable <- function(x) absolute.size(gtable_height(x))
 
 #' @S3method grid.draw gtable
 grid.draw.gtable <- function(x, recording = TRUE) {
-
   children_vps <- mapply(child_vp,
     grob = x$grobs,
     vp_name = vpname(x$layout),
@@ -42,13 +41,13 @@ grid.draw.gtable <- function(x, recording = TRUE) {
     SIMPLIFY = FALSE)
 
   if (inherits(x, "gTableChild")) {
-    gt <- gTree(children = do.call("gList", x$grobs),
+    gt <- gTree(children = do.call("gList", x$grobs[order(x$layout$z)]),
       cl = c("gTableParent", "gTableChild"),
       vp = x$vp,
       wrapvp = x$wrapvp,
       layoutvp = viewport(layout = gtable_layout(x), name = x$name))
   } else {
-    gt <- gTree(children = do.call("gList", x$grobs),
+    gt <- gTree(children = do.call("gList", x$grobs[order(x$layout$z)]),
       cl = c("gTableParent"),
       vp = x$vp,
       layoutvp = viewport(layout = gtable_layout(x), name = x$name))
