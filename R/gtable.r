@@ -222,6 +222,8 @@ t.gtable <- function(x) {
   x$layout$t <- x$layout$t - adj_rows[x$layout$t]
   x$layout$b <- x$layout$b - adj_rows[x$layout$b]
   
+  # Drop the unused rows from layout
+  x$layout <- x$layout[keep, ]
   x
 }
 
