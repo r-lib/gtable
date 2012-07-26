@@ -30,6 +30,8 @@ heightDetails.gtable <- function(x) absolute.size(gtable_height(x))
 
 #' @S3method grid.draw gtable
 grid.draw.gtable <- function(x, recording = TRUE) {
+  if (length(x$grobs) == 0) return(invisible())
+
   children_vps <- mapply(child_vp,
     grob = x$grobs,
     vp_name = vpname(x$layout),
