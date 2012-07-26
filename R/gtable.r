@@ -109,7 +109,7 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
   }
   
   layout <- data.frame(
-    t = numeric(), r = numeric(), b = numeric(), l = numeric(), z = numeric(),
+    t = numeric(), l = numeric(), b = numeric(), r = numeric(), z = numeric(),
     clip = character(), name = character(), stringsAsFactors = FALSE)
 
   if (!is.null(vp)) {
