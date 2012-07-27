@@ -3,7 +3,6 @@
 #' @import grid
 #' @docType package
 #' @name gtable
-#' @aliases gtable gtable-package
 NULL
 
 #' Create a new grob table.
