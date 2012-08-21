@@ -33,7 +33,6 @@ grid.draw.gtable <- function(x, recording = TRUE) {
   if (length(x$grobs) == 0) return(invisible())
 
   children_vps <- mapply(child_vp,
-    grob = x$grobs,
     vp_name = vpname(x$layout),
     t = x$layout$t, r = x$layout$r, b = x$layout$b, l = x$layout$l,
     clip = x$layout$clip,
@@ -78,7 +77,7 @@ postDrawDetails.gTableParent <- function(x) {
 
 
 # Return the viewport for a child grob in a gtable
-child_vp <- function(grob, vp_name, t, r, b, l, clip) {
+child_vp <- function(vp_name, t, r, b, l, clip) {
   viewport(name = vp_name, layout.pos.row = t:b,
            layout.pos.col = l:r, clip = clip)
 }
