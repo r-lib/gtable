@@ -50,8 +50,8 @@ NULL
 #' You should not need to modify this data frame directly - instead use
 #' functions like \code{gtable_add_grob}.
 #'
-#' @param widths a unit vector giving the width of each column
-#' @param heights a unit vector giving the height of each row
+#' @param widths a numeric or a unit vector giving the width of each column
+#' @param heights a numeric or a unit vector giving the height of each row
 #' @param respect a logical vector of length 1: should the aspect ratio of 
 #'   height and width specified in null units be respected.  See
 #'   \code{\link{grid.layout}} for more details
@@ -60,6 +60,10 @@ NULL
 #' @param rownames,colnames character vectors of row and column names, used
 #'   for characteric subsetting, particularly for \code{gtable_align},
 #'   and \code{gtable_join}.
+#' @param nrow, ncol integer giving the number of rows and columns. All row/col
+#'   have equal height/width of unit specified by \code{default.units}.
+#' @param default.units A string indicating the default units to use if widths
+#'   or heights are only given as numeric vectors.
 #' @param vp a grid viewport object (or NULL).
 #' @export
 #' @aliases gtable-package
@@ -96,7 +100,20 @@ NULL
 #' colnames(b) <- letters[1:3]
 #' dimnames(b)
 gtable <- function(widths = list(), heights = list(), respect = FALSE,
-  name = "layout", rownames = NULL, colnames = NULL, vp = NULL) {
+  name = "layout", nrow = length(heights), ncol = length(widths),
+  rownames = NULL, colnames = NULL, vp = NULL, default.units = "null") {
+  
+  if (!is.unit(widths) && length(widths) > 0)
+    widths <- unit(widths, default.units)
+  
+  if (!is.unit(heights) && length(heights) > 0)
+    heights <- unit(heights, default.units)
+
+  if (length(widths) == 0 && ncol > 0)
+    widths <- unit(rep(1, ncol), default.units)
+
+  if (length(heights) == 0 && nrow > 0)
+    heights <- unit(rep(1, nrow), default.units)
   
   if (length(widths) > 0) {
     stopifnot(is.unit(widths))
