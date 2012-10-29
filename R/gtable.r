@@ -126,21 +126,28 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
     cl = "gtable")
 }
 
+#' @param zsort Sort by z values? Default \code{FALSE}.
+#'
 #' @S3method print gtable
-print.gtable <- function(x, ...) {
+print.gtable <- function(x, zsort = FALSE, ...) {
   cat("TableGrob (", nrow(x), " x ", ncol(x), ") \"", x$name, "\": ", 
     length(x$grobs), " grobs\n", sep = "")
   
   if (nrow(x$layout) == 0) return()
   
-  x$layout <- x$layout[order(x$layout$z), , drop = FALSE]
-  
   pos <- as.data.frame(format(as.matrix(x$layout[c("t", "r", "b", "l")])), 
     stringsAsFactors = FALSE)
   grobNames <- vapply(x$grobs, as.character, character(1))
-    
-  cat(paste("  (", pos$t, "-", pos$b, ",", pos$l, "-", pos$r, ") ",
-    x$layout$name, ": ", grobNames, sep = "", collapse = "\n"), "\n")  
+
+  info <- data.frame(
+    z = x$layout$z,
+    cells = paste("(", pos$t, "-", pos$b, ",", pos$l, "-", pos$r, ")", sep =""),
+    name = x$layout$name,
+    grob = grobNames
+    )
+  if (zsort) info <- info[order(x$layout$z), ]
+
+  print(info)
 }
 
 
