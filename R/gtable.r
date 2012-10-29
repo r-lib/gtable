@@ -126,9 +126,13 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
     cl = "gtable")
 }
 
-#' @param zsort Sort by z values? Default \code{FALSE}.
+#' Print a gtable object
 #'
-#' @S3method print gtable
+#' @param x A gtable object.
+#' @param zsort Sort by z values? Default \code{FALSE}.
+#' @param ... Other arguments (not used by this method).
+#' @export
+#' @method print gtable
 print.gtable <- function(x, zsort = FALSE, ...) {
   cat("TableGrob (", nrow(x), " x ", ncol(x), ") \"", x$name, "\": ", 
     length(x$grobs), " grobs\n", sep = "")
