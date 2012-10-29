@@ -1,5 +1,6 @@
 vcontext("Justification")
 
+library(grid)
 # Utility functions
 # =====================================================================
 
