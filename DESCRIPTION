@@ -9,7 +9,8 @@ Depends:
     R (>= 2.14),
     grid
 Suggests:
-    testthat
+    testthat,
+    plyr
 License: GPL-2
 Collate:
     'add-grob.r'
