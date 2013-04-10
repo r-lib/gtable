@@ -1,0 +1,17 @@
+\name{print.gtable}
+\alias{print.gtable}
+\title{Print a gtable object}
+\usage{
+  \method{print}{gtable} (x, zsort = FALSE, ...)
+}
+\arguments{
+  \item{x}{A gtable object.}
+
+  \item{zsort}{Sort by z values? Default \code{FALSE}.}
+
+  \item{...}{Other arguments (not used by this method).}
+}
+\description{
+  Print a gtable object
+}
+
