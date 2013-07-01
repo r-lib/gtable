@@ -23,29 +23,25 @@ rbind.gtable <- function(..., size = "max", z = NULL) {
   Reduce(function(x, y) rbind_gtable(x, y, size = size), gtables)
 }
 
-rbind_gtable <- function(x, y, size = "max") {
-  stopifnot(ncol(x) == ncol(y))
-  if (nrow(x) == 0) return(y)
-  if (nrow(y) == 0) return(x)
-  
-  y$layout$t <- y$layout$t + nrow(x)
-  y$layout$b <- y$layout$b + nrow(x)
-  x$layout <- rbind(x$layout, y$layout)
 
-  x$heights <- insert.unit(x$heights, y$heights)
-  x$rownames <- c(x$rownames, y$rownames)
-
-  size <- match.arg(size, c("first", "last", "max", "min"))
-  x$widths <- switch(size,
-    first = x$widths,
-    last = y$widths,
-    min = compare.unit(x$widths, y$widths, pmin),
-    max = compare.unit(x$widths, y$widths, pmax)
-  )
-
-  x$grobs <- append(x$grobs, y$grobs)
-
-  x
+rbind_gtable <- function (x, y, size = "max") 
+{
+    stopifnot(ncol(x) == ncol(y))
+    if (nrow(x) == 0) 
+        return(y)
+    if (nrow(y) == 0) 
+        return(x)
+    y$layout$t <- y$layout$t + nrow(x)
+    y$layout$b <- y$layout$b + nrow(x)
+    x$layout <- rbind(x$layout, y$layout)
+    x$heights <- insert.unit(x$heights, y$heights)
+    x$rownames <- c(x$rownames, y$rownames)
+    size <- match.arg(size, c("first", "last", "max", "min"))
+    x$widths <- switch(size, first = x$widths, last = y$widths, 
+        min = unit.pmin(x$widths, y$widths), max = unit.pmax(x$widths, 
+            y$widths))
+    x$grobs <- append(x$grobs, y$grobs)
+    x
 }
 
 #' @rdname bind
