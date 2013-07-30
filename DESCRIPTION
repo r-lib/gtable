@@ -3,7 +3,7 @@ Type: Package
 Title: Arrange grobs in tables.
 Version: 0.1.2
 Author: Hadley Wickham <h.wickham@gmail.com>
-Maintainer: Hadley Wickham <h.wickham@gmail.com>
+Maintainer: Paul Murrell <paul@stat.auckland.ac.nz>
 Description: Tools to make it easier to work with "tables" of grobs (Paul Murrell fork).
 Depends:
     R (>= 2.14),
