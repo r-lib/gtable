@@ -4,6 +4,7 @@
 #' @inheritParams base::grepl
 #' @param trim if \code{TRUE}, \code{\link{gtable_trim}} will be used to trim
 #'   off any empty cells.
+#' @param ... Other argument passed to \code{\link{grepl}}
 #' @export
 #' @examples
 #' gt <- gtable(unit(rep(5, 3), c("cm")), unit(5, "cm"))
@@ -17,9 +18,9 @@
 #' plot(gtable_filter(gt, "rect", trim = FALSE))
 #' plot(gtable_filter(gt, "circ"))
 #' plot(gtable_filter(gt, "circ", trim = FALSE))
-gtable_filter <- function(x, pattern, fixed = FALSE, trim = TRUE) {
+gtable_filter <- function(x, pattern, fixed = FALSE, trim = TRUE, ...) {
   
-  matches <- grepl(pattern, x$layout$name, fixed = fixed)
+  matches <- grepl(pattern, x$layout$name, fixed = fixed, ...)
   x$layout <- x$layout[matches, , drop = FALSE]
   x$grobs <- x$grobs[matches]
   
