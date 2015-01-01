@@ -55,7 +55,7 @@
   settings), and global parameters.
 
   It's easier to understand how \code{gtable} works if in
-  your head you keep the table separate from it's contents.
+  your head you keep the table separate from its contents.
   Each cell can have 0, 1, or many grobs inside. Each grob
   must belong to at least one cell, but can span accross
   many cells.
