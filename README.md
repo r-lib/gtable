@@ -53,7 +53,7 @@
       > g <- gtable_add_rows(g, sum(axis_t1$children[[2]]$heights), pos = 4)
       > g <- gtable_add_grob(g, axis_t1$children[[2]], 5, 4, clip = "off", name="axis_t1")
 
-We also have to remove the old grob(s) and remove the old grobs' row (so there isn't extra space below our chart). I'm going to pretend we've already copied all the axes and go ahead and remove all three bottom axes just to demonstrate. 'NB!:' The row we're removing is no longer #6 because we added a row above it. It's now row 7.
+We also have to remove the old grob(s) and remove the old grobs' row (so there isn't extra space below our chart). I'm going to pretend we've already copied all the axes and go ahead and remove all three bottom axes just to demonstrate. **NB!:** The row we're removing is no longer #6 because we added a row above it. It's now row 7.
 
       > g <- gtable_rm_grob(g, names = c('axis_b-1', 'axis_b-2', 'axis_b-3'))
       > g <- gtable_rm_rows(g, 7)
