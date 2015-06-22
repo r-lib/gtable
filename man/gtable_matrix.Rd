@@ -34,6 +34,7 @@ height and width specified in null units be respected.  See
 Create a gtable from a matrix of grobs.
 }
 \examples{
+library(grid)
 a <- rectGrob(gp = gpar(fill = "red"))
 b <- circleGrob()
 c <- linesGrob()

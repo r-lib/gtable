@@ -4,7 +4,8 @@ Title: Arrange 'Grobs' in Tables
 Description: Tools to make it easier to work with "tables" of grobs.
 Authors@R: person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre"))
 Depends:
-    R (>= 2.14),
+    R (>= 2.14)
+Imports:
     grid
 Suggests:
     testthat,

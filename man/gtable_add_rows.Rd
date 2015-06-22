@@ -18,6 +18,7 @@ adding row on bottom. \code{0} adds on the top.}
 Add new rows in specified position.
 }
 \examples{
+library(grid)
 rect <- rectGrob(gp = gpar(fill = "#00000080"))
 tab <- gtable(unit(rep(1, 3), "null"), unit(rep(1, 3), "null"))
 tab <- gtable_add_grob(tab, rect, t = 1, l = 1, r = 3)

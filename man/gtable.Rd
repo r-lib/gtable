@@ -78,6 +78,7 @@ You should not need to modify this data frame directly - instead use
 functions like \code{gtable_add_grob}.
 }
 \examples{
+library(grid)
 a <- gtable(unit(1:3, c("cm")), unit(5, "cm"))
 a
 gtable_show_layout(a)

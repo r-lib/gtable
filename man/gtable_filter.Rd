@@ -27,6 +27,7 @@ off any empty cells.}
 Filter cells by name.
 }
 \examples{
+library(grid)
 gt <- gtable(unit(rep(5, 3), c("cm")), unit(5, "cm"))
 rect <- rectGrob(gp = gpar(fill = "black"))
 circ <- circleGrob(gp = gpar(fill = "red"))

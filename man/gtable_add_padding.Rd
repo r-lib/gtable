@@ -16,6 +16,7 @@ recycling rules apply.}
 Add padding around edges of table.
 }
 \examples{
+library(grid)
 gt <- gtable(unit(1, "null"), unit(1, "null"))
 gt <- gtable_add_grob(gt, rectGrob(gp = gpar(fill = "black")), 1, 1)
 

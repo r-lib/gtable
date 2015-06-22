@@ -6,6 +6,7 @@
 #' @param vp a grid viewport object (or NULL).
 #' @export
 #' @examples
+#' library(grid)
 #' a <- rectGrob(gp = gpar(fill = "red"))
 #' b <- circleGrob()
 #' c <- linesGrob()
@@ -24,12 +25,12 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL,
     z <- Inf
 
   table <- gtable(name = name, vp = vp)
-  
+
   table <- gtable_add_rows(table, heights)
   table <- gtable_add_cols(table, width)
-  table <- gtable_add_grob(table, grobs, t = seq_along(grobs), l = 1, 
+  table <- gtable_add_grob(table, grobs, t = seq_along(grobs), l = 1,
     z = z, clip = "off")
-  
+
   table
 }
 
@@ -41,6 +42,7 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL,
 #' @param vp a grid viewport object (or NULL).
 #' @export
 #' @examples
+#' library(grid)
 #' a <- rectGrob(gp = gpar(fill = "red"))
 #' b <- circleGrob()
 #' c <- linesGrob()
@@ -57,14 +59,14 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
   stopifnot(is.null(z) || length(z) == length(grobs))
   if (is.null(z))
     z <- Inf
-    
+
   table <- gtable(name = name, vp = vp)
 
   table <- gtable_add_cols(table, widths)
   table <- gtable_add_rows(table, height)
   table <- gtable_add_grob(table, grobs, l = seq_along(grobs), t = 1,
     z = z, clip = "off")
-  
+
   table
 }
 
@@ -77,10 +79,11 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
 #'   specifying the order that the grobs are drawn.
 #' @param vp a grid viewport object (or NULL).
 #' @examples
+#' library(grid)
 #' a <- rectGrob(gp = gpar(fill = "red"))
 #' b <- circleGrob()
 #' c <- linesGrob()
-#' 
+#'
 #' row <- matrix(list(a, b, c), nrow = 1)
 #' col <- matrix(list(a, b, c), ncol = 1)
 #' mat <- matrix(list(a, b, c, nullGrob()), nrow = 2)
@@ -106,7 +109,7 @@ gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL,
 
   table <- gtable_add_cols(table, widths)
   table <- gtable_add_rows(table, heights)
-  
+
   table <- gtable_add_grob(table, grobs, t = c(row(grobs)), l = c(col(grobs)),
     z = as.vector(z), clip = clip)
 

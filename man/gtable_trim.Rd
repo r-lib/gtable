@@ -13,6 +13,7 @@ gtable_trim(x)
 Trim off empty cells.
 }
 \examples{
+library(grid)
 rect <- rectGrob(gp = gpar(fill = "black"))
 base <- gtable(unit(c(2, 2, 2), "cm"), unit(c(2, 2, 2), "cm"))
 

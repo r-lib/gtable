@@ -28,6 +28,7 @@ giving plenty of room to insert new grobs between existing grobs.}
 Create a single row gtable.
 }
 \examples{
+library(grid)
 a <- rectGrob(gp = gpar(fill = "red"))
 b <- circleGrob()
 c <- linesGrob()

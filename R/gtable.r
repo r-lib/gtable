@@ -66,6 +66,7 @@ NULL
 #' @seealso \code{\link{gtable_row}}, \code{\link{gtable_col}} and
 #'   \code{\link{gtable_matrix}} for convenient ways of creating gtables.
 #' @examples
+#' library(grid)
 #' a <- gtable(unit(1:3, c("cm")), unit(5, "cm"))
 #' a
 #' gtable_show_layout(a)
