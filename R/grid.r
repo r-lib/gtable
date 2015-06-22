@@ -1,5 +1,5 @@
 #' Visualise the layout of a gtable.
-#' 
+#'
 #' @export
 #' @param x a gtable object
 gtable_show_layout <- function(x) {
@@ -22,13 +22,13 @@ vpname <- function(row) {
   paste(row$name, ".", row$t, "-", row$r, "-", row$b, "-", row$l, sep = "")
 }
 
-#' @S3method widthDetails gtable
+#' @export
 widthDetails.gtable <- function(x) absolute.size(gtable_width(x))
 
-#' @S3method heightDetails gtable
+#' @export
 heightDetails.gtable <- function(x) absolute.size(gtable_height(x))
 
-#' @S3method grid.draw gtable
+#' @export
 grid.draw.gtable <- function(x, recording = TRUE) {
   if (length(x$grobs) == 0) return(invisible())
 
@@ -58,19 +58,19 @@ grid.draw.gtable <- function(x, recording = TRUE) {
   invisible()
 }
 
-#' @S3method grid.draw gTableChild
+#' @export
 grid.draw.gTableChild <- function(x, recording) {
   pushViewport(x$wrapvp, recording = FALSE)
   NextMethod()
   upViewport(recording = FALSE)
 }
 
-#' @S3method preDrawDetails gTableParent
+#' @export
 preDrawDetails.gTableParent <- function(x) {
   pushViewport(x$layoutvp, recording = FALSE)
 }
 
-#' @S3method postDrawDetails gTableParent
+#' @export
 postDrawDetails.gTableParent <- function(x) {
   upViewport(recording = FALSE)
 }
