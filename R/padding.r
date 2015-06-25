@@ -18,7 +18,7 @@
 #' plot(cbind(pad, pad))
 #' plot(rbind(pad, pad))
 gtable_add_padding <- function(x, padding) {
-  padding <- rep(padding, length = 4)
+  padding <- rep(padding, length.out = 4)
 
   x <- gtable_add_rows(x, pos = 0, heights = padding[1])
   x <- gtable_add_cols(x, pos = -1, widths = padding[2])
