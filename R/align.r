@@ -76,7 +76,7 @@ gtable_reindex <- function(x, index, along = 1) {
   if (length(dim(x)) > 2L || along > 2L) {
     stop("reindex only supports 2d objects")
   }
-  old_index <- rownames(x)
+  old_index <- switch(along, rownames(x), colnames(x))
   stopifnot(!is.null(old_index))
   
   if (identical(index, old_index)) {
@@ -86,30 +86,29 @@ gtable_reindex <- function(x, index, along = 1) {
   if (!(old_index %contains% index)) {
     missing <- setdiff(index, old_index)
     # Create and add dummy space rows
-
+    
     if (along == 1L) {
       spacer <- gtable(
         widths = unit(rep(0, ncol(x)), "cm"), 
         heights = rep_along(unit(0, "cm"), missing),
         rownames = missing)
-      # spacer <- x[rep_along(NA, missing), ]
-      # rownames(spacer) <- missing
       x <- rbind(x, spacer, size = "first")
-    } else {
+    } else if (along == 2L){
       spacer <- gtable(
-        heights = unit(rep(0, ncol(x)), "cm"), 
+        heights = unit(rep(0, nrow(x)), "cm"), 
         widths = rep_along(unit(0, "cm"), missing),
         colnames = missing)
-      # spacer <- x[, rep_along(NA, missing)]
-      # colnames(spacer) <- missing
+      
       x <- cbind(x, spacer, size = "first")
     }
   }
   
+  
   # Reorder & subset
-  switch(along,
-    x[index, ],
-    x[, index])
+  
+  switch(along, 
+         x[index, ],
+         x[, index])
 }
 
 "%contains%" <- function(x, y) all(y %in% x)
