@@ -1,10 +1,10 @@
-Version 0.1.2.9000
-------------------------------------------------------------------------------
+# gtable 0.1.2.9000
 
-*
+* Added a `NEWS.md` file to track changes to the package.
 
-Version 0.1.2
-------------------------------------------------------------------------------
+* Partial argument matches have been fixed.
+
+# gtable 0.1.2
 
 * `print.gtable` now prints the z order of the grobs, and it no longer
   sort the names by z order. Previously, the layout names were sorted by
