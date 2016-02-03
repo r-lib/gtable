@@ -120,7 +120,7 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
       yscale = vp$yscale, angle = vp$angle, clip = vp$clip)
   }
 
-  grob(
+  gTree(
     grobs = list(), layout = layout, widths = widths,
     heights = heights, respect = respect, name = name,
     rownames = rownames, colnames = colnames, vp = vp,

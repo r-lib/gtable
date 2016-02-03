@@ -1,5 +1,10 @@
 # gtable 0.1.2.9000
 
+* Switch from `preDrawDetails()` and `postDrawDetails()` methods to
+  `makeContent()` and `makeContext()` methods (@pmur002, #50).
+  This is a better approach facilitiated by changes in grid. Learn more
+  at <https://journal.r-project.org/archive/2013-2/murrell.pdf>.
+
 * Added a `NEWS.md` file to track changes to the package.
 
 * Partial argument matches have been fixed.
