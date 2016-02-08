@@ -9,6 +9,8 @@
 
 * Partial argument matches have been fixed.
 
+* Import grid instead of depending on it.
+
 # gtable 0.1.2
 
 * `print.gtable` now prints the z order of the grobs, and it no longer
