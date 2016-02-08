@@ -16,4 +16,4 @@
 
 * There were two failures: dotwhisker & ggtern
 
-* Maintainers were notified Feb 8gi
+* Maintainers were notified Feb 8
