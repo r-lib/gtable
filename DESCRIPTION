@@ -1,7 +1,7 @@
 Package: gtable
 Version: 0.1.2.9000
 Title: Arrange 'Grobs' in Tables
-Description: Tools to make it easier to work with "tables" of grobs.
+Description: Tools to make it easier to work with "tables" of 'grobs'.
 Authors@R: person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre"))
 Depends:
     R (>= 2.14)

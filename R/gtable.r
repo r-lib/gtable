@@ -210,8 +210,8 @@ t.gtable <- function(x) {
 #' @export
 "[.gtable" <- function(x, i, j) {
   # Convert indicies to (named) numeric
-  rows <- setNames(seq_along(x$heights), rownames(x))[i]
-  cols <- setNames(seq_along(x$widths), colnames(x))[j]
+  rows <- stats::setNames(seq_along(x$heights), rownames(x))[i]
+  cols <- stats::setNames(seq_along(x$widths), colnames(x))[j]
 
   i <- seq_along(x$heights) %in% seq_along(x$heights)[rows]
   j <- seq_along(x$widths) %in% seq_along(x$widths)[cols]
