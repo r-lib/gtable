@@ -256,3 +256,26 @@ gtable_height <- function(x) sum(x$heights)
 #' @param x A gtable object
 #' @export
 gtable_width <- function(x) sum(x$widths)
+
+
+#'  Prints summary information of gtable objects
+#'  @param object a gtable
+#'  @param ... unused
+#'  @importFrom utils str
+#'  @export
+str.gtable <- function(object, ...){
+  cat(c("gtable, containing \ngrobs (", 
+        length(object[["grobs"]]), ") :"), sep="")
+  utils::str(vapply(object$grobs, as.character, character(1)))
+  cat("layout :\n")
+  utils::str(object[["layout"]])
+  cat("widths :\nunit vector of length", 
+      length(object[["widths"]]), "\n")
+  cat("heights :\nunit vector of length", 
+      length(object[["heights"]]), "\n")
+  for(element in c("respect", "rownames", 
+                   "name", "gp", "vp")){
+    cat(element, ":\n")
+    utils::str(object[[element]])
+  }
+}
