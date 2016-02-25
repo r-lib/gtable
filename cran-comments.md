@@ -12,8 +12,12 @@
 ## Reverse dependencies
 
 * I have run R CMD check on the 17 downstream dependencies.
-  (https://github.com/hadley/gtable/blob/master/revdep/summary.md).
+  (https://github.com/hadley/gtable/blob/master/revdep/).
 
-* There were two failures: dotwhisker & ggtern
+* Maintainers were notified Feb 8 and Feb 25.
 
-* Maintainers were notified Feb 8
+* There was one failure: 
+
+  * dotwhisker: checking examples ... ERROR
+
+* But I failed to install: MultiMeta, ncappc, spikeSlabGAM, strvalidator
