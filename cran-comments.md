@@ -19,5 +19,6 @@
 * There was one failure: 
 
   * dotwhisker: checking examples ... ERROR
+    This is because gtable now imports grid rather than depending on it.
 
 * But I failed to install: MultiMeta, ncappc, spikeSlabGAM, strvalidator

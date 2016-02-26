@@ -1,4 +1,4 @@
-# gtable 0.1.2.9000
+# gtable 0.2.0
 
 * Switch from `preDrawDetails()` and `postDrawDetails()` methods to
   `makeContent()` and `makeContext()` methods (@pmur002, #50).
