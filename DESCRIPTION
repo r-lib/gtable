@@ -8,8 +8,7 @@ Depends:
 Imports:
     grid
 Suggests:
-    testthat,
-    plyr
+    testthat
 License: GPL-2
 Collate:
     'add-grob.r'

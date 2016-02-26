@@ -31,20 +31,20 @@ test_that("grobs moved to correct location", {
   expect_equal(tlbr(mid[2:3, 2:3]), c(1, 1, 1, 1))
 
   expect_equal(tlbr(mid[1:2, 1:2]), c(2, 2, 2, 2))
-  expect_equal(tlbr(mid[1:3, 1:3]), c(2, 2, 2, 2))  
+  expect_equal(tlbr(mid[1:3, 1:3]), c(2, 2, 2, 2))
 })
 
 test_that("spanning grobs kept if ends kept", {
-  
+
   expect_equal(length(row[, -2]), 1)
   expect_equal(tlbr(row[, -2]), c(2, 1, 2, 2))
-  
+
   expect_equal(length(col[-2, ]), 1)
   expect_equal(tlbr(col[-2, ]), c(1, 2, 2, 2))
 
   expect_equal(length(row[, 1]), 0)
   expect_equal(length(col[1, ]), 0)
-  
+
 })
 
 
@@ -61,12 +61,15 @@ g4 <- linesGrob()
 g5 <- circleGrob()
 g6 <- rectGrob()
 
+unrowname <- function(x) {
+  rownames(x) <- NULL
+  x
+}
+
 # Check that two gtable objects are the same.
 # This allows for differences in how units are stored and other subtle
 # changes that don't affect appearance.
 equal_gtable <- function(a, b) {
-  require(plyr)
-
   identical(a$grobs, b$grobs)  &&
   # Normalized z values are the same (ensuring same render order)
   # Also ignore row names
