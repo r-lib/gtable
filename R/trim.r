@@ -34,3 +34,15 @@ gtable_trim <- function(x) {
 
   x
 }
+
+
+gtable_remove_grob <- function(x, pattern, which = 1L,
+                               fixed = FALSE, trim=TRUE){
+  matches <- grep(pattern, x$layout$name, fixed = fixed)
+  tokeep <- setdiff(seq_len(length(x)), matches[which])
+  x$layout <- x$layout[tokeep, , drop = FALSE]
+  x$grobs <- x$grobs[tokeep]
+  if(trim)
+    x <- gtable_trim(x)
+  x
+}

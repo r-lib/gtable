@@ -23,10 +23,10 @@ vpname <- function(row) {
 }
 
 #' @export
-widthDetails.gtable <- function(x) absolute.size(gtable_width(x))
+widthDetails.gtable <- function(x) gtable_width(x)
 
 #' @export
-heightDetails.gtable <- function(x) absolute.size(gtable_height(x))
+heightDetails.gtable <- function(x) gtable_height(x)
 
 #' @export
 makeContext.gtable <- function(x) {
