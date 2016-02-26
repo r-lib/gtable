@@ -1,3 +1,5 @@
+# gtable 0.2.0.9000
+
 # gtable 0.2.0
 
 * Switch from `preDrawDetails()` and `postDrawDetails()` methods to
