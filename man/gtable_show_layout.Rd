@@ -4,12 +4,13 @@
 \alias{gtable_show_layout}
 \title{Visualise the layout of a gtable.}
 \usage{
-gtable_show_layout(x)
+gtable_show_layout(x, ...)
 }
 \arguments{
 \item{x}{a gtable object}
+
+\item{...}{additional parameters passed on to grid::grid.show.layout().}
 }
 \description{
 Visualise the layout of a gtable.
 }
-
