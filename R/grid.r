@@ -2,10 +2,11 @@
 #'
 #' @export
 #' @param x a gtable object
-gtable_show_layout <- function(x) {
+#' @param ... additional parameters passed on to grid::grid.show.layout().
+gtable_show_layout <- function(x, ...) {
   stopifnot(is.gtable(x))
 
-  grid.show.layout(gtable_layout(x))
+  grid.show.layout(gtable_layout(x), ...)
 }
 
 gtable_layout <- function(x) {
