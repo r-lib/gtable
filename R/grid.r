@@ -44,13 +44,13 @@ makeContext.gtable <- function(x) {
 makeContent.gtable <- function(x) {
   children_vps <- mapply(child_vp,
                          vp_name = vpname(x$layout),
-                         t = fget("t", x$layout), r = fget("r", x$layout),
-                         b = fget("b", x$layout), l = fget("l", x$layout),
+                         t = .subset2(x$layout, "t"), r = .subset2(x$layout, "r"),
+                         b = .subset2(x$layout, "b"), l = .subset2(x$layout, "l"),
                          clip = x$layout$clip,
                          SIMPLIFY = FALSE)
   x$grobs <- mapply(wrap_gtableChild, x$grobs, children_vps,
                     SIMPLIFY = FALSE)
-  setChildren(x, do.call("gList", x$grobs[order(fget("z", x$layout))]))
+  setChildren(x, do.call("gList", x$grobs[order(.subset2(x$layout, "z"))]))
 }
 
 #' @export

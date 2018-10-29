@@ -20,14 +20,3 @@ list_2_df <- function(data, .check = FALSE) {
   attr(data, 'row.names') <- c(NA_integer_, -n_row)
   data
 }
-
-fget <- function(x, .from) {
-  unclass(.from)[[x]]
-}
-fset <- function(x, value, .in) {
-  cl <- class(.in)
-  n_row <- nrow(.in)
-  .in <- unclass(.in)
-  .in[[x]] <- rep(value, length.out = n_row)
-  structure(.in, class = cl)
-}

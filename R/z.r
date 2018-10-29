@@ -39,7 +39,7 @@ z_arrange_gtables <- function(gtables, z) {
     # max() gives a warning if zero-length input
     if (nrow(gtables[[i]]$layout) > 0) {
       gtables[[i]] <- z_normalise(gtables[[i]], zmax + 1)
-      zmax <- max(fget("z", gtables[[i]]$layout))
+      zmax <- max(.subset2(gtables[[i]]$layout, "z"))
     }
   }
 

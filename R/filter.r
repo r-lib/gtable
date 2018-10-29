@@ -20,7 +20,7 @@
 #' plot(gtable_filter(gt, "circ", trim = FALSE))
 gtable_filter <- function(x, pattern, fixed = FALSE, trim = TRUE) {
 
-  matches <- grepl(pattern, fget("name", x$layout), fixed = fixed)
+  matches <- grepl(pattern, .subset2(x$layout, "name"), fixed = fixed)
   x$layout <- x$layout[matches, , drop = FALSE]
   x$grobs <- x$grobs[matches]
 
