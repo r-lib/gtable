@@ -12,6 +12,7 @@ Suggests:
     covr
 License: GPL-2
 Collate:
+    'new-data-frame.r'
     'add-grob.r'
     'add-rows-cols.r'
     'add-space.r'

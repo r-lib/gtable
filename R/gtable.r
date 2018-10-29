@@ -108,9 +108,9 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
     stopifnot(is.null(rownames) || length(rownames == length(heights)))
   }
 
-  layout <- data.frame(
+  layout <- new_data_frame(
     t = numeric(), l = numeric(), b = numeric(), r = numeric(), z = numeric(),
-    clip = character(), name = character(), stringsAsFactors = FALSE)
+    clip = character(), name = character())
 
   if (!is.null(vp)) {
     vp <- viewport(name = name,
