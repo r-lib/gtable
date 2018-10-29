@@ -100,12 +100,12 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
   name = "layout", rownames = NULL, colnames = NULL, vp = NULL) {
 
   if (length(widths) > 0) {
-    stopifnot(is.unit(widths))
-    stopifnot(is.null(colnames) || length(colnames == length(widths)))
+    if (!is.unit(widths)) stop("widths must be a unit object", call. = FALSE)
+    if (!(is.null(colnames) || length(colnames == length(widths)))) stop("colnames must either be NULL or have the same length as widths", call. = FALSE)
   }
   if (length(heights) > 0) {
-    stopifnot(is.unit(heights))
-    stopifnot(is.null(rownames) || length(rownames == length(heights)))
+    if (!is.unit(heights)) stop("heights must be a unit object", call. = FALSE)
+    if (!(is.null(rownames) || length(rownames == length(heights)))) stop("rownames must either be NULL or have the same length as heights", call. = FALSE)
   }
 
   layout <- new_data_frame(

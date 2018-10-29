@@ -22,9 +22,9 @@
 #' @export
 gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", name = x$name)
 {
-  stopifnot(is.gtable(x))
+  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
   if (is.grob(grobs)) grobs <- list(grobs)
-  stopifnot(is.list(grobs))
+  if (!is.list(grobs)) stop("grobs must either be a single grob or a list of grobs", call. = FALSE)
   n_grobs <- length(grobs)
 
   layout <- unclass(x$layout)

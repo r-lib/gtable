@@ -3,13 +3,13 @@
 #' @export
 #' @param x a gtable object
 gtable_show_layout <- function(x) {
-  stopifnot(is.gtable(x))
+  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
 
   grid.show.layout(gtable_layout(x))
 }
 
 gtable_layout <- function(x) {
-  stopifnot(is.gtable(x))
+  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
 
   grid.layout(
     nrow = nrow_(x), heights = x$heights,

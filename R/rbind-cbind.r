@@ -24,7 +24,7 @@ rbind.gtable <- function(..., size = "max", z = NULL) {
 }
 
 rbind_gtable <- function(x, y, size = "max") {
-  stopifnot(ncol_(x) == ncol_(y))
+  if (ncol_(x) != ncol_(y)) stop("x and y must have the same number of columns", call. = FALSE)
   x_row <- nrow_(x)
   y_row <- nrow_(y)
   if (x_row == 0) return(y)
@@ -71,7 +71,7 @@ cbind.gtable <- function(..., size = "max", z = NULL) {
 }
 
 cbind_gtable <- function(x, y, size = "max") {
-  stopifnot(nrow_(x) == nrow_(y))
+  if (nrow_(x) != nrow_(y)) stop("x and y must have the same number of rows", call. = FALSE)
   x_col <- ncol_(x)
   y_col <- ncol_(y)
   if (x_col == 0) return(y)

@@ -72,12 +72,12 @@ gtable_align <- function(x, y, along = 1L, join = "left") {
 #  rownames(gtable:::gtable_reindex(gt, c("a")))
 #  rownames(gtable:::gtable_reindex(gt, c("a", "d", "e")))
 gtable_reindex <- function(x, index, along = 1) {
-  stopifnot(is.character(index))
+  if (!is.character(index)) stop("index must be a character", call. = FALSE)
   if (length(dim(x)) > 2L || along > 2L) {
     stop("reindex only supports 2d objects")
   }
   old_index <- switch(along, rownames(x), colnames(x))
-  stopifnot(!is.null(old_index))
+  if (is.null(old_index)) stop("index is NULL in the given dimension", call. = FALSE)
 
   if (identical(index, old_index)) {
     return(x)

@@ -19,7 +19,7 @@
 #' plot(row)
 #' plot(gtable_trim(row))
 gtable_trim <- function(x) {
-  stopifnot(is.gtable(x))
+  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
   layout <- unclass(x$layout)
 
   w <- range(layout$l, layout$r)
