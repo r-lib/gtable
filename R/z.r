@@ -10,7 +10,9 @@
 #' @param x A gtable object
 #' @param i The z value to start counting up from (default is 1)
 z_normalise <- function(x, i = 1) {
-  x$layout$z <- rank(x$layout$z, ties.method = "first") + i - 1
+  layout <- unclass(x$layout)
+  layout$z <- rank(layout$z, ties.method = "first") + i - 1
+  x$layout <- list_2_df(layout)
   x
 }
 
@@ -37,7 +39,7 @@ z_arrange_gtables <- function(gtables, z) {
     # max() gives a warning if zero-length input
     if (nrow(gtables[[i]]$layout) > 0) {
       gtables[[i]] <- z_normalise(gtables[[i]], zmax + 1)
-      zmax <- max(gtables[[i]]$layout$z)
+      zmax <- max(fget("z", gtables[[i]]$layout))
     }
   }
 

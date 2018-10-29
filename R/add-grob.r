@@ -27,6 +27,8 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
   stopifnot(is.list(grobs))
   n_grobs <- length(grobs)
 
+  layout <- unclass(x$layout)
+
   # Check that inputs have the right length
   if (!all(vapply(list(t, r, b, l, z, clip, name), len_same_or_1,
     logical(1), n_grobs))) {
@@ -37,7 +39,7 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
   z <- rep(z, length.out = n_grobs)
 
   # Get the existing z values from x$layout, and new non-Inf z-values
-  zval <- c(x$layout$z, z[!is.infinite(z)])
+  zval <- c(layout$z, z[!is.infinite(z)])
   if (length(zval) == 0) {
     # If there are no existing finite z values, set these so that
     # -Inf values get assigned ..., -2, -1, 0 and
@@ -60,7 +62,6 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
 
   x$grobs <- c(x$grobs, grobs)
 
-  layout <- x$layout
   x$layout <- new_data_frame(
     t = c(layout$t, t),
     l = c(layout$l, l),
