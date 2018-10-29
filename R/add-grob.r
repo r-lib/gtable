@@ -70,7 +70,7 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
     l = c(layout$l, l),
     b = c(layout$b, b),
     r = c(layout$r, r),
-    z = z,
+    z = c(layout$z, z),
     clip = c(layout$clip, clip),
     name = c(layout$name, name)
   )
