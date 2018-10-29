@@ -24,9 +24,9 @@ rbind.gtable <- function(..., size = "max", z = NULL) {
 }
 
 rbind_gtable <- function(x, y, size = "max") {
-  stopifnot(ncol(x) == ncol(y))
-  x_row <- nrow(x)
-  y_row <- nrow(y)
+  stopifnot(ncol_(x) == ncol_(y))
+  x_row <- nrow_(x)
+  y_row <- nrow_(y)
   if (x_row == 0) return(y)
   if (y_row == 0) return(x)
 
@@ -71,9 +71,9 @@ cbind.gtable <- function(..., size = "max", z = NULL) {
 }
 
 cbind_gtable <- function(x, y, size = "max") {
-  stopifnot(nrow(x) == nrow(y))
-  x_col <- ncol(x)
-  y_col <- ncol(y)
+  stopifnot(nrow_(x) == nrow_(y))
+  x_col <- ncol_(x)
+  y_col <- ncol_(y)
   if (x_col == 0) return(y)
   if (y_col == 0) return(x)
 

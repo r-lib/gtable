@@ -12,8 +12,8 @@ gtable_layout <- function(x) {
   stopifnot(is.gtable(x))
 
   grid.layout(
-    nrow = nrow(x), heights = x$heights,
-    ncol = ncol(x), widths = x$widths,
+    nrow = nrow_(x), heights = x$heights,
+    ncol = ncol_(x), widths = x$widths,
     respect = x$respect
   )
 }

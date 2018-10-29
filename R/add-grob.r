@@ -53,10 +53,13 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
   z[z == -Inf] <- zmin - rev(seq_len(sum(z == -Inf)))
   z[z == Inf] <- zmax + seq_len(sum(z == Inf))
 
-  t <- rep(neg_to_pos(t, nrow(x)), length.out = n_grobs)
-  b <- rep(neg_to_pos(b, nrow(x)), length.out = n_grobs)
-  l <- rep(neg_to_pos(l, ncol(x)), length.out = n_grobs)
-  r <- rep(neg_to_pos(r, ncol(x)), length.out = n_grobs)
+  x_row <- nrow_(x)
+  x_col <- ncol_(x)
+
+  t <- rep(neg_to_pos(t, x_row), length.out = n_grobs)
+  b <- rep(neg_to_pos(b, x_row), length.out = n_grobs)
+  l <- rep(neg_to_pos(l, x_col), length.out = n_grobs)
+  r <- rep(neg_to_pos(r, x_col), length.out = n_grobs)
   clip <- rep(clip, length.out = n_grobs)
   name <- rep(name, length.out = n_grobs)
 
