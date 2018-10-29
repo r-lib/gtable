@@ -26,8 +26,7 @@ col <- gtable_add_grob(base, rect, 2, t = 1, b = 3)
 tlbr <- function(x) unname(unlist(x$layout[c("t", "l", "b", "r")]))
 
 test_that("grobs moved to correct location", {
-
-  expect_equal(tlbr(mid[2, 2]),     c(1, 1, 1, 1))
+  expect_equal(tlbr(mid[2, 2]), c(1, 1, 1, 1))
   expect_equal(tlbr(mid[2:3, 2:3]), c(1, 1, 1, 1))
 
   expect_equal(tlbr(mid[1:2, 1:2]), c(2, 2, 2, 2))
@@ -35,7 +34,6 @@ test_that("grobs moved to correct location", {
 })
 
 test_that("spanning grobs kept if ends kept", {
-
   expect_equal(length(row[, -2]), 1)
   expect_equal(tlbr(row[, -2]), c(2, 1, 2, 2))
 
@@ -44,7 +42,6 @@ test_that("spanning grobs kept if ends kept", {
 
   expect_equal(length(row[, 1]), 0)
   expect_equal(length(col[1, ]), 0)
-
 })
 
 
@@ -70,18 +67,20 @@ unrowname <- function(x) {
 # This allows for differences in how units are stored and other subtle
 # changes that don't affect appearance.
 equal_gtable <- function(a, b) {
-  identical(a$grobs, b$grobs)  &&
-  # Normalized z values are the same (ensuring same render order)
-  # Also ignore row names
-  all.equal(unrowname(z_normalise(a)$layout),
-            unrowname(z_normalise(b)$layout)) &&
-  # Test widths/heights for equality.
-  # This is the best way I could think of, but it's not very nice
-  all(convertUnit(a$widths  - b$widths,  "cm", valueOnly = TRUE) == 0) &&
-  all(convertUnit(a$heights - b$heights, "cm", valueOnly = TRUE) == 0) &&
-  all.equal(a$respect, b$respect) &&
-  all.equal(a$rownames, b$rownames) &&
-  all.equal(a$colnames, b$colnames)
+  identical(a$grobs, b$grobs) &&
+    # Normalized z values are the same (ensuring same render order)
+    # Also ignore row names
+    all.equal(
+      unrowname(z_normalise(a)$layout),
+      unrowname(z_normalise(b)$layout)
+    ) &&
+    # Test widths/heights for equality.
+    # This is the best way I could think of, but it's not very nice
+    all(convertUnit(a$widths - b$widths, "cm", valueOnly = TRUE) == 0) &&
+    all(convertUnit(a$heights - b$heights, "cm", valueOnly = TRUE) == 0) &&
+    all.equal(a$respect, b$respect) &&
+    all.equal(a$rownames, b$rownames) &&
+    all.equal(a$colnames, b$colnames)
 }
 
 
@@ -90,13 +89,14 @@ equal_gtable <- function(a, b) {
 # The sizes of the rows/cols are the same as the index values (but in cm)
 make_gt <- function(grobmat, rows, cols) {
   gtable_matrix("test", grobmat[rows, cols, drop = FALSE],
-    heights=unit(rows, "cm"), widths=unit(cols, "cm") )
+    heights = unit(rows, "cm"), widths = unit(cols, "cm")
+  )
 }
 
 
 test_that("Indexing with single-cell grobs", {
   # Make a 2x3 gtable where each cell has one grob
-  grobmat <- matrix(list(g1, g2, g3, g4, g5, g6), nrow=2)
+  grobmat <- matrix(list(g1, g2, g3, g4, g5, g6), nrow = 2)
   gt <- make_gt(grobmat, 1:2, 1:3)
 
   # Indexing in ways that don't change gt
@@ -123,15 +123,15 @@ test_that("Indexing with single-cell grobs", {
 
 test_that("Indexing with names", {
   # Make a 2x3 gtable where each cell has one grob
-  grobmat <- matrix(list(g1, g2, g3, g4, g5, g6), nrow=2)
+  grobmat <- matrix(list(g1, g2, g3, g4, g5, g6), nrow = 2)
   gt <- make_gt(grobmat, 1:2, 1:3)
-  dimnames(gt) <- list(c("a","b"), c("x","y","z"))
+  dimnames(gt) <- list(c("a", "b"), c("x", "y", "z"))
 
-  expect_true(equal_gtable(gt, gt[c("a","b"), c("x","y","z")]))
+  expect_true(equal_gtable(gt, gt[c("a", "b"), c("x", "y", "z")]))
   expect_true(equal_gtable(gt[1, ], gt["a", ]))
   expect_true(equal_gtable(gt[, 2], gt[, "y"]))
-  expect_true(equal_gtable(gt[, 2:3], gt[, c("y","z")]))
-  expect_true(equal_gtable(gt[1, 1:2], gt["a", c("x","y")]))
+  expect_true(equal_gtable(gt[, 2:3], gt[, c("y", "z")]))
+  expect_true(equal_gtable(gt[1, 1:2], gt["a", c("x", "y")]))
   expect_true(equal_gtable(gt[1, 1:2], gt["a", 1:2]))
 })
 
@@ -140,13 +140,15 @@ test_that("Indexing with names", {
 # Make a gtable with grobs that span cells
 make_span_gt <- function(rows, cols) {
   # Make gtable with one grob at (1:1, 1:3) and another at (1:2, 1:2)
-  gt <- gtable(name = "test",
-    heights=unit(rows, "cm"), widths=unit(cols, "cm") )
+  gt <- gtable(
+    name = "test",
+    heights = unit(rows, "cm"), widths = unit(cols, "cm")
+  )
 
-  if (all(1 %in% rows) && all(c(1,3) %in% cols)) {
+  if (all(1 %in% rows) && all(c(1, 3) %in% cols)) {
     gt <- gtable_add_grob(gt, g3, 1, 1, 1, length(cols))
   }
-  if (all(1:2 %in% rows) && all(c(1,2) %in% cols)) {
+  if (all(1:2 %in% rows) && all(c(1, 2) %in% cols)) {
     gt <- gtable_add_grob(gt, g4, 1, 1, 2, 2)
   }
   gt
@@ -174,8 +176,8 @@ test_that("Indexing with grobs that span cells", {
   expect_equal(length(gt[1, 1:3]$grobs), 1)
 
   # If a cell in the middle of a grob is dropped, don't drop the grob
-  expect_true(equal_gtable(gt[1, c(1,3)], make_span_gt(1, c(1,3))))
-  expect_equal(length(gt[1, c(1,3)]$grobs), 1)
+  expect_true(equal_gtable(gt[1, c(1, 3)], make_span_gt(1, c(1, 3))))
+  expect_equal(length(gt[1, c(1, 3)]$grobs), 1)
 
   # Currently undefined behavior:
   # What happens when you do repeat rows/cols, like gt[1, c(1,1,1,3)] ?

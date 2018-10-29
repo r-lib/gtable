@@ -21,7 +21,7 @@ compare_unit <- function(x, y, comp = `=`) {
 }
 
 
-insert.unit <- function (x, values, after = length(x)) {
+insert.unit <- function(x, values, after = length(x)) {
   lengx <- length(x)
   if (lengx == 0) return(values)
   if (length(values) == 0) return(x)
@@ -64,7 +64,7 @@ height_cm <- function(x) {
 
 # Check that x is same length as g, or length 1
 len_same_or_1 <- function(x, g) {
-  if(length(x) == 1 || length(x) == length(g)) {
+  if (length(x) == 1 || length(x) == length(g)) {
     TRUE
   } else {
     FALSE
