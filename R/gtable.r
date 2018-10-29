@@ -97,8 +97,7 @@ NULL
 #' colnames(b) <- letters[1:3]
 #' dimnames(b)
 gtable <- function(widths = list(), heights = list(), respect = FALSE,
-  name = "layout", rownames = NULL, colnames = NULL, vp = NULL) {
-
+                   name = "layout", rownames = NULL, colnames = NULL, vp = NULL) {
   if (length(widths) > 0) {
     stopifnot(is.unit(widths))
     stopifnot(is.null(colnames) || length(colnames == length(widths)))
@@ -110,21 +109,25 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
 
   layout <- data.frame(
     t = numeric(), l = numeric(), b = numeric(), r = numeric(), z = numeric(),
-    clip = character(), name = character(), stringsAsFactors = FALSE)
+    clip = character(), name = character(), stringsAsFactors = FALSE
+  )
 
   if (!is.null(vp)) {
-    vp <- viewport(name = name,
+    vp <- viewport(
+      name = name,
       x = vp$x, y = vp$y,
       width = vp$width, height = vp$height,
       just = vp$just, gp = vp$gp, xscale = vp$xscale,
-      yscale = vp$yscale, angle = vp$angle, clip = vp$clip)
+      yscale = vp$yscale, angle = vp$angle, clip = vp$clip
+    )
   }
 
   gTree(
     grobs = list(), layout = layout, widths = widths,
     heights = heights, respect = respect, name = name,
     rownames = rownames, colnames = colnames, vp = vp,
-    cl = "gtable")
+    cl = "gtable"
+  )
 }
 
 #' Print a gtable object
@@ -136,20 +139,23 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
 #' @method print gtable
 print.gtable <- function(x, zsort = FALSE, ...) {
   cat("TableGrob (", nrow(x), " x ", ncol(x), ") \"", x$name, "\": ",
-    length(x$grobs), " grobs\n", sep = "")
+    length(x$grobs), " grobs\n",
+    sep = ""
+  )
 
   if (nrow(x$layout) == 0) return()
 
   pos <- as.data.frame(format(as.matrix(x$layout[c("t", "r", "b", "l")])),
-    stringsAsFactors = FALSE)
+    stringsAsFactors = FALSE
+  )
   grobNames <- vapply(x$grobs, as.character, character(1))
 
   info <- data.frame(
     z = x$layout$z,
-    cells = paste("(", pos$t, "-", pos$b, ",", pos$l, "-", pos$r, ")", sep =""),
+    cells = paste("(", pos$t, "-", pos$b, ",", pos$l, "-", pos$r, ")", sep = ""),
     name = x$layout$name,
     grob = grobNames
-    )
+  )
   if (zsort) info <- info[order(x$layout$z), ]
 
   print(info)
@@ -167,10 +173,16 @@ dimnames.gtable <- function(x, ...) list(x$rownames, x$colnames)
   x$rownames <- value[[1]]
   x$colnames <- value[[2]]
 
-  if (anyDuplicated(x$rownames)) stop("rownames must be distinct",
-    call. = FALSE)
-  if (anyDuplicated(x$colnames)) stop("colnames must be distinct",
-    call. = FALSE)
+  if (anyDuplicated(x$rownames)) {
+    stop("rownames must be distinct",
+      call. = FALSE
+    )
+  }
+  if (anyDuplicated(x$colnames)) {
+    stop("colnames must be distinct",
+      call. = FALSE
+    )
+  }
 
   x
 }
@@ -222,7 +234,7 @@ t.gtable <- function(x) {
   x$colnames <- x$colnames[cols]
 
   keep <- x$layout$t %in% rows & x$layout$b %in% rows &
-          x$layout$l %in% cols & x$layout$r %in% cols
+    x$layout$l %in% cols & x$layout$r %in% cols
   x$grobs <- x$grobs[keep]
 
   adj_rows <- cumsum(!i)

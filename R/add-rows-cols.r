@@ -81,5 +81,3 @@ gtable_add_cols <- function(x, widths, pos = -1) {
 
   x
 }
-
-

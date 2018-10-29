@@ -21,9 +21,10 @@
 gtable_join <- function(x, y, along = 1L, join = "left") {
   aligned <- gtable_align(x, y, along = along, join = join)
   switch(along,
-    cbind(aligned$x, aligned$y), 
+    cbind(aligned$x, aligned$y),
     rbind(aligned$x, aligned$y),
-    stop("along > 2 no implemented"))
+    stop("along > 2 no implemented")
+  )
 }
 
 #  Align two gtables based on their row/col names.
@@ -41,23 +42,23 @@ gtable_join <- function(x, y, along = 1L, join = "left") {
 #    input gtables with extra rows/columns so that they now align.
 gtable_align <- function(x, y, along = 1L, join = "left") {
   join <- match.arg(join, c("left", "right", "inner", "outer"))
-  
+
   names_x <- dimnames(x)[[along]]
   names_y <- dimnames(y)[[along]]
-  
+
   if (is.null(names_x) || is.null(names_y)) {
     stop("Both gtables must have names along dimension to be aligned")
   }
-  
+
   idx <- switch(join,
     left = names_x,
-    right = names_y, 
+    right = names_y,
     inner = intersect(names_x, names_y),
     outer = union(names_x, names_y)
   )
-  
+
   list(
-    x = gtable_reindex(x, idx, along), 
+    x = gtable_reindex(x, idx, along),
     y = gtable_reindex(y, idx, along)
   )
 }
@@ -78,37 +79,40 @@ gtable_reindex <- function(x, index, along = 1) {
   }
   old_index <- switch(along, rownames(x), colnames(x))
   stopifnot(!is.null(old_index))
-  
+
   if (identical(index, old_index)) {
     return(x)
   }
-  
+
   if (!(old_index %contains% index)) {
     missing <- setdiff(index, old_index)
     # Create and add dummy space rows
-    
+
     if (along == 1L) {
       spacer <- gtable(
-        widths = unit(rep(0, ncol(x)), "cm"), 
+        widths = unit(rep(0, ncol(x)), "cm"),
         heights = rep_along(unit(0, "cm"), missing),
-        rownames = missing)
+        rownames = missing
+      )
       x <- rbind(x, spacer, size = "first")
-    } else if (along == 2L){
+    } else if (along == 2L) {
       spacer <- gtable(
-        heights = unit(rep(0, nrow(x)), "cm"), 
+        heights = unit(rep(0, nrow(x)), "cm"),
         widths = rep_along(unit(0, "cm"), missing),
-        colnames = missing)
-      
+        colnames = missing
+      )
+
       x <- cbind(x, spacer, size = "first")
     }
   }
-  
-  
+
+
   # Reorder & subset
-  
-  switch(along, 
-         x[index, ],
-         x[, index])
+
+  switch(along,
+    x[index, ],
+    x[, index]
+  )
 }
 
 "%contains%" <- function(x, y) all(y %in% x)

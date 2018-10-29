@@ -26,4 +26,3 @@ gtable_add_padding <- function(x, padding) {
   x <- gtable_add_cols(x, pos = 0, widths = padding[4])
   x
 }
-
