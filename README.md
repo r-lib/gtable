@@ -1,4 +1,4 @@
-# gtable
+# gtable <img src="man/figures/logo.png" align="right"/>
 
 [![Travis build status](https://travis-ci.org/r-lib/gtable.svg?branch=master)](https://travis-ci.org/r-lib/gtable)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gtable)](http://cran.r-project.org/package=gtable)
