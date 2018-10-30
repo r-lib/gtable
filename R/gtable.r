@@ -100,10 +100,10 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
     if (!(is.null(rownames) || length(rownames == length(heights)))) stop("rownames must either be NULL or have the same length as heights", call. = FALSE)
   }
 
-  layout <- new_data_frame(
+  layout <- new_data_frame(list(
     t = numeric(), l = numeric(), b = numeric(), r = numeric(), z = numeric(),
     clip = character(), name = character()
-  )
+  ), n = 0)
 
   if (!is.null(vp)) {
     vp <- viewport(
@@ -206,7 +206,7 @@ t.gtable <- function(x) {
   layout$b <- old_lay$r
   layout$l <- old_lay$t
 
-  new$layout <- list_2_df(layout)
+  new$layout <- new_data_frame(layout)
   new$widths <- x$heights
   new$heights <- x$widths
 
@@ -242,7 +242,7 @@ t.gtable <- function(x) {
   layout$b <- layout$b - adj_rows[layout$b]
 
   # Drop the unused rows from layout
-  x$layout <- list_2_df(layout)[keep, ]
+  x$layout <- new_data_frame(layout)[keep, ]
   x
 }
 

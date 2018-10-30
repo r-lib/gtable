@@ -14,7 +14,7 @@
 z_normalise <- function(x, i = 1) {
   layout <- unclass(x$layout)
   layout$z <- rank(layout$z, ties.method = "first") + i - 1
-  x$layout <- list_2_df(layout)
+  x$layout <- new_data_frame(layout)
   x
 }
 

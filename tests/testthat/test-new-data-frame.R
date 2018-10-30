@@ -1,7 +1,7 @@
 context("data.frame constructor")
 
 test_that("new_data_frame returns a data.frame of expected dimensions", {
-  df <- new_data_frame(x = 1:3, y = c("a", "b", "c"))
+  df <- new_data_frame(list(x = 1:3, y = c("a", "b", "c")))
 
   expect_is(df, "data.frame")
   expect_equal(nrow(df), 3)

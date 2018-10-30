@@ -33,7 +33,7 @@ rbind_gtable <- function(x, y, size = "max") {
   lay_x <- unclass(x$layout)
   lay_y <- unclass(y$layout)
 
-  x$layout <- new_data_frame(
+  x$layout <- new_data_frame(list(
     t = c(lay_x$t, lay_y$t + x_row),
     l = c(lay_x$l, lay_y$l),
     b = c(lay_x$b, lay_y$b + x_row),
@@ -41,7 +41,7 @@ rbind_gtable <- function(x, y, size = "max") {
     z = c(lay_x$z, lay_y$z),
     clip = c(lay_x$clip, lay_y$clip),
     name = c(lay_x$name, lay_y$name)
-  )
+  ))
 
   x$heights <- insert.unit(x$heights, y$heights)
   x$rownames <- c(x$rownames, y$rownames)
@@ -80,7 +80,7 @@ cbind_gtable <- function(x, y, size = "max") {
   lay_x <- unclass(x$layout)
   lay_y <- unclass(y$layout)
 
-  x$layout <- new_data_frame(
+  x$layout <- new_data_frame(list(
     t = c(lay_x$t, lay_y$t),
     l = c(lay_x$l, lay_y$l + x_col),
     b = c(lay_x$b, lay_y$b),
@@ -88,7 +88,7 @@ cbind_gtable <- function(x, y, size = "max") {
     z = c(lay_x$z, lay_y$z),
     clip = c(lay_x$clip, lay_y$clip),
     name = c(lay_x$name, lay_y$name)
-  )
+  ))
 
   x$widths <- insert.unit(x$widths, y$widths)
   x$colnames <- c(x$colnames, y$colnames)

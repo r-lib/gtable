@@ -33,7 +33,7 @@ gtable_trim <- function(x) {
   layout$t <- layout$t - h[1] + 1
   layout$b <- layout$b - h[1] + 1
 
-  x$layout <- list_2_df(layout)
+  x$layout <- new_data_frame(layout)
 
   x
 }

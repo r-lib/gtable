@@ -66,7 +66,7 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
 
   x$grobs <- c(x$grobs, grobs)
 
-  x$layout <- new_data_frame(
+  x$layout <- new_data_frame(list(
     t = c(layout$t, t),
     l = c(layout$l, l),
     b = c(layout$b, b),
@@ -74,7 +74,7 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
     z = c(layout$z, z),
     clip = c(layout$clip, clip),
     name = c(layout$name, name)
-  )
+  ))
 
   x
 }
