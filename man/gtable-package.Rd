@@ -2,8 +2,6 @@
 % Please edit documentation in R/gtable-package.R
 \docType{package}
 \name{gtable-package}
-\alias{gtable}
-\alias{gtable-package}
 \title{gtable: Arrange 'Grobs' in Tables}
 \description{
 Tools to make it easier to work with "tables" of
