@@ -90,14 +90,14 @@ gtable_reindex <- function(x, index, along = 1) {
 
     if (along == 1L) {
       spacer <- gtable(
-        widths = unit(rep(0, ncol_(x)), "cm"),
+        widths = unit(rep(0, length(x$widths)), "cm"),
         heights = rep_along(unit(0, "cm"), missing),
         rownames = missing
       )
       x <- rbind(x, spacer, size = "first")
     } else if (along == 2L) {
       spacer <- gtable(
-        heights = unit(rep(0, nrow_(x)), "cm"),
+        heights = unit(rep(0, length(x$heights)), "cm"),
         widths = rep_along(unit(0, "cm"), missing),
         colnames = missing
       )

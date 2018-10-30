@@ -30,7 +30,7 @@ gtable_add_rows <- function(x, heights, pos = -1) {
   if (length(pos) != 1) stop("pos must be a scalar unit", call. = FALSE)
   n <- length(heights)
 
-  pos <- neg_to_pos(pos, nrow_(x))
+  pos <- neg_to_pos(pos, length(x$heights))
 
   # Shift existing rows down
   x$heights <- insert.unit(x$heights, heights, pos)
@@ -74,7 +74,7 @@ gtable_add_cols <- function(x, widths, pos = -1) {
   if (length(pos) != 1) stop("pos must be a scalar unit", call. = FALSE)
   n <- length(widths)
 
-  pos <- neg_to_pos(pos, ncol_(x))
+  pos <- neg_to_pos(pos, length(x$widths))
 
   # Shift existing columns right
   x$widths <- insert.unit(x$widths, widths, pos)

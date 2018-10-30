@@ -138,7 +138,7 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
 #' @export
 #' @method print gtable
 print.gtable <- function(x, zsort = FALSE, ...) {
-  cat("TableGrob (", nrow_(x), " x ", ncol_(x), ") \"", x$name, "\": ",
+  cat("TableGrob (", length(x$heights), " x ", length(x$widths), ") \"", x$name, "\": ",
       length(x$grobs), " grobs\n", sep = "")
 
   if (nrow(x$layout) == 0) return()
@@ -162,8 +162,6 @@ print.gtable <- function(x, zsort = FALSE, ...) {
 
 #' @export
 dim.gtable <- function(x) c(length(x$heights), length(x$widths))
-nrow_ <- function(x) length(x$heights)
-ncol_ <- function(x) length(x$widths)
 
 #' @export
 dimnames.gtable <- function(x, ...) list(x$rownames, x$colnames)
