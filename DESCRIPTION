@@ -2,10 +2,16 @@ Package: gtable
 Title: Arrange 'Grobs' in Tables
 Version: 0.2.0.9000
 Authors@R: 
-    person(given = "Hadley",
-           family = "Wickham",
-           role = c("aut", "cre"),
-           email = "hadley@rstudio.com")
+    c(person(given = "Hadley",
+             family = "Wickham",
+             role = c("aut", "cre"),
+             email = "hadley@rstudio.com"),
+      person(given = "RStudio",
+             role = "cph"),
+      person(given = "Thomas Lin",
+             family = "Pedersen",
+             role = "aut",
+             email = "thomas.pedersen@rstudio.com"))
 Description: Tools to make it easier to work with "tables" of
     'grobs'.
 License: GPL-2

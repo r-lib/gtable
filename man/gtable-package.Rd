@@ -4,6 +4,8 @@
 \name{gtable-package}
 \title{gtable: Arrange 'Grobs' in Tables}
 \description{
+\if{html}{\figure{logo.png}{options: align='right'}}
+
 Tools to make it easier to work with "tables" of
     'grobs'.
 }
@@ -17,6 +19,11 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Hadley Wickham \email{hadley@rstudio.com}
+
+Other contributors:
+\itemize{
+  \item RStudio [copyright holder]
+}
 
 }
 \keyword{internal}
