@@ -1,0 +1,34 @@
+---
+title: "Profiling Performance"
+author: "Thomas Lin Pedersen"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Profiling Performance}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The performance of `gtable` is critical as it has the potential to slow down
+plot creation a lot. In order to continuously monitor the performance of gtable
+the following piece of code is used to 
+
+```{r, eval=FALSE}
+library(ggplot2)
+
+p <- ggplot() + 
+  scale_x_continuous(limits = c(0, 1)) + 
+  scale_y_continuous(limits = c(0, 1))
+
+p_build <- ggplot_build(p)
+
+
+```
+
