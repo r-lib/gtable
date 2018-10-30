@@ -1,6 +1,6 @@
 #' Add row/column spacing.
 #'
-#' Adds \code{width} space between the columns or \code{height} space between
+#' Adds `width` space between the columns or `height` space between
 #' the rows.
 #'
 #' @name gtable_add_space

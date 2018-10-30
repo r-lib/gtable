@@ -4,19 +4,19 @@
 #' any way.  In the gtable model, grobs always fill up the complete table
 #' cell.  If you want custom justification you might need to
 #'
-#' @param x a \code{\link{gtable}} object
+#' @param x a [gtable()] object
 #' @param grobs a single grob or a list of grobs
 #' @param t a numeric vector giving the top extent of the grobs
 #' @param l a numeric vector giving the left extent of the grobs
 #' @param b a numeric vector giving the bottom extent of the grobs
 #' @param r a numeric vector giving the right extent of the grobs
 #' @param z a numeric vector giving the order in which the grobs should be
-#'   plotted.  Use \code{Inf} (the default) to plot above or \code{-Inf}
+#'   plotted.  Use `Inf` (the default) to plot above or `-Inf`
 #'   below all existing grobs. By default positions are on the integers,
 #'  giving plenty of room to insert new grobs between existing grobs.
 #' @param clip should drawing be clipped to the specified cells
-#'   (\code{"on"}), the entire table (\code{"inherit"}), or not at all
-#'   (\code{"off"})
+#'   (`"on"`), the entire table (`"inherit"`), or not at all
+#'   (`"off"`)
 #' @param name name of the grob - used to modify the grob name before it's
 #'   plotted.
 #' @export

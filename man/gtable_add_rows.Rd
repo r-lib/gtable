@@ -7,7 +7,7 @@
 gtable_add_rows(x, heights, pos = -1)
 }
 \arguments{
-\item{x}{a \code{\link{gtable}} object}
+\item{x}{a \code{\link[=gtable]{gtable()}} object}
 
 \item{heights}{a unit vector giving the heights of the new rows}
 
@@ -38,4 +38,3 @@ tab3 <- gtable_add_rows(tab3, unit(1, "null"), 0)
 dim(tab3)
 plot(tab3)
 }
-

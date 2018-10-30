@@ -12,4 +12,3 @@ is.gtable(x)
 \description{
 Is this a gtable?
 }
-

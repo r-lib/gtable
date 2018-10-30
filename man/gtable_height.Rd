@@ -12,4 +12,3 @@ gtable_height(x)
 \description{
 Note that unlike heightDetails.gtable, this can return relative units.
 }
-

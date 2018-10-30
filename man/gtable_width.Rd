@@ -12,4 +12,3 @@ gtable_width(x)
 \description{
 Note that unlike widthDetails.gtable, this can return relative units.
 }
-

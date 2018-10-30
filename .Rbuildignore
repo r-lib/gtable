@@ -1,3 +1,4 @@
+^codecov\.yml$
 visual_test
 ^.*\.Rproj$
 ^\.Rproj\.user$

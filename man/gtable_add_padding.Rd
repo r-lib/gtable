@@ -7,7 +7,7 @@
 gtable_add_padding(x, padding)
 }
 \arguments{
-\item{x}{a \code{\link{gtable}} object}
+\item{x}{a \code{\link[=gtable]{gtable()}} object}
 
 \item{padding}{vector of length 4: top, right, bottom, left.  Normal
 recycling rules apply.}
@@ -29,4 +29,3 @@ plot(pad)
 plot(cbind(pad, pad))
 plot(rbind(pad, pad))
 }
-
