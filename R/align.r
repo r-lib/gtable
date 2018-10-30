@@ -23,7 +23,8 @@ gtable_join <- function(x, y, along = 1L, join = "left") {
   switch(along,
     cbind(aligned$x, aligned$y),
     rbind(aligned$x, aligned$y),
-    stop("along > 2 no implemented"))
+    stop("along > 2 no implemented")
+  )
 }
 
 #  Align two gtables based on their row/col names.
@@ -91,13 +92,15 @@ gtable_reindex <- function(x, index, along = 1) {
       spacer <- gtable(
         widths = unit(rep(0, ncol_(x)), "cm"),
         heights = rep_along(unit(0, "cm"), missing),
-        rownames = missing)
+        rownames = missing
+      )
       x <- rbind(x, spacer, size = "first")
-    } else if (along == 2L){
+    } else if (along == 2L) {
       spacer <- gtable(
         heights = unit(rep(0, nrow_(x)), "cm"),
         widths = rep_along(unit(0, "cm"), missing),
-        colnames = missing)
+        colnames = missing
+      )
 
       x <- cbind(x, spacer, size = "first")
     }
@@ -107,8 +110,9 @@ gtable_reindex <- function(x, index, along = 1) {
   # Reorder & subset
 
   switch(along,
-         x[index, ],
-         x[, index])
+    x[index, ],
+    x[, index]
+  )
 }
 
 "%contains%" <- function(x, y) all(y %in% x)

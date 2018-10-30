@@ -6,5 +6,5 @@ test_that("new_data_frame returns a data.frame of expected dimensions", {
   expect_is(df, "data.frame")
   expect_equal(nrow(df), 3)
   expect_equal(ncol(df), 2)
-  expect_named(df, c('x', 'y'))
+  expect_named(df, c("x", "y"))
 })

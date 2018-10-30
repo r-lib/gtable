@@ -84,5 +84,3 @@ gtable_add_cols <- function(x, widths, pos = -1) {
   x$layout <- list_2_df(layout)
   x
 }
-
-

@@ -43,13 +43,15 @@ makeContext.gtable <- function(x) {
 #' @export
 makeContent.gtable <- function(x) {
   children_vps <- mapply(child_vp,
-                         vp_name = vpname(x$layout),
-                         t = .subset2(x$layout, "t"), r = .subset2(x$layout, "r"),
-                         b = .subset2(x$layout, "b"), l = .subset2(x$layout, "l"),
-                         clip = x$layout$clip,
-                         SIMPLIFY = FALSE)
+    vp_name = vpname(x$layout),
+    t = .subset2(x$layout, "t"), r = .subset2(x$layout, "r"),
+    b = .subset2(x$layout, "b"), l = .subset2(x$layout, "l"),
+    clip = x$layout$clip,
+    SIMPLIFY = FALSE
+  )
   x$grobs <- mapply(wrap_gtableChild, x$grobs, children_vps,
-                    SIMPLIFY = FALSE)
+    SIMPLIFY = FALSE
+  )
   setChildren(x, do.call("gList", x$grobs[order(.subset2(x$layout, "z"))]))
 }
 
@@ -68,8 +70,10 @@ makeContext.gTableChild <- function(x) {
 
 # Return the viewport for a child grob in a gtable
 child_vp <- function(vp_name, t, r, b, l, clip) {
-  viewport(name = vp_name, layout.pos.row = t:b,
-           layout.pos.col = l:r, clip = clip)
+  viewport(
+    name = vp_name, layout.pos.row = t:b,
+    layout.pos.col = l:r, clip = clip
+  )
 }
 
 # Turn a grob into a gtableChild, and store information about the

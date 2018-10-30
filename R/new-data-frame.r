@@ -16,7 +16,7 @@ list_2_df <- function(data, .check = FALSE) {
   } else {
     n_row <- if (length(data) == 0) 0 else length(data[[1]])
   }
-  class(data) <- 'data.frame'
-  attr(data, 'row.names') <- c(NA_integer_, -n_row)
+  class(data) <- "data.frame"
+  attr(data, "row.names") <- c(NA_integer_, -n_row)
   data
 }

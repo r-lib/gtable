@@ -18,7 +18,7 @@ gtable_add_col_space <- function(x, width) {
   if (!(length(width) == 1 || length(width) == n)) stop("width must be of length 1 or ncol - 1", call. = FALSE)
   width <- rep(width, length.out = n)
 
-  for(i in rev(seq_len(n))) {
+  for (i in rev(seq_len(n))) {
     x <- gtable_add_cols(x, width[i], pos = i)
   }
 
@@ -36,7 +36,7 @@ gtable_add_row_space <- function(x, height) {
   if (!(length(height) == 1 || length(height) == n)) stop("height must be of length 1 or nrow - 1", call. = FALSE)
   height <- rep(height, length.out = n)
 
-  for(i in rev(seq_len(n))) {
+  for (i in rev(seq_len(n))) {
     x <- gtable_add_rows(x, height[i], pos = i)
   }
 

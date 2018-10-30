@@ -21,7 +21,7 @@ compare_unit <- function(x, y, comp = `=`) {
 }
 
 
-insert.unit <- function (x, values, after = length(x)) {
+insert.unit <- function(x, values, after = length(x)) {
   lengx <- length(x)
   if (lengx == 0) return(values)
   if (length(values) == 0) return(x)

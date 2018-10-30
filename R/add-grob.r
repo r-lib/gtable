@@ -20,8 +20,7 @@
 #' @param name name of the grob - used to modify the grob name before it's
 #'   plotted.
 #' @export
-gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", name = x$name)
-{
+gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", name = x$name) {
   if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
   if (is.grob(grobs)) grobs <- list(grobs)
   if (!is.list(grobs)) stop("grobs must either be a single grob or a list of grobs", call. = FALSE)
@@ -30,8 +29,10 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
   layout <- unclass(x$layout)
 
   # Check that inputs have the right length
-  if (!all(vapply(list(t, r, b, l, z, clip, name), len_same_or_1,
-    logical(1), n_grobs))) {
+  if (!all(vapply(
+    list(t, r, b, l, z, clip, name), len_same_or_1,
+    logical(1), n_grobs
+  ))) {
     stop("Not all inputs have either length 1 or same length same as 'grobs'")
   }
 
