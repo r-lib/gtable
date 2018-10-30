@@ -81,7 +81,7 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
 #' @export
 #' @inheritParams gtable
 #' @inheritParams gtable_add_grob
-#' @param z a numeric matrix of the same dimensions as \code{grobs},
+#' @param z a numeric matrix of the same dimensions as `grobs`,
 #'   specifying the order that the grobs are drawn.
 #' @param vp a grid viewport object (or NULL).
 #' @examples

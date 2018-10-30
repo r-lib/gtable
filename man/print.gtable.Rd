@@ -16,4 +16,3 @@
 \description{
 Print a gtable object
 }
-

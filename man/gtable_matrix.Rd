@@ -22,10 +22,10 @@ specifying the order that the grobs are drawn.}
 
 \item{respect}{a logical vector of length 1: should the aspect ratio of
 height and width specified in null units be respected.  See
-\code{\link{grid.layout}} for more details}
+\code{\link[=grid.layout]{grid.layout()}} for more details}
 
 \item{clip}{should drawing be clipped to the specified cells
-(\code{"on"}), the entire table (\code{"inherit"}), or not at all 
+(\code{"on"}), the entire table (\code{"inherit"}), or not at all
 (\code{"off"})}
 
 \item{vp}{a grid viewport object (or NULL).}
@@ -51,4 +51,3 @@ gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"))
 z <- matrix(c(3, 1, 2, 4), nrow = 2)
 gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
 }
-

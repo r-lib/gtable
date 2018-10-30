@@ -7,7 +7,7 @@
 gtable_add_cols(x, widths, pos = -1)
 }
 \arguments{
-\item{x}{a \code{\link{gtable}} object}
+\item{x}{a \code{\link[=gtable]{gtable()}} object}
 
 \item{widths}{a unit vector giving the widths of the new columns}
 
@@ -38,4 +38,3 @@ tab3 <- gtable_add_cols(tab3, unit(1, "null"), 0)
 dim(tab3)
 plot(tab3)
 }
-
