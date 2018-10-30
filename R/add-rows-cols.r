@@ -1,9 +1,9 @@
 #' Add new rows in specified position.
 #'
-#' @param x a \code{\link{gtable}} object
+#' @param x a [gtable()] object
 #' @param heights a unit vector giving the heights of the new rows
 #' @param pos new row will be added below this position. Defaults to
-#'   adding row on bottom. \code{0} adds on the top.
+#'   adding row on bottom. `0` adds on the top.
 #' @export
 #' @examples
 #' library(grid)
@@ -42,10 +42,10 @@ gtable_add_rows <- function(x, heights, pos = -1) {
 
 #' Add new columns in specified position.
 #'
-#' @param x a \code{\link{gtable}} object
+#' @param x a [gtable()] object
 #' @param widths a unit vector giving the widths of the new columns
 #' @param pos new row will be added below this position. Defaults to
-#'   adding col on right. \code{0} adds on the left.
+#'   adding col on right. `0` adds on the left.
 #' @export
 #' @examples
 #' library(grid)

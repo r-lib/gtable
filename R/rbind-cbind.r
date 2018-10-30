@@ -1,13 +1,13 @@
 #' Row and column binding for gtables.
 #'
-#' @param ... gtables to combine (\code{x} and \code{y})
+#' @param ... gtables to combine (`x` and `y`)
 #' @param size How should the widths (for rbind) and the heights (for cbind)
-#'   be combined across the gtables: take values from \code{first},
-#'   or \code{last} gtable, or compute the \code{min} or \code{max} values.
-#'   Defaults to \code{max}.
+#'   be combined across the gtables: take values from `first`,
+#'   or `last` gtable, or compute the `min` or `max` values.
+#'   Defaults to `max`.
 #' @param z A numeric vector indicating the relative z values of each gtable.
 #'   The z values of each object in the resulting gtable will be modified
-#'   to fit this order. If \code{NULL}, then the z values of obects within
+#'   to fit this order. If `NULL`, then the z values of obects within
 #'   each gtable will not be modified.
 #' @name bind
 NULL

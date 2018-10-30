@@ -12,4 +12,3 @@ gtable_show_layout(x)
 \description{
 Visualise the layout of a gtable.
 }
-

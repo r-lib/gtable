@@ -1,10 +1,3 @@
-#' gtable
-#'
-#' @import grid
-#' @docType package
-#' @name gtable
-NULL
-
 #' Create a new grob table.
 #'
 #' A grob table captures all the information needed to layout grobs in a table
@@ -24,7 +17,7 @@ NULL
 #' table (cell heights and widths), the layout (for each grob, its position,
 #' name and other settings), and global parameters.
 #'
-#' It's easier to understand how \code{gtable} works if in your head you keep
+#' It's easier to understand how `gtable` works if in your head you keep
 #' the table separate from it's contents.  Each cell can have 0, 1, or many
 #' grobs inside. Each grob must belong to at least one cell, but can span
 #' across many cells.
@@ -35,36 +28,36 @@ NULL
 #' and columns:
 #'
 #' \itemize{
-#'   \item \code{t} top extent of grob
-#'   \item \code{r} right extent of grob
-#'   \item \code{b} bottom extent of
-#'   \item \code{l} left extent of grob
-#'   \item \code{z} the z-order of the grob - used to reorder the grobs
+#'   \item `t` top extent of grob
+#'   \item `r` right extent of grob
+#'   \item `b` bottom extent of
+#'   \item `l` left extent of grob
+#'   \item `z` the z-order of the grob - used to reorder the grobs
 #'     before they are rendered
-#'   \item \code{clip} a string, specifying how the grob should be clipped:
-#'     either \code{"on"}, \code{"off"} or \code{"inherit"}
-#'   \item \code{name}, a character vector used to name each grob and its
+#'   \item `clip` a string, specifying how the grob should be clipped:
+#'     either `"on"`, `"off"` or `"inherit"`
+#'   \item `name`, a character vector used to name each grob and its
 #'     viewport
 #' }
 #'
 #' You should not need to modify this data frame directly - instead use
-#' functions like \code{gtable_add_grob}.
+#' functions like `gtable_add_grob`.
 #'
 #' @param widths a unit vector giving the width of each column
 #' @param heights a unit vector giving the height of each row
 #' @param respect a logical vector of length 1: should the aspect ratio of
 #'   height and width specified in null units be respected.  See
-#'   \code{\link{grid.layout}} for more details
+#'   [grid.layout()] for more details
 #' @param name a string giving the name of the table. This is used to name
 #'   the layout viewport
 #' @param rownames,colnames character vectors of row and column names, used
-#'   for characteric subsetting, particularly for \code{gtable_align},
-#'   and \code{gtable_join}.
+#'   for characteric subsetting, particularly for `gtable_align`,
+#'   and `gtable_join`.
 #' @param vp a grid viewport object (or NULL).
 #' @export
 #' @aliases gtable-package
-#' @seealso \code{\link{gtable_row}}, \code{\link{gtable_col}} and
-#'   \code{\link{gtable_matrix}} for convenient ways of creating gtables.
+#' @seealso [gtable_row()], [gtable_col()] and
+#'   [gtable_matrix()] for convenient ways of creating gtables.
 #' @examples
 #' library(grid)
 #' a <- gtable(unit(1:3, c("cm")), unit(5, "cm"))
@@ -133,7 +126,7 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
 #' Print a gtable object
 #'
 #' @param x A gtable object.
-#' @param zsort Sort by z values? Default \code{FALSE}.
+#' @param zsort Sort by z values? Default `FALSE`.
 #' @param ... Other arguments (not used by this method).
 #' @export
 #' @method print gtable

@@ -2,7 +2,7 @@
 #'
 #' @param x a gtable object
 #' @inheritParams base::grepl
-#' @param trim if \code{TRUE}, \code{\link{gtable_trim}} will be used to trim
+#' @param trim if `TRUE`, [gtable_trim()] will be used to trim
 #'   off any empty cells.
 #' @export
 #' @examples

@@ -20,7 +20,7 @@ gtable_filter(x, pattern, fixed = FALSE, trim = TRUE)
 \item{fixed}{logical.  If \code{TRUE}, \code{pattern} is a string to be
     matched as is.  Overrides all conflicting arguments.}
 
-\item{trim}{if \code{TRUE}, \code{\link{gtable_trim}} will be used to trim
+\item{trim}{if \code{TRUE}, \code{\link[=gtable_trim]{gtable_trim()}} will be used to trim
 off any empty cells.}
 }
 \description{
@@ -40,4 +40,3 @@ plot(gtable_filter(gt, "rect", trim = FALSE))
 plot(gtable_filter(gt, "circ"))
 plot(gtable_filter(gt, "circ", trim = FALSE))
 }
-

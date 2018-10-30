@@ -2,8 +2,8 @@
 % Please edit documentation in R/rbind-cbind.r
 \name{bind}
 \alias{bind}
-\alias{cbind.gtable}
 \alias{rbind.gtable}
+\alias{cbind.gtable}
 \title{Row and column binding for gtables.}
 \usage{
 \method{rbind}{gtable}(..., size = "max", z = NULL)
@@ -26,4 +26,3 @@ each gtable will not be modified.}
 \description{
 Row and column binding for gtables.
 }
-

@@ -1,6 +1,6 @@
 #' Add padding around edges of table.
 #'
-#' @param x a \code{\link{gtable}} object
+#' @param x a [gtable()] object
 #' @param padding vector of length 4: top, right, bottom, left.  Normal
 #'  recycling rules apply.
 #' @export

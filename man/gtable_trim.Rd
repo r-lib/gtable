@@ -29,4 +29,3 @@ row <- gtable_add_grob(base, rect, 2, 1, 2, 3)
 plot(row)
 plot(gtable_trim(row))
 }
-

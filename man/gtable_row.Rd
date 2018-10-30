@@ -18,8 +18,8 @@ the layout viewport}
 \item{widths}{a unit vector giving the width of each column}
 
 \item{z}{a numeric vector giving the order in which the grobs should be
- plotted.  Use \code{Inf} (the default) to plot above or \code{-Inf}
- below all existing grobs. By default positions are on the integers, 
+plotted.  Use \code{Inf} (the default) to plot above or \code{-Inf}
+below all existing grobs. By default positions are on the integers,
 giving plenty of room to insert new grobs between existing grobs.}
 
 \item{vp}{a grid viewport object (or NULL).}
@@ -37,4 +37,3 @@ gt
 plot(gt)
 gtable_show_layout(gt)
 }
-
