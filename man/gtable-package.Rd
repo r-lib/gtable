@@ -20,6 +20,11 @@ Useful links:
 \author{
 \strong{Maintainer}: Hadley Wickham \email{hadley@rstudio.com}
 
+Authors:
+\itemize{
+  \item Thomas Lin Pedersen \email{thomas.pedersen@rstudio.com}
+}
+
 Other contributors:
 \itemize{
   \item RStudio [copyright holder]
