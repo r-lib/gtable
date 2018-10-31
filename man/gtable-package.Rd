@@ -20,5 +20,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Hadley Wickham \email{hadley@rstudio.com}
 
+Other contributors:
+\itemize{
+  \item RStudio [copyright holder]
+}
+
 }
 \keyword{internal}
