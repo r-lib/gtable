@@ -18,10 +18,11 @@ knitr::opts_chunk$set(
 
 The performance of `gtable` is critical as it has the potential to slow down
 plot creation a lot. In order to continuously monitor the performance of gtable
-the following piece of code is used to 
+the following piece of code is used to generate a profiling and inspect it:
 
-```{r, eval=FALSE}
+```{r}
 library(ggplot2)
+library(profvis)
 
 p <- ggplot() + 
   scale_x_continuous(limits = c(0, 1)) + 
@@ -29,6 +30,39 @@ p <- ggplot() +
 
 p_build <- ggplot_build(p)
 
+profile <- profvis(for (i in seq_len(100)) ggplot_gtable(p_build))
 
+profile
 ```
 
+```{r, eval=FALSE, include=FALSE}
+saveRDS(profile, file.path('profiling', paste0(packageVersion('gtable'), '.rds')))
+```
+
+The use of an empty `ggplot2` ensures that the profiling is based on real-life
+use and includes complex gtable assembly. Profilings for old version are kept 
+for reference and can be accessed at the 
+[github repository](https://github.com/r-lib/gtable/tree/master/vignettes/profiling).
+Care should be taken in not comparing profiling results across versions, as 
+changes to code outside of `gtable` can have profound effect on the results.
+Thus, the intend of profiling is to identify bottlenecks in the implementation
+that are ripe for improvement, more then to quantify improvements to performance
+over time.
+
+## Performance focused changes across versions
+To keep track of changes focused on improving the performance of `gtable` they
+are summarised below:
+
+### v`r packageVersion('gtable')`
+Profiling results from `gtable` v0.2.0 identified a range of areas that could be
+easily improved by fairly small code changes.
+
+- **`data.frame` construction and indexing.** `gtable` now includes a minimal 
+  constructor that makes no input checking used for working with the layout data
+  frame. Further, indexing into the layout data frame has been improved by 
+  either treating as a list internally or directly calling `.subset2`
+- **Input validation.** `stopifnot()` was identified as a bottleneck and has 
+  removed in favor of a standard `if (...) stop()`
+- **Dimension querying.** The use of `nrow()` and `ncol()` has internally been 
+  substituted for direct calls to `length()` of the `heights` and `widths` unit
+  vectors

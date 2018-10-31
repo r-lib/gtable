@@ -4,6 +4,8 @@
 \name{gtable-package}
 \title{gtable: Arrange 'Grobs' in Tables}
 \description{
+\if{html}{\figure{logo.png}{options: align='right'}}
+
 Tools to make it easier to work with "tables" of
     'grobs'.
 }
