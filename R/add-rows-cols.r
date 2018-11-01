@@ -26,16 +26,18 @@
 #' dim(tab3)
 #' plot(tab3)
 gtable_add_rows <- function(x, heights, pos = -1) {
-  stopifnot(is.gtable(x))
-  stopifnot(length(pos) == 1)
+  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
+  if (length(pos) != 1) stop("pos must be a scalar unit", call. = FALSE)
   n <- length(heights)
 
-  pos <- neg_to_pos(pos, nrow(x))
+  pos <- neg_to_pos(pos, length(x$heights))
 
   # Shift existing rows down
   x$heights <- insert.unit(x$heights, heights, pos)
-  x$layout$t <- ifelse(x$layout$t > pos, x$layout$t + n, x$layout$t)
-  x$layout$b <- ifelse(x$layout$b > pos, x$layout$b + n, x$layout$b)
+  layout <- unclass(x$layout)
+  layout$t <- ifelse(layout$t > pos, layout$t + n, layout$t)
+  layout$b <- ifelse(layout$b > pos, layout$b + n, layout$b)
+  x$layout <- new_data_frame(layout)
 
   x
 }
@@ -68,16 +70,17 @@ gtable_add_rows <- function(x, heights, pos = -1) {
 #' dim(tab3)
 #' plot(tab3)
 gtable_add_cols <- function(x, widths, pos = -1) {
-  stopifnot(is.gtable(x))
-  stopifnot(length(pos) == 1)
+  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
+  if (length(pos) != 1) stop("pos must be a scalar unit", call. = FALSE)
   n <- length(widths)
 
-  pos <- neg_to_pos(pos, ncol(x))
+  pos <- neg_to_pos(pos, length(x$widths))
 
   # Shift existing columns right
   x$widths <- insert.unit(x$widths, widths, pos)
-  x$layout$l <- ifelse(x$layout$l > pos, x$layout$l + n, x$layout$l)
-  x$layout$r <- ifelse(x$layout$r > pos, x$layout$r + n, x$layout$r)
-
+  layout <- unclass(x$layout)
+  layout$l <- ifelse(layout$l > pos, layout$l + n, layout$l)
+  layout$r <- ifelse(layout$r > pos, layout$r + n, layout$r)
+  x$layout <- new_data_frame(layout)
   x
 }

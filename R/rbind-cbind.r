@@ -24,13 +24,24 @@ rbind.gtable <- function(..., size = "max", z = NULL) {
 }
 
 rbind_gtable <- function(x, y, size = "max") {
-  stopifnot(ncol(x) == ncol(y))
-  if (nrow(x) == 0) return(y)
-  if (nrow(y) == 0) return(x)
+  if (length(x$widths) != length(y$widths)) stop("x and y must have the same number of columns", call. = FALSE)
+  x_row <- length(x$heights)
+  y_row <- length(y$heights)
+  if (x_row == 0) return(y)
+  if (y_row == 0) return(x)
 
-  y$layout$t <- y$layout$t + nrow(x)
-  y$layout$b <- y$layout$b + nrow(x)
-  x$layout <- rbind(x$layout, y$layout)
+  lay_x <- unclass(x$layout)
+  lay_y <- unclass(y$layout)
+
+  x$layout <- new_data_frame(list(
+    t = c(lay_x$t, lay_y$t + x_row),
+    l = c(lay_x$l, lay_y$l),
+    b = c(lay_x$b, lay_y$b + x_row),
+    r = c(lay_x$r, lay_y$r),
+    z = c(lay_x$z, lay_y$z),
+    clip = c(lay_x$clip, lay_y$clip),
+    name = c(lay_x$name, lay_y$name)
+  ))
 
   x$heights <- insert.unit(x$heights, y$heights)
   x$rownames <- c(x$rownames, y$rownames)
@@ -60,13 +71,24 @@ cbind.gtable <- function(..., size = "max", z = NULL) {
 }
 
 cbind_gtable <- function(x, y, size = "max") {
-  stopifnot(nrow(x) == nrow(y))
-  if (ncol(x) == 0) return(y)
-  if (ncol(y) == 0) return(x)
+  if (length(x$heights) != length(y$heights)) stop("x and y must have the same number of rows", call. = FALSE)
+  x_col <- length(x$widths)
+  y_col <- length(y$widths)
+  if (x_col == 0) return(y)
+  if (y_col == 0) return(x)
 
-  y$layout$l <- y$layout$l + ncol(x)
-  y$layout$r <- y$layout$r + ncol(x)
-  x$layout <- rbind(x$layout, y$layout)
+  lay_x <- unclass(x$layout)
+  lay_y <- unclass(y$layout)
+
+  x$layout <- new_data_frame(list(
+    t = c(lay_x$t, lay_y$t),
+    l = c(lay_x$l, lay_y$l + x_col),
+    b = c(lay_x$b, lay_y$b),
+    r = c(lay_x$r, lay_y$r + x_col),
+    z = c(lay_x$z, lay_y$z),
+    clip = c(lay_x$clip, lay_y$clip),
+    name = c(lay_x$name, lay_y$name)
+  ))
 
   x$widths <- insert.unit(x$widths, y$widths)
   x$colnames <- c(x$colnames, y$colnames)

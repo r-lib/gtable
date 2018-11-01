@@ -5,3 +5,4 @@ visual_test
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^revdep$
+^vignettes/profilings

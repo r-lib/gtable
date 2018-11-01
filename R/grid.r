@@ -3,22 +3,23 @@
 #' @export
 #' @param x a gtable object
 gtable_show_layout <- function(x) {
-  stopifnot(is.gtable(x))
+  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
 
   grid.show.layout(gtable_layout(x))
 }
 
 gtable_layout <- function(x) {
-  stopifnot(is.gtable(x))
+  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
 
   grid.layout(
-    nrow = nrow(x), heights = x$heights,
-    ncol = ncol(x), widths = x$widths,
+    nrow = length(x$heights), heights = x$heights,
+    ncol = length(x$widths), widths = x$widths,
     respect = x$respect
   )
 }
 
 vpname <- function(row) {
+  row <- unclass(row)
   paste(row$name, ".", row$t, "-", row$r, "-", row$b, "-", row$l, sep = "")
 }
 
@@ -43,15 +44,15 @@ makeContext.gtable <- function(x) {
 makeContent.gtable <- function(x) {
   children_vps <- mapply(child_vp,
     vp_name = vpname(x$layout),
-    t = x$layout$t, r = x$layout$r,
-    b = x$layout$b, l = x$layout$l,
+    t = .subset2(x$layout, "t"), r = .subset2(x$layout, "r"),
+    b = .subset2(x$layout, "b"), l = .subset2(x$layout, "l"),
     clip = x$layout$clip,
     SIMPLIFY = FALSE
   )
   x$grobs <- mapply(wrap_gtableChild, x$grobs, children_vps,
     SIMPLIFY = FALSE
   )
-  setChildren(x, do.call("gList", x$grobs[order(x$layout$z)]))
+  setChildren(x, do.call("gList", x$grobs[order(.subset2(x$layout, "z"))]))
 }
 
 #' @export

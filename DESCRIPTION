@@ -21,11 +21,16 @@ Imports:
     grid
 Suggests:
     covr,
-    testthat
+    testthat,
+    knitr,
+    rmarkdown,
+    ggplot2,
+    profvis
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
 Collate:
+    'new-data-frame.r'
     'add-grob.r'
     'add-rows-cols.r'
     'add-space.r'
@@ -42,3 +47,4 @@ Collate:
     'z.r'
 URL: https://github.com/r-lib/gtable
 BugReports: https://github.com/r-lib/gtable/issues
+VignetteBuilder: knitr
