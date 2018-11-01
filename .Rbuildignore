@@ -1,3 +1,4 @@
+^README\.Rmd$
 ^codecov\.yml$
 visual_test
 ^.*\.Rproj$
