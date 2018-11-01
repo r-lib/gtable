@@ -20,7 +20,7 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL,
   heights <- heights %||% rep(unit(1, "null"), length(grobs))
 
   # z is either NULL, or a vector of the same length as grobs
-  stopifnot(is.null(z) || length(z) == length(grobs))
+  if (!(is.null(z) || length(z) == length(grobs))) stop("z must be either NULL or the same length as grobs", call. = FALSE)
   if (is.null(z)) {
     z <- Inf
   }
@@ -59,7 +59,7 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
   widths <- widths %||% rep(unit(1, "null"), length(grobs))
 
   # z is either NULL, or a vector of the same length as grobs
-  stopifnot(is.null(z) || length(z) == length(grobs))
+  if (!(is.null(z) || length(z) == length(grobs))) stop("z must be either NULL or the same length as grobs", call. = FALSE)
   if (is.null(z)) {
     z <- Inf
   }
@@ -105,10 +105,10 @@ gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL,
                           z = NULL, respect = FALSE, clip = "on", vp = NULL) {
   table <- gtable(name = name, respect = respect, vp = vp)
 
-  stopifnot(length(widths) == ncol(grobs))
-  stopifnot(length(heights) == nrow(grobs))
+  if (length(widths) != ncol(grobs)) stop("width must be the same as the number of columns in grob", call. = FALSE)
+  if (length(heights) != nrow(grobs)) stop("height must be the same as the number of rows in grob", call. = FALSE)
   # z is either NULL or a matrix of the same dimensions as grobs
-  stopifnot(is.null(z) || identical(dim(grobs), dim(z)))
+  if (!(is.null(z) || identical(dim(grobs), dim(z)))) stop("z must be either NULL or have the same dimensions as grobs", call. = FALSE)
   if (is.null(z)) {
     z <- Inf
   }

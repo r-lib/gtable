@@ -19,18 +19,21 @@
 #' plot(row)
 #' plot(gtable_trim(row))
 gtable_trim <- function(x) {
-  stopifnot(is.gtable(x))
+  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
+  layout <- unclass(x$layout)
 
-  w <- range(x$layout$l, x$layout$r)
-  h <- range(x$layout$t, x$layout$b)
+  w <- range(layout$l, layout$r)
+  h <- range(layout$t, layout$b)
 
   x$widths <- x$widths[seq.int(w[1], w[2])]
   x$heights <- x$heights[seq.int(h[1], h[2])]
 
-  x$layout$l <- x$layout$l - w[1] + 1
-  x$layout$r <- x$layout$r - w[1] + 1
-  x$layout$t <- x$layout$t - h[1] + 1
-  x$layout$b <- x$layout$b - h[1] + 1
+  layout$l <- layout$l - w[1] + 1
+  layout$r <- layout$r - w[1] + 1
+  layout$t <- layout$t - h[1] + 1
+  layout$b <- layout$b - h[1] + 1
+
+  x$layout <- new_data_frame(layout)
 
   x
 }

@@ -92,18 +92,18 @@
 gtable <- function(widths = list(), heights = list(), respect = FALSE,
                    name = "layout", rownames = NULL, colnames = NULL, vp = NULL) {
   if (length(widths) > 0) {
-    stopifnot(is.unit(widths))
-    stopifnot(is.null(colnames) || length(colnames == length(widths)))
+    if (!is.unit(widths)) stop("widths must be a unit object", call. = FALSE)
+    if (!(is.null(colnames) || length(colnames == length(widths)))) stop("colnames must either be NULL or have the same length as widths", call. = FALSE)
   }
   if (length(heights) > 0) {
-    stopifnot(is.unit(heights))
-    stopifnot(is.null(rownames) || length(rownames == length(heights)))
+    if (!is.unit(heights)) stop("heights must be a unit object", call. = FALSE)
+    if (!(is.null(rownames) || length(rownames == length(heights)))) stop("rownames must either be NULL or have the same length as heights", call. = FALSE)
   }
 
-  layout <- data.frame(
+  layout <- new_data_frame(list(
     t = numeric(), l = numeric(), b = numeric(), r = numeric(), z = numeric(),
-    clip = character(), name = character(), stringsAsFactors = FALSE
-  )
+    clip = character(), name = character()
+  ), n = 0)
 
   if (!is.null(vp)) {
     vp <- viewport(
@@ -131,10 +131,8 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
 #' @export
 #' @method print gtable
 print.gtable <- function(x, zsort = FALSE, ...) {
-  cat("TableGrob (", nrow(x), " x ", ncol(x), ") \"", x$name, "\": ",
-    length(x$grobs), " grobs\n",
-    sep = ""
-  )
+  cat("TableGrob (", length(x$heights), " x ", length(x$widths), ") \"", x$name, "\": ",
+      length(x$grobs), " grobs\n", sep = "")
 
   if (nrow(x$layout) == 0) return()
 
@@ -200,12 +198,15 @@ is.gtable <- function(x) {
 #' @export
 t.gtable <- function(x) {
   new <- x
+  layout <- unclass(x$layout)
+  old_lay <- layout
 
-  new$layout$t <- x$layout$l
-  new$layout$r <- x$layout$b
-  new$layout$b <- x$layout$r
-  new$layout$l <- x$layout$t
+  layout$t <- old_lay$l
+  layout$r <- old_lay$b
+  layout$b <- old_lay$r
+  layout$l <- old_lay$t
 
+  new$layout <- new_data_frame(layout)
   new$widths <- x$heights
   new$heights <- x$widths
 
@@ -226,20 +227,22 @@ t.gtable <- function(x) {
   x$widths <- x$widths[cols]
   x$colnames <- x$colnames[cols]
 
-  keep <- x$layout$t %in% rows & x$layout$b %in% rows &
-    x$layout$l %in% cols & x$layout$r %in% cols
+  layout <- unclass(x$layout)
+
+  keep <- layout$t %in% rows & layout$b %in% rows &
+          layout$l %in% cols & layout$r %in% cols
   x$grobs <- x$grobs[keep]
 
   adj_rows <- cumsum(!i)
   adj_cols <- cumsum(!j)
 
-  x$layout$r <- x$layout$r - adj_cols[x$layout$r]
-  x$layout$l <- x$layout$l - adj_cols[x$layout$l]
-  x$layout$t <- x$layout$t - adj_rows[x$layout$t]
-  x$layout$b <- x$layout$b - adj_rows[x$layout$b]
+  layout$r <- layout$r - adj_cols[layout$r]
+  layout$l <- layout$l - adj_cols[layout$l]
+  layout$t <- layout$t - adj_rows[layout$t]
+  layout$b <- layout$b - adj_rows[layout$b]
 
   # Drop the unused rows from layout
-  x$layout <- x$layout[keep, ]
+  x$layout <- new_data_frame(layout)[keep, ]
   x
 }
 

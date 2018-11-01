@@ -63,10 +63,6 @@ height_cm <- function(x) {
 }
 
 # Check that x is same length as g, or length 1
-len_same_or_1 <- function(x, g) {
-  if (length(x) == 1 || length(x) == length(g)) {
-    TRUE
-  } else {
-    FALSE
-  }
+len_same_or_1 <- function(x, n) {
+  length(x) == 1 || length(x) == n
 }

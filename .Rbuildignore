@@ -1,3 +1,4 @@
+^README\.Rmd$
 ^codecov\.yml$
 visual_test
 ^.*\.Rproj$
@@ -5,3 +6,4 @@ visual_test
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^revdep$
+^vignettes/profilings
