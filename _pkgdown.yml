@@ -1,0 +1,34 @@
+url: https://gtable.r-lib.org
+
+reference:
+- title: Construction
+  contents:
+  - gtable
+  - gtable_matrix
+  - gtable_col
+  - gtable_row
+  - gtable_spacer
+
+- title: Modification
+  contents:
+  - gtable_add_grob
+  - gtable_add_cols
+  - gtable_add_rows
+  - gtable_add_padding
+  - gtable_add_space
+  - gtable_trim
+  - gtable_filter
+
+- title: Combining
+  contents:
+  - bind
+
+- title: Inspection
+  contents:
+  - gtable_show_layout
+  - gtable_height
+  - gtable_width
+
+authors:
+  "Thomas Lin Pedersen":
+    href: https://data-imaginist.com

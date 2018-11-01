@@ -1,5 +1,18 @@
 # gtable 0.2.0.9000
 
+* Made a range of internal changes to increase performance of gtable 
+  construction, these include:
+  - Use more performant `data.frame` constructor .
+  - Treat layout data.frame as list when indexing and modifying it.
+  - Use length of `widths` and `heights` fields instead of `ncol()` and `nrow()`
+    internally.
+  - Substitute `stopifnot(...)` with `if(!...) stop()`.
+
+* Better documentation, including a new README, a vignette on performance
+  profiling and a pkgdown site.
+
+* New logo
+
 # gtable 0.2.0
 
 * Switch from `preDrawDetails()` and `postDrawDetails()` methods to
