@@ -35,7 +35,7 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL,
     z <- Inf
   }
 
-  table <- gtable(name = name, vp = vp)
+  table <- gtable(name = name, vp = vp, rownames = names(grobs))
 
   table <- gtable_add_rows(table, heights)
   table <- gtable_add_cols(table, width)
@@ -84,7 +84,7 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
     z <- Inf
   }
 
-  table <- gtable(name = name, vp = vp)
+  table <- gtable(name = name, vp = vp, colnames = names(grobs))
 
   table <- gtable_add_cols(table, widths)
   table <- gtable_add_rows(table, height)
@@ -133,7 +133,8 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
 #' gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
 gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL,
                           z = NULL, respect = FALSE, clip = "on", vp = NULL) {
-  table <- gtable(name = name, respect = respect, vp = vp)
+  table <- gtable(name = name, respect = respect, vp = vp,
+                  rownames = rownames(grobs), colnames = colnames(grobs))
 
   if (length(widths) != ncol(grobs)) stop("width must be the same as the number of columns in grob", call. = FALSE)
   if (length(heights) != nrow(grobs)) stop("height must be the same as the number of rows in grob", call. = FALSE)
