@@ -17,7 +17,38 @@ gtable_add_row_space(x, height)
 
 \item{height}{a vector of units of length 1 or nrow - 1}
 }
+\value{
+A gtable with the additional rows or columns added
+}
 \description{
 Adds \code{width} space between the columns or \code{height} space between
-the rows.
+the rows, effictvely pushing the existing cells apart.
 }
+\examples{
+library(grid)
+
+rect <- rectGrob()
+rect_mat <- matrix(rep(list(rect), 9), nrow = 3)
+
+gt <- gtable_matrix("rects", rect_mat, widths = unit(rep(1, 3), "null"),
+                    heights = unit(rep(1, 3), "null"))
+
+plot(gt)
+
+# Add spacing between the grobs
+# same height between all rows
+gt <- gtable_add_row_space(gt, unit(0.5, "cm"))
+
+# Different width between the columns
+gt <- gtable_add_col_space(gt, unit(c(0.5, 1), "cm"))
+
+plot(gt)
+}
+\seealso{
+Other gtable manipulation: \code{\link{gtable_add_cols}},
+  \code{\link{gtable_add_grob}},
+  \code{\link{gtable_add_padding}},
+  \code{\link{gtable_add_rows}},
+  \code{\link{gtable_filter}}
+}
+\concept{gtable manipulation}

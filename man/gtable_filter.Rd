@@ -2,7 +2,7 @@
 % Please edit documentation in R/filter.r
 \name{gtable_filter}
 \alias{gtable_filter}
-\title{Filter cells by name.}
+\title{Filter cells by name}
 \usage{
 gtable_filter(x, pattern, fixed = FALSE, trim = TRUE)
 }
@@ -23,8 +23,15 @@ gtable_filter(x, pattern, fixed = FALSE, trim = TRUE)
 \item{trim}{if \code{TRUE}, \code{\link[=gtable_trim]{gtable_trim()}} will be used to trim
 off any empty cells.}
 }
+\value{
+A gtable only containing the matching grobs, potentially stripped of
+empty columns and rows
+}
 \description{
-Filter cells by name.
+Normally a gtable is considered a matrix when indexing so that indexing is
+working on the cell layout and not on the grobs it contains. \code{gtable_filter}
+allows you to subset the grobs by name and optionally remove rows or columns
+if left empty after the subsetting
 }
 \examples{
 library(grid)
@@ -39,4 +46,13 @@ plot(gtable_filter(gt, "rect"))
 plot(gtable_filter(gt, "rect", trim = FALSE))
 plot(gtable_filter(gt, "circ"))
 plot(gtable_filter(gt, "circ", trim = FALSE))
+
 }
+\seealso{
+Other gtable manipulation: \code{\link{gtable_add_cols}},
+  \code{\link{gtable_add_grob}},
+  \code{\link{gtable_add_padding}},
+  \code{\link{gtable_add_rows}},
+  \code{\link{gtable_add_space}}
+}
+\concept{gtable manipulation}

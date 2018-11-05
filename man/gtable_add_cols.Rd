@@ -11,11 +11,17 @@ gtable_add_cols(x, widths, pos = -1)
 
 \item{widths}{a unit vector giving the widths of the new columns}
 
-\item{pos}{new row will be added below this position. Defaults to
-adding col on right. \code{0} adds on the left.}
+\item{pos}{new columns will be added to the right of this position. Defaults
+to adding col on right. \code{0} adds on the left.}
+}
+\value{
+A gtable with the new columns added.
 }
 \description{
-Add new columns in specified position.
+Insert new columns in a gtable and adjust the grob placement accordingly. If
+columns are added in the middle of a grob spanning multiple columns, the grob
+will continue to span them all. If a column is added to the left or right of
+a grob, the grob will not span the new column(s).
 }
 \examples{
 library(grid)
@@ -37,4 +43,13 @@ tab3 <- gtable_add_cols(tab, unit(1, "null"))
 tab3 <- gtable_add_cols(tab3, unit(1, "null"), 0)
 dim(tab3)
 plot(tab3)
+
 }
+\seealso{
+Other gtable manipulation: \code{\link{gtable_add_grob}},
+  \code{\link{gtable_add_padding}},
+  \code{\link{gtable_add_rows}},
+  \code{\link{gtable_add_space}},
+  \code{\link{gtable_filter}}
+}
+\concept{gtable manipulation}

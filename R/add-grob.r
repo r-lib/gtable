@@ -1,8 +1,10 @@
 #' Add a single grob, possibly spanning multiple rows or columns.
 #'
-#' This only adds grobs into the table - it doesn't affect the table in
+#' This only adds grobs into the table - it doesn't affect the table layout in
 #' any way.  In the gtable model, grobs always fill up the complete table
-#' cell.  If you want custom justification you might need to
+#' cell.  If you want custom justification you might need to define the grob
+#' dimension in absolute units, or put it into another gtable that can then be
+#' added to the gtable instead of the grob.
 #'
 #' @param x a [gtable()] object
 #' @param grobs a single grob or a list of grobs
@@ -19,7 +21,27 @@
 #'   (`"off"`)
 #' @param name name of the grob - used to modify the grob name before it's
 #'   plotted.
+#'
+#' @return A gtable object with the new grob(s) added
+#'
+#' @family gtable manipulation
+#'
 #' @export
+#'
+#' @examples
+#' library(grid)
+#'
+#' gt <- gtable(widths = unit(c(1, 1), 'null'), heights = unit(c(1, 1), 'null'))
+#' pts <- pointsGrob(x = runif(5), y = runif(5))
+#'
+#' # Add a grob to a single cell (top-right cell)
+#' gt <- gtable_add_grob(gt, pts, t = 1, l = 2)
+#'
+#' # Add a grob spanning multiple cells
+#' gt <- gtable_add_grob(gt, pts, t = 1, l = 1, b = 2)
+#'
+#' plot(gt)
+#'
 gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", name = x$name) {
   if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
   if (is.grob(grobs)) grobs <- list(grobs)

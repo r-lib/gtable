@@ -30,8 +30,13 @@ height and width specified in null units be respected.  See
 
 \item{vp}{a grid viewport object (or NULL).}
 }
+\value{
+A gtable of the same dimensions as the grobs matrix.
+}
 \description{
-Create a gtable from a matrix of grobs.
+This function takes a matrix of grobs and create a gtable matching with the
+grobs in the same position as they were in the matrix, with the given heights
+and widths.
 }
 \examples{
 library(grid)
@@ -51,3 +56,9 @@ gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"))
 z <- matrix(c(3, 1, 2, 4), nrow = 2)
 gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
 }
+\seealso{
+Other gtable construction: \code{\link{gtable_col}},
+  \code{\link{gtable_row}}, \code{\link{gtable_spacer}},
+  \code{\link{gtable}}
+}
+\concept{gtable construction}

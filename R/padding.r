@@ -1,9 +1,18 @@
 #' Add padding around edges of table.
 #'
+#' This is a convenience function for adding an extra row and an extra column at
+#' each edge of the table.
+#'
 #' @param x a [gtable()] object
 #' @param padding vector of length 4: top, right, bottom, left.  Normal
 #'  recycling rules apply.
+#'
+#' @return A gtable object
+#'
+#' @family gtable manipulation
+#'
 #' @export
+#'
 #' @examples
 #' library(grid)
 #' gt <- gtable(unit(1, "null"), unit(1, "null"))

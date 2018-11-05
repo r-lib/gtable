@@ -84,7 +84,7 @@ functions from the grid package:
 
 ``` r
 library(grid)
-grid.draw(p_table)
+grid.draw(p_table) # alternative use plot(p_table)
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />

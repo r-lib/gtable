@@ -7,15 +7,13 @@
 \if{html}{\figure{logo.png}{options: align='right'}}
 
 Tools to make it easier to work with "tables" of
-    'grobs'.
+    'grobs'. The 'gtable' package defines a gtable grob class that specifies a
+    grid along with a list of grobs and their placement in the grid. Further the
+    package makes it easy to manipulate and combine gtable objects so that 
+    complex compositions can be build up sequentially.
 }
 \seealso{
-Useful links:
-\itemize{
-  \item \url{https://github.com/r-lib/gtable}
-  \item Report bugs at \url{https://github.com/r-lib/gtable/issues}
-}
-
+\code{\link[=gtable]{gtable()}} for an overview of the class and construction
 }
 \author{
 \strong{Maintainer}: Hadley Wickham \email{hadley@rstudio.com}
