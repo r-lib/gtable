@@ -16,6 +16,8 @@
 * Dimnames are now inherited from the grobs data in `gtable_col()`, 
   `gtable_row()`, and `gtable_matrix()`
 
+* gtable_trim now works with empty gtables
+
 * `gtable_filter` now has an invert argument to remove grops matching a name.
 
 # gtable 0.2.0
