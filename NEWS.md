@@ -13,6 +13,8 @@
 
 * New logo
 
+* It is now an error to index into a gtable with non-increasing indices.
+
 # gtable 0.2.0
 
 * Switch from `preDrawDetails()` and `postDrawDetails()` methods to

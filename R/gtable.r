@@ -222,6 +222,11 @@ t.gtable <- function(x) {
   rows <- stats::setNames(seq_along(x$heights), rownames(x))[i]
   cols <- stats::setNames(seq_along(x$widths), colnames(x))[j]
 
+  if ((length(rows) > 1 && any(diff(rows) < 1)) ||
+      (length(cols) > 1 && any(diff(cols) < 1))) {
+    stop("i and j must be increasing sequences of numbers", call. = FALSE)
+  }
+
   i <- seq_along(x$heights) %in% seq_along(x$heights)[rows]
   j <- seq_along(x$widths) %in% seq_along(x$widths)[cols]
 
