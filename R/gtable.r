@@ -54,10 +54,13 @@
 #'   for characteric subsetting, particularly for `gtable_align`,
 #'   and `gtable_join`.
 #' @param vp a grid viewport object (or NULL).
+#'
+#' @return A gtable object
+#'
+#' @family gtable construction
+#'
 #' @export
-#' @aliases gtable-package
-#' @seealso [gtable_row()], [gtable_col()] and
-#'   [gtable_matrix()] for convenient ways of creating gtables.
+#'
 #' @examples
 #' library(grid)
 #' a <- gtable(unit(1:3, c("cm")), unit(5, "cm"))

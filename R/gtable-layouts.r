@@ -1,10 +1,20 @@
-#' Create a single column gtable.
+#' Create a single column gtable
+#'
+#' This function stacks a list of grobs into a single column gtable of the given
+#' width and heights.
 #'
 #' @inheritParams gtable
 #' @inheritParams gtable_add_grob
 #' @param width a unit vector giving the width of this column
 #' @param vp a grid viewport object (or NULL).
+#'
+#' @return A gtable with one column and as many rows as elements in the grobs
+#' list.
+#'
+#' @family gtable construction
+#'
 #' @export
+#'
 #' @examples
 #' library(grid)
 #' a <- rectGrob(gp = gpar(fill = "red"))
@@ -39,11 +49,21 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL,
 
 #' Create a single row gtable.
 #'
+#' This function puts grobs in a list side-by-side in a single-row gtable from
+#' left to right witrh the given widths and height.
+#'
 #' @inheritParams gtable
 #' @inheritParams gtable_add_grob
 #' @param height a unit vector giving the height of this row
 #' @param vp a grid viewport object (or NULL).
+#'
+#' @return A gtable with a single row and the same number of columns as
+#' elements in the grobs list
+#'
+#' @family gtable construction
+#'
 #' @export
+#'
 #' @examples
 #' library(grid)
 #' a <- rectGrob(gp = gpar(fill = "red"))
@@ -78,12 +98,22 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
 
 #' Create a gtable from a matrix of grobs.
 #'
-#' @export
+#' This function takes a matrix of grobs and create a gtable matching with the
+#' grobs in the same position as they were in the matrix, with the given heights
+#' and widths.
+#'
 #' @inheritParams gtable
 #' @inheritParams gtable_add_grob
 #' @param z a numeric matrix of the same dimensions as `grobs`,
 #'   specifying the order that the grobs are drawn.
 #' @param vp a grid viewport object (or NULL).
+#'
+#' @return A gtable of the same dimensions as the grobs matrix.
+#'
+#' @family gtable construction
+#'
+#' @export
+#'
 #' @examples
 #' library(grid)
 #' a <- rectGrob(gp = gpar(fill = "red"))
@@ -126,7 +156,14 @@ gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL,
 
 #' Create a row/col spacer gtable.
 #'
+#' Create a zero-column or zero-row gtable with the given heights or widths
+#' respectively.
+#'
 #' @name gtable_spacer
+#'
+#' @return A gtable object
+#'
+#' @family gtable construction
 NULL
 
 #' @param widths unit vector of widths

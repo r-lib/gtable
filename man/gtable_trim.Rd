@@ -9,8 +9,13 @@ gtable_trim(x)
 \arguments{
 \item{x}{a gtable object}
 }
+\value{
+A gtable object
+}
 \description{
-Trim off empty cells.
+This function detects rows and columns that does not contain any grobs and
+removes thewm from the gtable. If the rows and/or columns removed had a
+non-zero height/width the relative layout of the gtable may change.
 }
 \examples{
 library(grid)
@@ -29,3 +34,4 @@ row <- gtable_add_grob(base, rect, 2, 1, 2, 3)
 plot(row)
 plot(gtable_trim(row))
 }
+\concept{gtable modification}

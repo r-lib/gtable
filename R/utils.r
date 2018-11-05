@@ -1,4 +1,3 @@
-
 neg_to_pos <- function(x, max) {
   ifelse(x >= 0, x, max + 1 + x)
 }

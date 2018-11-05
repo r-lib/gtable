@@ -24,8 +24,13 @@ giving plenty of room to insert new grobs between existing grobs.}
 
 \item{vp}{a grid viewport object (or NULL).}
 }
+\value{
+A gtable with a single row and the same number of columns as
+elements in the grobs list
+}
 \description{
-Create a single row gtable.
+This function puts grobs in a list side-by-side in a single-row gtable from
+left to right witrh the given widths and height.
 }
 \examples{
 library(grid)
@@ -37,3 +42,9 @@ gt
 plot(gt)
 gtable_show_layout(gt)
 }
+\seealso{
+Other gtable construction: \code{\link{gtable_col}},
+  \code{\link{gtable_matrix}}, \code{\link{gtable_spacer}},
+  \code{\link{gtable}}
+}
+\concept{gtable construction}

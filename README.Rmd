@@ -70,7 +70,7 @@ from the grid package:
 
 ```{r}
 library(grid)
-grid.draw(p_table)
+grid.draw(p_table) # alternative use plot(p_table)
 ```
 
 While most people will interact with gtable through ggplot2, it is certainly 

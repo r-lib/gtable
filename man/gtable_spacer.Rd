@@ -15,6 +15,16 @@ gtable_col_spacer(heights)
 
 \item{heights}{unit vector of heights}
 }
-\description{
-Create a row/col spacer gtable.
+\value{
+A gtable object
 }
+\description{
+Create a zero-column or zero-row gtable with the given heights or widths
+respectively.
+}
+\seealso{
+Other gtable construction: \code{\link{gtable_col}},
+  \code{\link{gtable_matrix}}, \code{\link{gtable_row}},
+  \code{\link{gtable}}
+}
+\concept{gtable construction}
