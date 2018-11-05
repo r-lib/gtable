@@ -9,6 +9,8 @@
 #' @inheritParams base::grepl
 #' @param trim if `TRUE`, [gtable_trim()] will be used to trim
 #'   off any empty cells.
+#' @param invert Should the filtering be inverted so that cells matching
+#'   `pattern` is removed instead of kept.
 #'
 #' @return A gtable only containing the matching grobs, potentially stripped of
 #' empty columns and rows
@@ -31,8 +33,9 @@
 #' plot(gtable_filter(gt, "circ"))
 #' plot(gtable_filter(gt, "circ", trim = FALSE))
 #'
-gtable_filter <- function(x, pattern, fixed = FALSE, trim = TRUE) {
+gtable_filter <- function(x, pattern, fixed = FALSE, trim = TRUE, invert = FALSE) {
   matches <- grepl(pattern, .subset2(x$layout, "name"), fixed = fixed)
+  if (invert) matches <- !matches
   x$layout <- x$layout[matches, , drop = FALSE]
   x$grobs <- x$grobs[matches]
 
