@@ -13,6 +13,8 @@
 
 * New logo
 
+* gtable_trim now works with empty gtables
+
 * `gtable_filter` now has an invert argument to remove grops matching a name.
 
 # gtable 0.2.0
