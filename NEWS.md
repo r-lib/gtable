@@ -13,6 +13,8 @@
 
 * New logo
 
+* `gtable_filter` now has an invert argument to remove grops matching a name.
+
 # gtable 0.2.0
 
 * Switch from `preDrawDetails()` and `postDrawDetails()` methods to
