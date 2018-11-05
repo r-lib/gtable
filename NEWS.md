@@ -13,10 +13,12 @@
 
 * New logo
 
+* It is now an error to index into a gtable with non-increasing indices.
+
 * Dimnames are now inherited from the grobs data in `gtable_col()`, 
   `gtable_row()`, and `gtable_matrix()`
 
-* gtable_trim now works with empty gtables
+* `gtable_trim` now works with empty gtables
 
 * `gtable_filter` now has an invert argument to remove grops matching a name.
 
