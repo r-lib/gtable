@@ -35,10 +35,8 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL,
     z <- Inf
   }
 
-  table <- gtable(name = name, vp = vp)
-
-  table <- gtable_add_rows(table, heights)
-  table <- gtable_add_cols(table, width)
+  table <- gtable(widths = width, heights = heights, name = name, vp = vp,
+                  rownames = names(grobs))
   table <- gtable_add_grob(table, grobs,
     t = seq_along(grobs), l = 1,
     z = z, clip = "off"
@@ -84,10 +82,8 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
     z <- Inf
   }
 
-  table <- gtable(name = name, vp = vp)
-
-  table <- gtable_add_cols(table, widths)
-  table <- gtable_add_rows(table, height)
+  table <- gtable(widths = widths, heights = height, name = name, vp = vp,
+                  colnames = names(grobs))
   table <- gtable_add_grob(table, grobs,
     l = seq_along(grobs), t = 1,
     z = z, clip = "off"
@@ -133,8 +129,6 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
 #' gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
 gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL,
                           z = NULL, respect = FALSE, clip = "on", vp = NULL) {
-  table <- gtable(name = name, respect = respect, vp = vp)
-
   if (length(widths) != ncol(grobs)) stop("width must be the same as the number of columns in grob", call. = FALSE)
   if (length(heights) != nrow(grobs)) stop("height must be the same as the number of rows in grob", call. = FALSE)
   # z is either NULL or a matrix of the same dimensions as grobs
@@ -142,10 +136,9 @@ gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL,
   if (is.null(z)) {
     z <- Inf
   }
-
-  table <- gtable_add_cols(table, widths)
-  table <- gtable_add_rows(table, heights)
-
+  table <- gtable(widths = widths, heights = heights, name = name,
+                  respect = respect, vp = vp,
+                  rownames = rownames(grobs), colnames = colnames(grobs))
   table <- gtable_add_grob(table, grobs,
     t = c(row(grobs)), l = c(col(grobs)),
     z = as.vector(z), clip = clip
