@@ -4,7 +4,7 @@
 \alias{gtable_filter}
 \title{Filter cells by name}
 \usage{
-gtable_filter(x, pattern, fixed = FALSE, trim = TRUE)
+gtable_filter(x, pattern, fixed = FALSE, trim = TRUE, invert = FALSE)
 }
 \arguments{
 \item{x}{a gtable object}
@@ -22,6 +22,9 @@ gtable_filter(x, pattern, fixed = FALSE, trim = TRUE)
 
 \item{trim}{if \code{TRUE}, \code{\link[=gtable_trim]{gtable_trim()}} will be used to trim
 off any empty cells.}
+
+\item{invert}{Should the filtering be inverted so that cells matching
+\code{pattern} is removed instead of kept.}
 }
 \value{
 A gtable only containing the matching grobs, potentially stripped of
