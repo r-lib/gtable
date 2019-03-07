@@ -1,6 +1,6 @@
 pandoc: '2.2'
-pkgdown: 1.1.0.9000
-pkgdown_sha: e16bd8f6149fb9f92a14871e4217bfacb8f28b8a
+pkgdown: 1.3.0.9000
+pkgdown_sha: 59cc923c953d483091aae2b6b626b195674efb5f
 articles:
   profiling: profiling.html
 urls:
