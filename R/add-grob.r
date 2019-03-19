@@ -48,6 +48,10 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
   if (!is.list(grobs)) stop("grobs must either be a single grob or a list of grobs", call. = FALSE)
   n_grobs <- length(grobs)
 
+  if (is.logical(clip)) {
+    clip <- ifelse(clip, "on", "off")
+  }
+
   layout <- unclass(x$layout)
 
   # Check that inputs have the right length
