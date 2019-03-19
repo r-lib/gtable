@@ -40,7 +40,7 @@ saveRDS(profile, file.path('profilings', paste0(packageVersion('gtable'), '.rds'
 The use of an empty ggplot2 ensures that the profile is based on real-life
 use and includes complex gtable assembly. Profiles for old version are kept 
 for reference and can be accessed at the 
-[github repository](https://github.com/r-lib/gtable/tree/master/vignettes/profiling).
+[github repository](https://github.com/r-lib/gtable/tree/master/vignettes/profilings).
 Care should be taken in not comparing profiles across versions, as 
 changes to code outside of gtable can have profound effect on the results.
 Thus, the intend of profiling is to identify bottlenecks in the implementation

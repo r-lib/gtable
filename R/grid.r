@@ -1,11 +1,22 @@
 #' Visualise the layout of a gtable.
 #'
-#' @export
+#' This function is a simple wrapper around [grid::grid.show.layout()] that
+#' allows you to inspect the layout of the gtable.
+#'
 #' @param x a gtable object
-gtable_show_layout <- function(x) {
+#' @inheritDotParams grid::grid.show.layout
+#'
+#' @export
+#'
+#' @examples
+#' gt <- gtable(widths = grid::unit(c(1, 0.5, 2), c("null", "cm", "null")),
+#'              heights = grid::unit(c(0.2, 1, 3), c("inch", "null", "cm")))
+#' gtable_show_layout(gt)
+#'
+gtable_show_layout <- function(x, ...) {
   if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
 
-  grid.show.layout(gtable_layout(x))
+  grid.show.layout(gtable_layout(x), ...)
 }
 
 gtable_layout <- function(x) {

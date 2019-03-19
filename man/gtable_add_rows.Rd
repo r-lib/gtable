@@ -14,8 +14,14 @@ gtable_add_rows(x, heights, pos = -1)
 \item{pos}{new row will be added below this position. Defaults to
 adding row on bottom. \code{0} adds on the top.}
 }
+\value{
+A gtable with the new rows added.
+}
 \description{
-Add new rows in specified position.
+Insert new rows in a gtable and adjust the grob placement accordingly. If
+rows are added in the middle of a grob spanning multiple rows, the grob will
+continue to span them all. If a row is added above or below a grob, the grob
+will not span the new row(s).
 }
 \examples{
 library(grid)
@@ -37,4 +43,13 @@ tab3 <- gtable_add_rows(tab, unit(1, "null"))
 tab3 <- gtable_add_rows(tab3, unit(1, "null"), 0)
 dim(tab3)
 plot(tab3)
+
 }
+\seealso{
+Other gtable manipulation: \code{\link{gtable_add_cols}},
+  \code{\link{gtable_add_grob}},
+  \code{\link{gtable_add_padding}},
+  \code{\link{gtable_add_space}},
+  \code{\link{gtable_filter}}
+}
+\concept{gtable manipulation}

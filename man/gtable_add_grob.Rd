@@ -32,8 +32,36 @@ giving plenty of room to insert new grobs between existing grobs.}
 \item{name}{name of the grob - used to modify the grob name before it's
 plotted.}
 }
-\description{
-This only adds grobs into the table - it doesn't affect the table in
-any way.  In the gtable model, grobs always fill up the complete table
-cell.  If you want custom justification you might need to
+\value{
+A gtable object with the new grob(s) added
 }
+\description{
+This only adds grobs into the table - it doesn't affect the table layout in
+any way.  In the gtable model, grobs always fill up the complete table
+cell.  If you want custom justification you might need to define the grob
+dimension in absolute units, or put it into another gtable that can then be
+added to the gtable instead of the grob.
+}
+\examples{
+library(grid)
+
+gt <- gtable(widths = unit(c(1, 1), 'null'), heights = unit(c(1, 1), 'null'))
+pts <- pointsGrob(x = runif(5), y = runif(5))
+
+# Add a grob to a single cell (top-right cell)
+gt <- gtable_add_grob(gt, pts, t = 1, l = 2)
+
+# Add a grob spanning multiple cells
+gt <- gtable_add_grob(gt, pts, t = 1, l = 1, b = 2)
+
+plot(gt)
+
+}
+\seealso{
+Other gtable manipulation: \code{\link{gtable_add_cols}},
+  \code{\link{gtable_add_padding}},
+  \code{\link{gtable_add_rows}},
+  \code{\link{gtable_add_space}},
+  \code{\link{gtable_filter}}
+}
+\concept{gtable manipulation}

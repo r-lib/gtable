@@ -4,11 +4,37 @@
 \alias{gtable_show_layout}
 \title{Visualise the layout of a gtable.}
 \usage{
-gtable_show_layout(x)
+gtable_show_layout(x, ...)
 }
 \arguments{
 \item{x}{a gtable object}
+
+\item{...}{Arguments passed on to \code{grid::grid.show.layout}
+\describe{
+  \item{l}{A Grid layout object.}
+  \item{newpage}{A logical value indicating whether to move on
+    to a new page before drawing the diagram.}
+  \item{vp.ex}{positive number, typically in \eqn{(0,1]}, specifying the
+    scaling of the layout.}
+  \item{bg}{The colour used for the background.}
+  \item{cell.border}{The colour used to draw the borders of the cells
+    in the layout.}
+  \item{cell.fill}{The colour used to fill the cells in the layout.}
+  \item{cell.label}{A logical indicating whether the layout cells
+    should be labelled.}
+  \item{label.col}{The colour used for layout cell labels.}
+  \item{unit.col}{The colour used for labelling the widths/heights of
+    columns/rows.}
+  \item{vp}{A Grid viewport object (or NULL).}
+}}
 }
 \description{
-Visualise the layout of a gtable.
+This function is a simple wrapper around \code{\link[grid:grid.show.layout]{grid::grid.show.layout()}} that
+allows you to inspect the layout of the gtable.
+}
+\examples{
+gt <- gtable(widths = grid::unit(c(1, 0.5, 2), c("null", "cm", "null")),
+             heights = grid::unit(c(0.2, 1, 3), c("inch", "null", "cm")))
+gtable_show_layout(gt)
+
 }

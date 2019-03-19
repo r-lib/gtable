@@ -1,7 +1,17 @@
 #' Trim off empty cells.
 #'
+#' This function detects rows and columns that does not contain any grobs and
+#' removes thewm from the gtable. If the rows and/or columns removed had a
+#' non-zero height/width the relative layout of the gtable may change.
+#'
 #' @param x a gtable object
+#'
+#' @return A gtable object
+#'
+#' @family gtable modification
+#'
 #' @export
+#'
 #' @examples
 #' library(grid)
 #' rect <- rectGrob(gp = gpar(fill = "black"))
@@ -20,6 +30,10 @@
 #' plot(gtable_trim(row))
 gtable_trim <- function(x) {
   if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
+  if (length(x) == 0) {
+    return(gtable(respect = x$respect, name = x$name, vp = x$vp))
+  }
+
   layout <- unclass(x$layout)
 
   w <- range(layout$l, layout$r)

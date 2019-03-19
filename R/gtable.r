@@ -54,10 +54,13 @@
 #'   for characteric subsetting, particularly for `gtable_align`,
 #'   and `gtable_join`.
 #' @param vp a grid viewport object (or NULL).
+#'
+#' @return A gtable object
+#'
+#' @family gtable construction
+#'
 #' @export
-#' @aliases gtable-package
-#' @seealso [gtable_row()], [gtable_col()] and
-#'   [gtable_matrix()] for convenient ways of creating gtables.
+#'
 #' @examples
 #' library(grid)
 #' a <- gtable(unit(1:3, c("cm")), unit(5, "cm"))
@@ -218,6 +221,11 @@ t.gtable <- function(x) {
   # Convert indicies to (named) numeric
   rows <- stats::setNames(seq_along(x$heights), rownames(x))[i]
   cols <- stats::setNames(seq_along(x$widths), colnames(x))[j]
+
+  if ((length(rows) > 1 && any(diff(rows) < 1)) ||
+      (length(cols) > 1 && any(diff(cols) < 1))) {
+    stop("i and j must be increasing sequences of numbers", call. = FALSE)
+  }
 
   i <- seq_along(x$heights) %in% seq_along(x$heights)[rows]
   j <- seq_along(x$widths) %in% seq_along(x$widths)[cols]

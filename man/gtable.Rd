@@ -2,7 +2,6 @@
 % Please edit documentation in R/gtable.r
 \name{gtable}
 \alias{gtable}
-\alias{gtable-package}
 \title{Create a new grob table.}
 \usage{
 gtable(widths = list(), heights = list(), respect = FALSE,
@@ -25,6 +24,9 @@ for characteric subsetting, particularly for \code{gtable_align},
 and \code{gtable_join}.}
 
 \item{vp}{a grid viewport object (or NULL).}
+}
+\value{
+A gtable object
 }
 \description{
 A grob table captures all the information needed to layout grobs in a table
@@ -108,6 +110,8 @@ colnames(b) <- letters[1:3]
 dimnames(b)
 }
 \seealso{
-\code{\link[=gtable_row]{gtable_row()}}, \code{\link[=gtable_col]{gtable_col()}} and
-\code{\link[=gtable_matrix]{gtable_matrix()}} for convenient ways of creating gtables.
+Other gtable construction: \code{\link{gtable_col}},
+  \code{\link{gtable_matrix}}, \code{\link{gtable_row}},
+  \code{\link{gtable_spacer}}
 }
+\concept{gtable construction}
