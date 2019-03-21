@@ -3,6 +3,18 @@ neg_to_pos <- function(x, max) {
 }
 
 compare_unit <- function(x, y, comp = `=`) {
+  if (length(y) == 0) return(x)
+  if (length(x) == 0) return(y)
+  if (getRversion() >= "3.6") {
+    if (identical(comp, pmin)) {
+      return(unit.pmin(x, y))
+    }
+    if (identical(comp, pmax)) {
+      return(unit.pmax(x, y))
+    }
+    stop('Comparison not supported', call. = FALSE)
+  }
+  # Below should be removed once the old grid unit implementation has been deprecated
   if (length(x) == 0) return(y)
   if (length(y) == 0) return(x)
 
@@ -65,3 +77,4 @@ height_cm <- function(x) {
 len_same_or_1 <- function(x, n) {
   length(x) == 1 || length(x) == n
 }
+
