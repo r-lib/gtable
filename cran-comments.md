@@ -1,24 +1,23 @@
 ## Test environments
-* local OS X install, R 3.2.3
-* ubuntu 12.04 (on travis-ci), R 3.2.3
+* local OS X install, R 3.5.1
+* ubuntu 14.04 (on travis-ci), R 3.5.1
 * win-builder (devel and release)
 
 ## R CMD check results
 
 0 errors | 0 warnings | 1 note
 
-* I have updated my maintainer email address.
+## revdepcheck results
 
-## Reverse dependencies
+We checked 68 reverse dependencies (56 from CRAN + 12 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
 
-* I have run R CMD check on the 17 downstream dependencies.
-  (https://github.com/hadley/gtable/blob/master/revdep/).
+ * We failed to check 4 packages
 
-* Maintainers were notified Feb 8 and Feb 25.
+Issues with CRAN packages are summarised below.
 
-* There was one failure: 
+### Failed to check
 
-  * dotwhisker: checking examples ... ERROR
-    This is because gtable now imports grid rather than depending on it.
-
-* But I failed to install: MultiMeta, ncappc, spikeSlabGAM, strvalidator
+* Hmisc         (failed to install)
+* spikeSlabGAM  (failed to install)
+* telefit       (failed to install)
+* trelliscopejs (failed to install)
