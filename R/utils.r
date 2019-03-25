@@ -5,7 +5,7 @@ neg_to_pos <- function(x, max) {
 compare_unit <- function(x, y, comp = `=`) {
   if (length(y) == 0) return(x)
   if (length(x) == 0) return(y)
-  if (getRversion() >= "3.6") {
+  if (getRversion() >= "3.6" && (is.list(x) || is.list(y))) {
     if (identical(comp, pmin)) {
       return(unit.pmin(x, y))
     }
@@ -15,20 +15,18 @@ compare_unit <- function(x, y, comp = `=`) {
     stop('Comparison not supported', call. = FALSE)
   }
   # Below should be removed once the old grid unit implementation has been deprecated
-  if (length(x) == 0) return(y)
-  if (length(y) == 0) return(x)
-
+  x_attr <- attributes(x)
   x_val <- unclass(x)
   y_val <- unclass(y)
 
-  x_unit <- attr(x, "unit")
+  x_unit <- x_attr$unit
   y_unit <- attr(x, "unit")
 
   if (!all(x_unit == y_unit)) {
     stop("Comparison of units with different types currently not supported")
   }
 
-  unit(comp(x_val, y_val), x_unit)
+  `attributes<-`(comp(x_val, y_val), x_attr)
 }
 
 
