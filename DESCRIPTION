@@ -1,6 +1,6 @@
 Package: gtable
 Title: Arrange 'Grobs' in Tables
-Version: 0.2.0.9000
+Version: 0.3.0
 Authors@R: 
     c(person(given = "Hadley",
              family = "Wickham",
@@ -31,7 +31,7 @@ Suggests:
     profvis
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Collate:
     'new-data-frame.r'
     'add-grob.r'
