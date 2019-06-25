@@ -1,4 +1,6 @@
-# gtable 0.2.0.9000
+# gtable (development version)
+
+# gtable 0.3.0
 
 * Made a range of internal changes to increase performance of gtable 
   construction, these include:

@@ -105,10 +105,10 @@ test_that("Spacing adds rows/cols in correct place", {
   layout <- gtable_add_row_space(layout, null)
 
   expect_that(as.vector(layout$heights), equals(rep(1, 3)))
-  expect_that(attr(layout$heights, "unit"), equals(c("cm", "null", "cm")))
+  expect_that(sub('1', '', as.character(layout$heights)), equals(c("cm", "null", "cm")))
 
   expect_that(as.vector(layout$widths), equals(rep(1, 3)))
-  expect_that(attr(layout$widths, "unit"), equals(c("cm", "null", "cm")))
+  expect_that(sub('1', '', as.character(layout$widths)), equals(c("cm", "null", "cm")))
 })
 
 test_that("Negative positions place from end", {

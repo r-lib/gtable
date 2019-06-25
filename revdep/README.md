@@ -1,224 +1,113 @@
-# Setup
+# Platform
 
-## Platform
-
-|setting  |value                        |
+|field    |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.2.3 (2015-12-10) |
-|system   |x86_64, darwin13.4.0         |
-|ui       |X11                          |
+|version  |R version 3.5.1 (2018-07-02) |
+|os       |macOS  10.14.3               |
+|system   |x86_64, darwin15.6.0         |
+|ui       |RStudio                      |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
-|tz       |America/Chicago              |
-|date     |2016-02-25                   |
+|ctype    |en_US.UTF-8                  |
+|tz       |Europe/Copenhagen            |
+|date     |2019-03-18                   |
 
-## Packages
+# Dependencies
 
-|package  |*  |version    |date       |source                |
-|:--------|:--|:----------|:----------|:---------------------|
-|gtable   |   |0.1.2.9000 |2016-02-25 |local (hadley/gtable) |
-|plyr     |   |1.8.3      |2015-06-12 |CRAN (R 3.2.0)        |
-|testthat |*  |0.11.0     |2015-10-14 |CRAN (R 3.2.0)        |
+|package |old   |new |Δ  |
+|:-------|:-----|:---|:--|
+|gtable  |0.2.0 |NA  |*  |
 
-# Check results
-17 checked out of 0 dependencies 
+# Revdeps
 
-## cowplot (0.6.0)
-Maintainer: Claus O. Wilke <wilke@austin.utexas.edu>  
-Bug reports: https://github.com/wilkelab/cowplot/issues
+## Couldn't check (7)
 
-0 errors | 0 warnings | 0 notes
+|package                                    |version |error |warning |note |
+|:------------------------------------------|:-------|:-----|:-------|:----|
+|[CEMiTool](problems.md#cemitool)           |1.4.2   |1     |        |     |
+|[ClassifyR](problems.md#classifyr)         |2.0.10  |2     |        |2    |
+|[FindMyFriends](problems.md#findmyfriends) |1.10.0  |1     |1       |2    |
+|[Hmisc](problems.md#hmisc)                 |4.2-0   |1     |        |     |
+|[spikeSlabGAM](problems.md#spikeslabgam)   |1.1-14  |1     |        |     |
+|[telefit](problems.md#telefit)             |1.0.1   |1     |        |     |
+|[trelliscopejs](problems.md#trelliscopejs) |0.1.18  |1     |        |     |
 
-## dotwhisker (0.2.0.4)
-Maintainer: Yue Hu <yue-hu-1@uiowa.edu>  
-Bug reports: https://github.com/fsolt/dotwhisker/issues
+## Broken (1)
 
-1 error  | 0 warnings | 1 note 
+|package                |version |error |warning |note |
+|:----------------------|:-------|:-----|:-------|:----|
+|[egg](problems.md#egg) |0.4.2   |      |__+1__  |     |
 
-```
-checking examples ... ERROR
-Running examples in ‘dotwhisker-Ex.R’ failed
-The error most likely occurred in:
+## All (68)
 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: add_brackets
-> ### Title: Add Labelled Brackets to Group Predictors in a Dot-and-Whisker
-> ###   Plot
-> ### Aliases: add_brackets
-> 
-... 25 lines ...
-+     theme(legend.position="none")
-Scale for 'y' is already present. Adding another scale for 'y', which will
-replace the existing scale.
-> 
-> two_brackets <- list(c("Engine", "cyl", "disp"), c("Not Engine", "(Intercept)", "wt"))
-> 
-> g <- p %>% add_brackets(two_brackets)
-> 
-> grid.draw(g)  # to display
-Error: could not find function "grid.draw"
-Execution halted
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Loading required package: sandwich
-Loading required package: lmtest
-Loading required package: zoo
-
-Attaching package: 'zoo'
-
-The following objects are masked from 'package:base':
-... 8 lines ...
-The following object is masked from 'package:dplyr':
-
-    select
-
-Loading required package: betareg
-Scale for 'y' is already present. Adding another scale for 'y', which
-will replace the existing scale.
-Quitting from lines 168-210 (dotwhisker-vignette.Rmd) 
-Error: processing vignette 'dotwhisker-vignette.Rmd' failed with diagnostics:
-could not find function "grid.draw"
-Execution halted
-```
-
-## GGally (1.0.1)
-Maintainer: Barret Schloerke <schloerke@gmail.com>  
-Bug reports: https://github.com/ggobi/ggally/issues
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking installed package size ... NOTE
-  installed size is  7.6Mb
-  sub-directories of 1Mb or more:
-    doc   6.8Mb
-```
-
-## ggalt (0.1.1)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/ggalt/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ggplot2 (2.0.0)
-Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/ggplot2/issues
-
-0 errors | 0 warnings | 0 notes
-
-## ggtern (2.0.1)
-Maintainer: Nicholas Hamilton <nick@ggtern.com>
-
-0 errors | 0 warnings | 1 note 
-
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘chemometrics’
-```
-
-## gridExtra (2.0.0)
-Maintainer: Baptiste Auguie <baptiste.auguie@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## Hmisc (3.17-2)
-Maintainer: Frank E Harrell Jr <f.harrell@vanderbilt.edu>
-
-0 errors | 0 warnings | 0 notes
-
-## MultiMeta (0.1)
-Maintainer: Dragana Vuckovic <dragana.vuckovic@burlo.trieste.it>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘MultiMeta’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘grid::arrow’ when loading ‘MultiMeta’
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘MultiMeta’
-See ‘/Users/hadley/Documents/ggplot/gtable/revdep/checks/MultiMeta.Rcheck/00install.out’ for details.
-```
-
-## ncappc (0.2.1.1)
-Maintainer: Chayan Acharya <chayan.acharya@farmbio.uu.se>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘ncappc’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘grid::arrow’ when loading ‘ncappc’
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘ncappc’
-  Warning: replacing previous import by ‘scales::alpha’ when loading ‘ncappc’
-See ‘/Users/hadley/Documents/ggplot/gtable/revdep/checks/ncappc.Rcheck/00install.out’ for details.
-```
-
-## pander (0.6.0)
-Maintainer: Gergely Daróczi <daroczig@rapporter.net>  
-Bug reports: https://github.com/rapporter/pander/issues
-
-0 errors | 0 warnings | 0 notes
-
-## pheatmap (1.0.8)
-Maintainer: Raivo Kolde <rkolde@gmail.com>
-
-0 errors | 0 warnings | 0 notes
-
-## RAM (1.2.1.3)
-Maintainer: Wen Chen <Wen.Chen@agr.gc.ca>  
-Bug reports: https://bitbucket.org/Wen_Chen/ram_releases/issues/
-
-0 errors | 0 warnings | 0 notes
-
-## spikeSlabGAM (1.1-9)
-Maintainer: Fabian Scheipl
- <fabian.scheipl@stat.uni-muenchen.de>
-
-0 errors | 1 warning  | 0 notes
-
-```
-checking whether package ‘spikeSlabGAM’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘scales::alpha’ when loading ‘spikeSlabGAM’
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘spikeSlabGAM’
-See ‘/Users/hadley/Documents/ggplot/gtable/revdep/checks/spikeSlabGAM.Rcheck/00install.out’ for details.
-```
-
-## strvalidator (1.6.0)
-Maintainer: Oskar Hansson <oskar.hansson@fhi.no>  
-Bug reports: https://github.com/OskarHansson/strvalidator/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘strvalidator’ can be installed ... ERROR
-Installation failed.
-See ‘/Users/hadley/Documents/ggplot/gtable/revdep/checks/strvalidator.Rcheck/00install.out’ for details.
-```
-
-## tcR (2.2.1.7)
-Maintainer: Vadim Nazarov <vdm.nazarov@gmail.com>  
-Bug reports: https://github.com/imminfo/tcr/issues
-
-0 errors | 0 warnings | 2 notes
-
-```
-checking installed package size ... NOTE
-  installed size is  5.6Mb
-  sub-directories of 1Mb or more:
-    data   1.2Mb
-    doc    3.9Mb
-
-checking dependencies in R code ... NOTE
-Namespace in Imports field not imported from: ‘scales’
-  All declared Imports should be used.
-```
-
-## waffle (0.5.0)
-Maintainer: Bob Rudis <bob@rudis.net>  
-Bug reports: https://github.com/hrbrmstr/waffle/issues
-
-0 errors | 0 warnings | 0 notes
+|package                                                            |version |error |warning |note |
+|:------------------------------------------------------------------|:-------|:-----|:-------|:----|
+|[amplican](problems.md#amplican)                                   |1.2.1   |      |1       |2    |
+|assignPOP                                                          |1.1.4   |      |        |     |
+|[bea.R](problems.md#bear)                                          |1.0.6   |      |1       |1    |
+|[behaviorchange](problems.md#behaviorchange)                       |0.1.0   |      |        |1    |
+|[BloodCancerMultiOmics2017](problems.md#bloodcancermultiomics2017) |1.0.2   |      |1       |3    |
+|BoutrosLab.plotting.general                                        |5.9.2   |      |        |     |
+|braidReports                                                       |0.5.3   |      |        |     |
+|[BubbleTree](problems.md#bubbletree)                               |2.10.0  |      |1       |2    |
+|[CEMiTool](problems.md#cemitool)                                   |1.4.2   |1     |        |     |
+|[ClassifyR](problems.md#classifyr)                                 |2.0.10  |2     |        |2    |
+|[condformat](problems.md#condformat)                               |0.8.0   |1     |        |1    |
+|cowplot                                                            |0.9.4   |      |        |     |
+|cr17                                                               |0.1.0   |      |        |     |
+|darksky                                                            |1.3.0   |      |        |     |
+|dotwhisker                                                         |0.5.0   |      |        |     |
+|[egg](problems.md#egg)                                             |0.4.2   |      |__+1__  |     |
+|[FindMyFriends](problems.md#findmyfriends)                         |1.10.0  |1     |1       |2    |
+|[GenVisR](problems.md#genvisr)                                     |1.12.1  |2     |1       |4    |
+|[geofacet](problems.md#geofacet)                                   |0.1.10  |      |        |1    |
+|getmstatistic                                                      |0.2.0   |      |        |     |
+|GGally                                                             |1.4.0   |      |        |     |
+|[ggalt](problems.md#ggalt)                                         |0.4.0   |      |        |1    |
+|[ggbio](problems.md#ggbio)                                         |1.28.5  |1     |1       |3    |
+|[ggExtra](problems.md#ggextra)                                     |0.8     |      |        |1    |
+|ggforce                                                            |0.2.1   |      |        |     |
+|[ggplot2](problems.md#ggplot2)                                     |3.1.0   |      |        |1    |
+|[ggpol](problems.md#ggpol)                                         |0.0.5   |      |        |1    |
+|[ggpubr](problems.md#ggpubr)                                       |0.2     |      |        |1    |
+|ggraph                                                             |1.0.2   |      |        |     |
+|[ggtern](problems.md#ggtern)                                       |3.1.0   |      |        |1    |
+|ggupset                                                            |0.1.0   |      |        |     |
+|[GOsummaries](problems.md#gosummaries)                             |2.16.1  |      |1       |3    |
+|gridExtra                                                          |2.3     |      |        |     |
+|[hierarchicalSets](problems.md#hierarchicalsets)                   |1.0.2   |      |        |1    |
+|[Hmisc](problems.md#hmisc)                                         |4.2-0   |1     |        |     |
+|[IWTomics](problems.md#iwtomics)                                   |1.4.0   |      |1       |     |
+|lemon                                                              |0.4.3   |      |        |     |
+|[mafs](problems.md#mafs)                                           |0.0.3   |      |        |1    |
+|[metaforest](problems.md#metaforest)                               |0.1.2   |      |1       |     |
+|metaplot                                                           |0.8.2   |      |        |     |
+|[metR](problems.md#metr)                                           |0.3.0   |      |        |1    |
+|[mimager](problems.md#mimager)                                     |1.4.0   |      |1       |1    |
+|[MultiMeta](problems.md#multimeta)                                 |0.1     |      |        |1    |
+|multipanelfigure                                                   |2.0.2   |      |        |     |
+|[ncappc](problems.md#ncappc)                                       |0.3.0   |      |        |1    |
+|nlirms                                                             |3.4.4   |      |        |     |
+|nmathresh                                                          |0.1.4   |      |        |     |
+|oddsratio                                                          |1.0.3   |      |        |     |
+|pander                                                             |0.6.3   |      |        |     |
+|[patternplot](problems.md#patternplot)                             |0.2.1   |      |        |1    |
+|pheatmap                                                           |1.0.12  |      |        |     |
+|Plasmidprofiler                                                    |0.1.6   |      |        |     |
+|[PTXQC](problems.md#ptxqc)                                         |0.92.5  |      |        |1    |
+|[RAM](problems.md#ram)                                             |1.2.1.7 |      |1       |     |
+|[spikeSlabGAM](problems.md#spikeslabgam)                           |1.1-14  |1     |        |     |
+|[strvalidator](problems.md#strvalidator)                           |2.1.0   |1     |        |     |
+|sugrrants                                                          |0.2.3   |      |        |     |
+|superheat                                                          |0.1.0   |      |        |     |
+|[tcR](problems.md#tcr)                                             |2.2.3   |      |1       |1    |
+|[telefit](problems.md#telefit)                                     |1.0.1   |1     |        |     |
+|timelineR                                                          |0.1.0   |      |        |     |
+|[trackeR](problems.md#tracker)                                     |1.4     |      |        |1    |
+|treeDA                                                             |0.0.4   |      |        |     |
+|[trelliscopejs](problems.md#trelliscopejs)                         |0.1.18  |1     |        |     |
+|TRONCO                                                             |2.12.0  |      |        |     |
+|[ufs](problems.md#ufs)                                             |0.2.0   |      |        |2    |
+|userfriendlyscience                                                |0.7.2   |      |        |     |
+|waffle                                                             |0.7.0   |      |        |     |
 
