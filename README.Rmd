@@ -58,7 +58,7 @@ A gtable object is itself a grob, and can thus be drawn using standard functions
 
 ```{r}
 library(grid)
-grid.draw(p_table) # alternative use plot(p_table)
+grid.draw(p_table)
 ```
 
 While most people will interact with gtable through ggplot2, it is possible to build a plot from the ground up.
