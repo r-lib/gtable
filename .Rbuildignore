@@ -9,3 +9,4 @@ visual_test
 ^cran-comments\.md$
 ^revdep$
 ^vignettes/profilings
+^LICENSE\.md$

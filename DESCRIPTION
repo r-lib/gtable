@@ -17,7 +17,7 @@ Description: Tools to make it easier to work with "tables" of
     grid along with a list of grobs and their placement in the grid. Further the
     package makes it easy to manipulate and combine 'gtable' objects so that 
     complex compositions can be build up sequentially.
-License: GPL-2
+License: MIT + file LICENSE
 Depends:
     R (>= 3.0)
 Imports:

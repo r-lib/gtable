@@ -1,5 +1,7 @@
 # gtable (development version)
 
+* gtable has been re-licensed as MIT (#85).
+
 # gtable 0.3.0
 
 * Made a range of internal changes to increase performance of gtable 
