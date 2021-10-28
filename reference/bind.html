@@ -8,21 +8,36 @@
 
 <title>Row and column binding for gtables. — bind • gtable</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,8 +45,8 @@
 
 
 
-<meta property="og:title" content="Row and column binding for gtables. — bind" />
 
+<meta property="og:title" content="Row and column binding for gtables. — bind" />
 <meta property="og:description" content="These functions are the parallels of the matrix/data.frame row and
 column bindings. As such they work in the same way, except they have to take
 care of additional attributes within the gtables. Most importantly it needs
@@ -40,9 +55,8 @@ going in may have different widths or heights. By default it tries to
 calculate the maximum width/height among the supplied gtables, but other
 options exists. Further, the relative layering of the grobs in each gtable
 can be modified or left as-is." />
-
 <meta property="og:image" content="https://gtable.r-lib.org/logo.png" />
-<meta name="twitter:card" content="summary" />
+
 
 
 
@@ -56,9 +70,10 @@ can be modified or left as-is." />
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,7 +95,7 @@ can be modified or left as-is." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -103,11 +118,10 @@ can be modified or left as-is." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/r-lib/gtable">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/r-lib/gtable/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -118,6 +132,7 @@ can be modified or left as-is." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -129,7 +144,6 @@ can be modified or left as-is." />
     </div>
 
     <div class="ref-description">
-    
     <p>These functions are the parallels of the <code>matrix</code>/<code>data.frame</code> row and
 column bindings. As such they work in the same way, except they have to take
 care of additional attributes within the gtables. Most importantly it needs
@@ -138,15 +152,14 @@ going in may have different widths or heights. By default it tries to
 calculate the maximum width/height among the supplied gtables, but other
 options exists. Further, the relative layering of the grobs in each gtable
 can be modified or left as-is.</p>
-    
     </div>
 
     <pre class="usage"><span class='co'># S3 method for gtable</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>rbind</a></span>(<span class='no'>...</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>"max"</span>, <span class='kw'>z</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span><span class='va'>...</span>, size <span class='op'>=</span> <span class='st'>"max"</span>, z <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
 <span class='co'># S3 method for gtable</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>(<span class='no'>...</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>"max"</span>, <span class='kw'>z</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
+<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>...</span>, size <span class='op'>=</span> <span class='st'>"max"</span>, z <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -169,48 +182,45 @@ to fit this order. If <code>NULL</code>, then the z values of obects within
 each gtable will not be modified.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A gtable object</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>grid</span>)
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/grid.rect'>rectGrob</a></span>(<span class='kw'>gp</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/gpar'>gpar</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='st'>"red"</span>))
-<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/grid.circle'>circleGrob</a></span>()
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/grid.lines'>linesGrob</a></span>()
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>grid</span><span class='op'>)</span>
+<span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/grid/grid.rect.html'>rectGrob</a></span><span class='op'>(</span>gp <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grid/gpar.html'>gpar</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/grid/grid.circle.html'>circleGrob</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/grid/grid.lines.html'>linesGrob</a></span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='no'>row</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>a</span>, <span class='no'>b</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>col</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>a</span>, <span class='no'>b</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/grid.null'>nullGrob</a></span>()), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='va'>row</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>a</span>, <span class='va'>b</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>col</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>a</span>, <span class='va'>b</span><span class='op'>)</span>, ncol <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>mat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>a</span>, <span class='va'>b</span>, <span class='va'>c</span>, <span class='fu'><a href='https://rdrr.io/r/grid/grid.null.html'>nullGrob</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 
-<span class='no'>row_gt</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gtable_matrix.html'>gtable_matrix</a></span>(<span class='st'>"demo"</span>, <span class='no'>row</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"null"</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fl'>1</span>, <span class='st'>"null"</span>))
-<span class='no'>col_gt</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gtable_matrix.html'>gtable_matrix</a></span>(<span class='st'>"demo"</span>, <span class='no'>col</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fl'>1</span>, <span class='st'>"null"</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"null"</span>))
-<span class='no'>mat_gt</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='gtable_matrix.html'>gtable_matrix</a></span>(<span class='st'>"demo"</span>, <span class='no'>mat</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"null"</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"null"</span>))
+<span class='va'>row_gt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='gtable_matrix.html'>gtable_matrix</a></span><span class='op'>(</span><span class='st'>"demo"</span>, <span class='va'>row</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"null"</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"null"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>col_gt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='gtable_matrix.html'>gtable_matrix</a></span><span class='op'>(</span><span class='st'>"demo"</span>, <span class='va'>col</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"null"</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"null"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>mat_gt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='gtable_matrix.html'>gtable_matrix</a></span><span class='op'>(</span><span class='st'>"demo"</span>, <span class='va'>mat</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"null"</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"null"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># cbind</span>
-<span class='no'>c_binded</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>(<span class='no'>mat_gt</span>, <span class='no'>col_gt</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>"first"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>c_binded</span>)</div><div class='img'><img src='bind-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='va'>c_binded</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>mat_gt</span>, <span class='va'>col_gt</span>, size <span class='op'>=</span> <span class='st'>"first"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>c_binded</span><span class='op'>)</span>
+</div><div class='img'><img src='bind-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># rbind</span>
-<span class='no'>r_binded</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>rbind</a></span>(<span class='no'>mat_gt</span>, <span class='no'>row_gt</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='st'>"last"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>r_binded</span>)</div><div class='img'><img src='bind-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='va'>r_binded</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span><span class='va'>mat_gt</span>, <span class='va'>row_gt</span>, size <span class='op'>=</span> <span class='st'>"last"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>r_binded</span><span class='op'>)</span>
+</div><div class='img'><img src='bind-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Dimensions must match along bind direction</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/try'>try</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>(<span class='no'>mat_gt</span>, <span class='no'>row_gt</span>))</div><div class='output co'>#&gt; Error : x and y must have the same number of rows</div><div class='input'>
+<span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>mat_gt</span>, <span class='va'>row_gt</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Error : x and y must have the same number of rows</div><div class='input'>
 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -218,13 +228,16 @@ each gtable will not be modified.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

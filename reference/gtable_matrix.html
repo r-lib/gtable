@@ -8,21 +8,36 @@
 
 <title>Create a gtable from a matrix of grobs. — gtable_matrix • gtable</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,14 +45,13 @@
 
 
 
-<meta property="og:title" content="Create a gtable from a matrix of grobs. — gtable_matrix" />
 
+<meta property="og:title" content="Create a gtable from a matrix of grobs. — gtable_matrix" />
 <meta property="og:description" content="This function takes a matrix of grobs and create a gtable matching with the
 grobs in the same position as they were in the matrix, with the given heights
 and widths." />
-
 <meta property="og:image" content="https://gtable.r-lib.org/logo.png" />
-<meta name="twitter:card" content="summary" />
+
 
 
 
@@ -51,9 +65,10 @@ and widths." />
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -75,7 +90,7 @@ and widths." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -98,11 +113,10 @@ and widths." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/r-lib/gtable">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/r-lib/gtable/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -113,6 +127,7 @@ and widths." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -124,16 +139,14 @@ and widths." />
     </div>
 
     <div class="ref-description">
-    
     <p>This function takes a matrix of grobs and create a gtable matching with the
 grobs in the same position as they were in the matrix, with the given heights
 and widths.</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>gtable_matrix</span>(<span class='no'>name</span>, <span class='no'>grobs</span>, <span class='kw'>widths</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>heights</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>z</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>respect</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>clip</span> <span class='kw'>=</span> <span class='st'>"on"</span>, <span class='kw'>vp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>gtable_matrix</span><span class='op'>(</span><span class='va'>name</span>, <span class='va'>grobs</span>, widths <span class='op'>=</span> <span class='cn'>NULL</span>, heights <span class='op'>=</span> <span class='cn'>NULL</span>, z <span class='op'>=</span> <span class='cn'>NULL</span>,
+  respect <span class='op'>=</span> <span class='cn'>FALSE</span>, clip <span class='op'>=</span> <span class='st'>"on"</span>, vp <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -163,7 +176,7 @@ specifying the order that the grobs are drawn.</p></td>
       <th>respect</th>
       <td><p>a logical vector of length 1: should the aspect ratio of
 height and width specified in null units be respected.  See
-<code>grid.layout()</code> for more details</p></td>
+<code><a href='https://rdrr.io/r/grid/grid.layout.html'>grid.layout()</a></code> for more details</p></td>
     </tr>
     <tr>
       <th>clip</th>
@@ -176,65 +189,60 @@ height and width specified in null units be respected.  See
       <td><p>a grid viewport object (or NULL).</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A gtable of the same dimensions as the grobs matrix.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other gtable construction: <code><a href='gtable_col.html'>gtable_col</a></code>,
   <code><a href='gtable_row.html'>gtable_row</a></code>, <code><a href='gtable_spacer.html'>gtable_spacer</a></code>,
   <code><a href='gtable.html'>gtable</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>grid</span>)
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/grid.rect'>rectGrob</a></span>(<span class='kw'>gp</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/gpar'>gpar</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='st'>"red"</span>))
-<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/grid.circle'>circleGrob</a></span>()
-<span class='no'>c</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/grid.lines'>linesGrob</a></span>()
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>grid</span><span class='op'>)</span>
+<span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/grid/grid.rect.html'>rectGrob</a></span><span class='op'>(</span>gp <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/grid/gpar.html'>gpar</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/grid/grid.circle.html'>circleGrob</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/grid/grid.lines.html'>linesGrob</a></span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='no'>row</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>col</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>), <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='no'>mat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>c</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/grid.null'>nullGrob</a></span>()), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='va'>row</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>a</span>, <span class='va'>b</span>, <span class='va'>c</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>col</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>a</span>, <span class='va'>b</span>, <span class='va'>c</span><span class='op'>)</span>, ncol <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>mat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>a</span>, <span class='va'>b</span>, <span class='va'>c</span>, <span class='fu'><a href='https://rdrr.io/r/grid/grid.null.html'>nullGrob</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 
-<span class='fu'>gtable_matrix</span>(<span class='st'>"demo"</span>, <span class='no'>row</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"null"</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fl'>1</span>, <span class='st'>"null"</span>))</div><div class='output co'>#&gt; TableGrob (1 x 3) "demo": 3 grobs
+<span class='fu'>gtable_matrix</span><span class='op'>(</span><span class='st'>"demo"</span>, <span class='va'>row</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"null"</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"null"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; TableGrob (1 x 3) "demo": 3 grobs
 #&gt;   z     cells name                    grob
 #&gt; 1 1 (1-1,1-1) demo     rect[GRID.rect.120]
 #&gt; 2 2 (1-1,2-2) demo circle[GRID.circle.121]
-#&gt; 3 3 (1-1,3-3) demo   lines[GRID.lines.122]</div><div class='input'><span class='fu'>gtable_matrix</span>(<span class='st'>"demo"</span>, <span class='no'>col</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fl'>1</span>, <span class='st'>"null"</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"null"</span>))</div><div class='output co'>#&gt; TableGrob (3 x 1) "demo": 3 grobs
+#&gt; 3 3 (1-1,3-3) demo   lines[GRID.lines.122]</div><div class='input'><span class='fu'>gtable_matrix</span><span class='op'>(</span><span class='st'>"demo"</span>, <span class='va'>col</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"null"</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"null"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; TableGrob (3 x 1) "demo": 3 grobs
 #&gt;   z     cells name                    grob
 #&gt; 1 1 (1-1,1-1) demo     rect[GRID.rect.120]
 #&gt; 2 2 (2-2,1-1) demo circle[GRID.circle.121]
-#&gt; 3 3 (3-3,1-1) demo   lines[GRID.lines.122]</div><div class='input'><span class='fu'>gtable_matrix</span>(<span class='st'>"demo"</span>, <span class='no'>mat</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"null"</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"null"</span>))</div><div class='output co'>#&gt; TableGrob (2 x 2) "demo": 4 grobs
+#&gt; 3 3 (3-3,1-1) demo   lines[GRID.lines.122]</div><div class='input'><span class='fu'>gtable_matrix</span><span class='op'>(</span><span class='st'>"demo"</span>, <span class='va'>mat</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"null"</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"null"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; TableGrob (2 x 2) "demo": 4 grobs
 #&gt;   z     cells name                    grob
 #&gt; 1 1 (1-1,1-1) demo     rect[GRID.rect.120]
 #&gt; 2 2 (2-2,1-1) demo circle[GRID.circle.121]
 #&gt; 3 3 (1-1,2-2) demo   lines[GRID.lines.122]
 #&gt; 4 4 (2-2,2-2) demo     null[GRID.null.123]</div><div class='input'>
 <span class='co'># Can specify z ordering</span>
-<span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>3</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>4</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>2</span>)
-<span class='fu'>gtable_matrix</span>(<span class='st'>"demo"</span>, <span class='no'>mat</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"null"</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/grid/topics/unit'>unit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"null"</span>), <span class='kw'>z</span> <span class='kw'>=</span> <span class='no'>z</span>)</div><div class='output co'>#&gt; TableGrob (2 x 2) "demo": 4 grobs
+<span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>4</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+<span class='fu'>gtable_matrix</span><span class='op'>(</span><span class='st'>"demo"</span>, <span class='va'>mat</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"null"</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/grid/unit.html'>unit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='st'>"null"</span><span class='op'>)</span>, z <span class='op'>=</span> <span class='va'>z</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; TableGrob (2 x 2) "demo": 4 grobs
 #&gt;   z     cells name                    grob
 #&gt; 1 3 (1-1,1-1) demo     rect[GRID.rect.120]
 #&gt; 2 1 (2-2,1-1) demo circle[GRID.circle.121]
 #&gt; 3 2 (1-1,2-2) demo   lines[GRID.lines.122]
 #&gt; 4 4 (2-2,2-2) demo     null[GRID.null.123]</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -242,13 +250,16 @@ height and width specified in null units be respected.  See
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
