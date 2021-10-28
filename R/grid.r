@@ -57,7 +57,7 @@ makeContent.gtable <- function(x) {
     vp_name = vpname(x$layout),
     t = .subset2(x$layout, "t"), r = .subset2(x$layout, "r"),
     b = .subset2(x$layout, "b"), l = .subset2(x$layout, "l"),
-    clip = x$layout$clip,
+    clip = .subset2(x$layout, "clip"),
     SIMPLIFY = FALSE
   )
   x$grobs <- mapply(wrap_gtableChild, x$grobs, children_vps,
@@ -90,8 +90,5 @@ child_vp <- function(vp_name, t, r, b, l, clip) {
 # Turn a grob into a gtableChild, and store information about the
 # viewport used within the gtable
 wrap_gtableChild <- function(grob, vp) {
-  grob$wrapvp <- vp
-  grob$name <- vp$name
-  class(grob) <- c("gTableChild", class(grob))
-  grob
+  grobTree(grob, name = vp$name, vp = vp)
 }

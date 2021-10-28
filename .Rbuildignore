@@ -10,3 +10,4 @@ visual_test
 ^revdep$
 ^vignettes/profilings
 ^LICENSE\.md$
+^\.github$
