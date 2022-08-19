@@ -4,8 +4,7 @@
 \alias{gtable_row}
 \title{Create a single row gtable.}
 \usage{
-gtable_row(name, grobs, height = NULL, widths = NULL, z = NULL,
-  vp = NULL)
+gtable_row(name, grobs, height = NULL, widths = NULL, z = NULL, vp = NULL)
 }
 \arguments{
 \item{name}{a string giving the name of the table. This is used to name
@@ -43,8 +42,10 @@ plot(gt)
 gtable_show_layout(gt)
 }
 \seealso{
-Other gtable construction: \code{\link{gtable_col}},
-  \code{\link{gtable_matrix}}, \code{\link{gtable_spacer}},
-  \code{\link{gtable}}
+Other gtable construction: 
+\code{\link{gtable_col}()},
+\code{\link{gtable_matrix}()},
+\code{\link{gtable_spacer}},
+\code{\link{gtable}()}
 }
 \concept{gtable construction}

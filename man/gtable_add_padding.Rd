@@ -34,10 +34,11 @@ plot(cbind(pad, pad))
 plot(rbind(pad, pad))
 }
 \seealso{
-Other gtable manipulation: \code{\link{gtable_add_cols}},
-  \code{\link{gtable_add_grob}},
-  \code{\link{gtable_add_rows}},
-  \code{\link{gtable_add_space}},
-  \code{\link{gtable_filter}}
+Other gtable manipulation: 
+\code{\link{gtable_add_cols}()},
+\code{\link{gtable_add_grob}()},
+\code{\link{gtable_add_rows}()},
+\code{\link{gtable_add_space}},
+\code{\link{gtable_filter}()}
 }
 \concept{gtable manipulation}

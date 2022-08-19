@@ -1,5 +1,7 @@
 # gtable (development version)
 
+* Re-documented to fix HTML issues in `.Rd`.
+
 * gtable has been re-licensed as MIT (#85).
 
 # gtable 0.3.0

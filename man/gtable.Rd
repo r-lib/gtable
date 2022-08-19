@@ -4,8 +4,15 @@
 \alias{gtable}
 \title{Create a new grob table.}
 \usage{
-gtable(widths = list(), heights = list(), respect = FALSE,
-  name = "layout", rownames = NULL, colnames = NULL, vp = NULL)
+gtable(
+  widths = list(),
+  heights = list(),
+  respect = FALSE,
+  name = "layout",
+  rownames = NULL,
+  colnames = NULL,
+  vp = NULL
+)
 }
 \arguments{
 \item{widths}{a unit vector giving the width of each column}
@@ -110,8 +117,10 @@ colnames(b) <- letters[1:3]
 dimnames(b)
 }
 \seealso{
-Other gtable construction: \code{\link{gtable_col}},
-  \code{\link{gtable_matrix}}, \code{\link{gtable_row}},
-  \code{\link{gtable_spacer}}
+Other gtable construction: 
+\code{\link{gtable_col}()},
+\code{\link{gtable_matrix}()},
+\code{\link{gtable_row}()},
+\code{\link{gtable_spacer}}
 }
 \concept{gtable construction}

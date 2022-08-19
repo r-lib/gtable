@@ -23,8 +23,10 @@ Create a zero-column or zero-row gtable with the given heights or widths
 respectively.
 }
 \seealso{
-Other gtable construction: \code{\link{gtable_col}},
-  \code{\link{gtable_matrix}}, \code{\link{gtable_row}},
-  \code{\link{gtable}}
+Other gtable construction: 
+\code{\link{gtable_col}()},
+\code{\link{gtable_matrix}()},
+\code{\link{gtable_row}()},
+\code{\link{gtable}()}
 }
 \concept{gtable construction}

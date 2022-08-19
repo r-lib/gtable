@@ -4,8 +4,17 @@
 \alias{gtable_add_grob}
 \title{Add a single grob, possibly spanning multiple rows or columns.}
 \usage{
-gtable_add_grob(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on",
-  name = x$name)
+gtable_add_grob(
+  x,
+  grobs,
+  t,
+  l,
+  b = t,
+  r = l,
+  z = Inf,
+  clip = "on",
+  name = x$name
+)
 }
 \arguments{
 \item{x}{a \code{\link[=gtable]{gtable()}} object}
@@ -58,10 +67,11 @@ plot(gt)
 
 }
 \seealso{
-Other gtable manipulation: \code{\link{gtable_add_cols}},
-  \code{\link{gtable_add_padding}},
-  \code{\link{gtable_add_rows}},
-  \code{\link{gtable_add_space}},
-  \code{\link{gtable_filter}}
+Other gtable manipulation: 
+\code{\link{gtable_add_cols}()},
+\code{\link{gtable_add_padding}()},
+\code{\link{gtable_add_rows}()},
+\code{\link{gtable_add_space}},
+\code{\link{gtable_filter}()}
 }
 \concept{gtable manipulation}

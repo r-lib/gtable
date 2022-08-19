@@ -4,8 +4,16 @@
 \alias{gtable_matrix}
 \title{Create a gtable from a matrix of grobs.}
 \usage{
-gtable_matrix(name, grobs, widths = NULL, heights = NULL, z = NULL,
-  respect = FALSE, clip = "on", vp = NULL)
+gtable_matrix(
+  name,
+  grobs,
+  widths = NULL,
+  heights = NULL,
+  z = NULL,
+  respect = FALSE,
+  clip = "on",
+  vp = NULL
+)
 }
 \arguments{
 \item{name}{a string giving the name of the table. This is used to name
@@ -57,8 +65,10 @@ z <- matrix(c(3, 1, 2, 4), nrow = 2)
 gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
 }
 \seealso{
-Other gtable construction: \code{\link{gtable_col}},
-  \code{\link{gtable_row}}, \code{\link{gtable_spacer}},
-  \code{\link{gtable}}
+Other gtable construction: 
+\code{\link{gtable_col}()},
+\code{\link{gtable_row}()},
+\code{\link{gtable_spacer}},
+\code{\link{gtable}()}
 }
 \concept{gtable construction}

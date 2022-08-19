@@ -45,10 +45,11 @@ gt <- gtable_add_col_space(gt, unit(c(0.5, 1), "cm"))
 plot(gt)
 }
 \seealso{
-Other gtable manipulation: \code{\link{gtable_add_cols}},
-  \code{\link{gtable_add_grob}},
-  \code{\link{gtable_add_padding}},
-  \code{\link{gtable_add_rows}},
-  \code{\link{gtable_filter}}
+Other gtable manipulation: 
+\code{\link{gtable_add_cols}()},
+\code{\link{gtable_add_grob}()},
+\code{\link{gtable_add_padding}()},
+\code{\link{gtable_add_rows}()},
+\code{\link{gtable_filter}()}
 }
 \concept{gtable manipulation}
