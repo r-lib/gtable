@@ -6,10 +6,10 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/r-lib/gtable/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/gtable/actions)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gtable)](http://cran.r-project.org/package=gtable)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gtable)](https://cran.r-project.org/package=gtable)
 [![Codecov test
 coverage](https://codecov.io/gh/r-lib/gtable/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/gtable?branch=main)
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
 gtable is a layout engine built on top of the grid package. It is used
