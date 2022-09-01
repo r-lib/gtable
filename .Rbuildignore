@@ -11,3 +11,4 @@ visual_test
 ^vignettes/profilings
 ^LICENSE\.md$
 ^\.github$
+^CRAN-SUBMISSION$
