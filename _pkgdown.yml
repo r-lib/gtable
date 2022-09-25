@@ -25,6 +25,8 @@ reference:
 
 - title: Inspection
   contents:
+  - is.gtable
+  - print.gtable
   - gtable_show_layout
   - gtable_height
   - gtable_width
