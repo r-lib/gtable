@@ -4,11 +4,11 @@ Version: 0.3.1.9000
 Authors@R: 
     c(person(given = "Hadley",
              family = "Wickham",
-             role = c("aut", "cre"),
+             role = "aut",
              email = "hadley@posit.co"),
       person(given = "Thomas Lin",
              family = "Pedersen",
-             role = "aut",
+             role = c("aut", "cre"),
              email = "thomas.pedersen@posit.co"),
       person(given = "Posit Software, PBC",
              role = "cph"))

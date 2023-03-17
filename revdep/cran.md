@@ -1,5 +1,3 @@
-General upkeep of package
-
 ## revdepcheck results
 
 We checked 91 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.

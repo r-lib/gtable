@@ -18,11 +18,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Hadley Wickham \email{hadley@posit.co}
+\strong{Maintainer}: Thomas Lin Pedersen \email{thomas.pedersen@posit.co}
 
 Authors:
 \itemize{
-  \item Thomas Lin Pedersen \email{thomas.pedersen@posit.co}
+  \item Hadley Wickham \email{hadley@posit.co}
 }
 
 Other contributors:

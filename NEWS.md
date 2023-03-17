@@ -1,5 +1,7 @@
 # gtable (development version)
 
+* General upkeep
+
 # gtable 0.3.1
 
 * Re-documented to fix HTML issues in `.Rd`.
