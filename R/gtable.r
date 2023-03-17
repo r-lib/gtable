@@ -95,12 +95,16 @@
 gtable <- function(widths = list(), heights = list(), respect = FALSE,
                    name = "layout", rownames = NULL, colnames = NULL, vp = NULL) {
   if (length(widths) > 0) {
-    if (!is.unit(widths)) stop("widths must be a unit object", call. = FALSE)
-    if (!(is.null(colnames) || length(colnames == length(widths)))) stop("colnames must either be NULL or have the same length as widths", call. = FALSE)
+    check_unit(widths)
+    if (!(is.null(colnames) || length(colnames == length(widths)))) {
+      cli::cli_abort("{.arg colnames} must either be NULL or have the same length as {.arg widths}")
+    }
   }
   if (length(heights) > 0) {
-    if (!is.unit(heights)) stop("heights must be a unit object", call. = FALSE)
-    if (!(is.null(rownames) || length(rownames == length(heights)))) stop("rownames must either be NULL or have the same length as heights", call. = FALSE)
+    check_unit(heights)
+    if (!(is.null(rownames) || length(rownames == length(heights)))) {
+      cli::cli_abort("{.arg rownames} must either be NULL or have the same length as {.arg heights}")
+    }
   }
 
   layout <- new_data_frame(list(
@@ -168,14 +172,10 @@ dimnames.gtable <- function(x, ...) list(x$rownames, x$colnames)
   x$colnames <- value[[2]]
 
   if (anyDuplicated(x$rownames)) {
-    stop("rownames must be distinct",
-      call. = FALSE
-    )
+    cli::cli_abort("rownames must be distinct")
   }
   if (anyDuplicated(x$colnames)) {
-    stop("colnames must be distinct",
-      call. = FALSE
-    )
+    cli::cli_abort("colnames must be distinct")
   }
 
   x
@@ -224,7 +224,7 @@ t.gtable <- function(x) {
 
   if ((length(rows) > 1 && any(diff(rows) < 1)) ||
       (length(cols) > 1 && any(diff(cols) < 1))) {
-    stop("i and j must be increasing sequences of numbers", call. = FALSE)
+    cli::cli_abort("{.arg i} and {.arg j} must be increasing sequences of numbers")
   }
 
   i <- seq_along(x$heights) %in% seq_along(x$heights)[rows]

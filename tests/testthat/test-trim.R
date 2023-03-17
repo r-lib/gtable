@@ -1,5 +1,3 @@
-context("trim")
-
 gt_empty <- gtable(
   widths = unit(rep(1, 4), 'null'),
   heights = unit(rep(1, 4), 'null')

@@ -1,5 +1,3 @@
-context("Subsetting")
-
 base <- gtable(unit(rep(1, 3), "null"), unit(rep(1, 3), "null"))
 rownames(base) <- LETTERS[1:3]
 colnames(base) <- letters[1:3]

@@ -30,7 +30,9 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL,
   heights <- heights %||% rep(unit(1, "null"), length(grobs))
 
   # z is either NULL, or a vector of the same length as grobs
-  if (!(is.null(z) || length(z) == length(grobs))) stop("z must be either NULL or the same length as grobs", call. = FALSE)
+  if (!(is.null(z) || length(z) == length(grobs))) {
+    cli::cli_abort("{.arg z} must be either NULL or the same length as {.arg grobs}")
+  }
   if (is.null(z)) {
     z <- Inf
   }
@@ -77,7 +79,9 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
   widths <- widths %||% rep(unit(1, "null"), length(grobs))
 
   # z is either NULL, or a vector of the same length as grobs
-  if (!(is.null(z) || length(z) == length(grobs))) stop("z must be either NULL or the same length as grobs", call. = FALSE)
+  if (!(is.null(z) || length(z) == length(grobs))) {
+    cli::cli_abort("{.arg z} must be either NULL or the same length as {.arg grobs}")
+  }
   if (is.null(z)) {
     z <- Inf
   }
@@ -129,10 +133,16 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
 #' gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
 gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL,
                           z = NULL, respect = FALSE, clip = "on", vp = NULL) {
-  if (length(widths) != ncol(grobs)) stop("width must be the same as the number of columns in grob", call. = FALSE)
-  if (length(heights) != nrow(grobs)) stop("height must be the same as the number of rows in grob", call. = FALSE)
+  if (length(widths) != ncol(grobs)) {
+    cli::cli_abort("{.arg widths} must be the same as the number of columns in {.arg grobs}")
+  }
+  if (length(heights) != nrow(grobs)) {
+    cli::cli_abort("{.arg heights} must be the same as the number of rows in {.arg grobs}")
+  }
   # z is either NULL or a matrix of the same dimensions as grobs
-  if (!(is.null(z) || identical(dim(grobs), dim(z)))) stop("z must be either NULL or have the same dimensions as grobs", call. = FALSE)
+  if (!(is.null(z) || identical(dim(grobs), dim(z)))) {
+    cli::cli_abort("{.arg z} must be either NULL or have the same dimensions as {.arg grobs}")
+  }
   if (is.null(z)) {
     z <- Inf
   }

@@ -38,8 +38,8 @@
 #' plot(tab3)
 #'
 gtable_add_rows <- function(x, heights, pos = -1) {
-  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
-  if (length(pos) != 1) stop("pos must be a scalar unit", call. = FALSE)
+  check_gtable(x)
+  check_number_whole(pos)
   n <- length(heights)
 
   pos <- neg_to_pos(pos, length(x$heights))
@@ -94,8 +94,8 @@ gtable_add_rows <- function(x, heights, pos = -1) {
 #' plot(tab3)
 #'
 gtable_add_cols <- function(x, widths, pos = -1) {
-  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
-  if (length(pos) != 1) stop("pos must be a scalar unit", call. = FALSE)
+  check_gtable(x)
+  check_number_whole(pos)
   n <- length(widths)
 
   pos <- neg_to_pos(pos, length(x$widths))

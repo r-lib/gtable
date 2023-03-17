@@ -1,7 +1,11 @@
 #' @keywords internal
-#' @import grid
 #' @aliases NULL
-#'
-#' @seealso [gtable()] for an overview of the class and construction
-#'
 "_PACKAGE"
+
+## usethis namespace: start
+#' @import grid
+#' @import rlang
+#' @importFrom glue glue
+#' @importFrom lifecycle deprecated
+## usethis namespace: end
+NULL

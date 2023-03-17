@@ -14,13 +14,13 @@
 #' gtable_show_layout(gt)
 #'
 gtable_show_layout <- function(x, ...) {
-  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
+  check_gtable(x)
 
   grid.show.layout(gtable_layout(x), ...)
 }
 
 gtable_layout <- function(x) {
-  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
+  check_gtable(x)
 
   grid.layout(
     nrow = length(x$heights), heights = x$heights,

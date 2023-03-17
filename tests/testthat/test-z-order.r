@@ -1,5 +1,3 @@
-context("z-order")
-
 # z tests for gtable_add_grob are in test-layout.r, mixed with other tests
 
 

@@ -9,19 +9,25 @@
 Tools to make it easier to work with "tables" of 'grobs'. The 'gtable' package defines a 'gtable' grob class that specifies a grid along with a list of grobs and their placement in the grid. Further the package makes it easy to manipulate and combine 'gtable' objects so that complex compositions can be built up sequentially.
 }
 \seealso{
-\code{\link[=gtable]{gtable()}} for an overview of the class and construction
+Useful links:
+\itemize{
+  \item \url{https://gtable.r-lib.org}
+  \item \url{https://github.com/r-lib/gtable}
+  \item Report bugs at \url{https://github.com/r-lib/gtable/issues}
+}
+
 }
 \author{
-\strong{Maintainer}: Hadley Wickham \email{hadley@rstudio.com}
+\strong{Maintainer}: Hadley Wickham \email{hadley@posit.co}
 
 Authors:
 \itemize{
-  \item Thomas Lin Pedersen \email{thomas.pedersen@rstudio.com}
+  \item Thomas Lin Pedersen \email{thomas.pedersen@posit.co}
 }
 
 Other contributors:
 \itemize{
-  \item RStudio [copyright holder]
+  \item Posit Software, PBC [copyright holder]
 }
 
 }

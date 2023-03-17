@@ -13,36 +13,34 @@ loc_df <- function(t, l, b, r) {
   )
 }
 
-context("gtable")
-
 test_that("Number of rows grows with add_rows", {
   layout <- gtable()
-  expect_that(nrow(layout), equals(0))
+  expect_equal(nrow(layout), 0)
 
   layout <- gtable_add_rows(layout, unit(1, "cm"))
-  expect_that(nrow(layout), equals(1))
+  expect_equal(nrow(layout), 1)
 
   layout <- gtable_add_rows(layout, unit(1, "cm"))
   layout <- gtable_add_rows(layout, unit(1, "cm"))
-  expect_that(nrow(layout), equals(3))
+  expect_equal(nrow(layout), 3)
 
   layout <- gtable_add_rows(layout, unit(1:2, "cm"))
-  expect_that(nrow(layout), equals(5))
+  expect_equal(nrow(layout), 5)
 })
 
 
 test_that("Number of columns grows with add_cols", {
   layout <- gtable()
-  expect_that(ncol(layout), equals(0))
+  expect_equal(ncol(layout), 0)
 
   layout <- gtable_add_cols(layout, unit(1, "cm"))
-  expect_that(ncol(layout), equals(1))
+  expect_equal(ncol(layout), 1)
 
   layout <- gtable_add_cols(layout, unit(c(1, 1), "cm"))
-  expect_that(ncol(layout), equals(3))
+  expect_equal(ncol(layout), 3)
 
   layout <- gtable_add_cols(layout, unit(1:2, "cm"))
-  expect_that(ncol(layout), equals(5))
+  expect_equal(ncol(layout), 5)
 })
 
 
@@ -52,11 +50,11 @@ test_that("Setting and getting works", {
   layout <- gtable_add_grob(layout, grob1, 1, 1)
   loc <- gtable_find(layout, grob1)
 
-  expect_that(nrow(loc), equals(1))
-  expect_that(loc$t, equals(1))
-  expect_that(loc$r, equals(1))
-  expect_that(loc$b, equals(1))
-  expect_that(loc$l, equals(1))
+  expect_equal(nrow(loc), 1)
+  expect_equal(loc$t, 1)
+  expect_equal(loc$r, 1)
+  expect_equal(loc$b, 1)
+  expect_equal(loc$l, 1)
 })
 
 test_that("Spanning grobs continue to span after row insertion", {
@@ -66,21 +64,21 @@ test_that("Spanning grobs continue to span after row insertion", {
   within <- gtable_add_rows(gtable_add_cols(layout, cm, pos = 2), cm, pos = 2)
   loc <- gtable_find(within, grob1)
 
-  expect_that(loc, equals(loc_df(t = 1, l = 1, b = 4, r = 4)))
+  expect_equal(loc, loc_df(t = 1, l = 1, b = 4, r = 4))
 
   top_left <- layout
   top_left <- gtable_add_cols(top_left, cm, pos = 0)
   top_left <- gtable_add_rows(top_left, cm, pos = 0)
 
   loc <- gtable_find(top_left, grob1)
-  expect_that(loc, equals(loc_df(t = 2, l = 2, b = 4, r = 4)))
+  expect_equal(loc, loc_df(t = 2, l = 2, b = 4, r = 4))
 
   bottom_right <- layout
   bottom_right <- gtable_add_cols(bottom_right, cm)
   bottom_right <- gtable_add_rows(bottom_right, cm)
 
   loc <- gtable_find(bottom_right, grob1)
-  expect_that(loc, equals(loc_df(t = 1, l = 1, b = 3, r = 3)))
+  expect_equal(loc, loc_df(t = 1, l = 1, b = 3, r = 3))
 })
 
 
@@ -90,10 +88,10 @@ test_that("n + 1 new rows/cols after spacing", {
   layout <- gtable_add_cols(layout, rep(cm, 3))
 
   layout <- gtable_add_col_space(layout, cm)
-  expect_that(ncol(layout), equals(5))
+  expect_equal(ncol(layout), 5)
 
   layout <- gtable_add_row_space(layout, cm)
-  expect_that(ncol(layout), equals(5))
+  expect_equal(ncol(layout), 5)
 })
 
 test_that("Spacing adds rows/cols in correct place", {
@@ -104,11 +102,11 @@ test_that("Spacing adds rows/cols in correct place", {
   layout <- gtable_add_col_space(layout, null)
   layout <- gtable_add_row_space(layout, null)
 
-  expect_that(as.vector(layout$heights), equals(rep(1, 3)))
-  expect_that(sub('1', '', as.character(layout$heights)), equals(c("cm", "null", "cm")))
+  expect_equal(as.vector(layout$heights), rep(1, 3))
+  expect_equal(sub('1', '', as.character(layout$heights)), c("cm", "null", "cm"))
 
-  expect_that(as.vector(layout$widths), equals(rep(1, 3)))
-  expect_that(sub('1', '', as.character(layout$widths)), equals(c("cm", "null", "cm")))
+  expect_equal(as.vector(layout$widths), rep(1, 3))
+  expect_equal(sub('1', '', as.character(layout$widths)), c("cm", "null", "cm"))
 })
 
 test_that("Negative positions place from end", {
@@ -117,15 +115,15 @@ test_that("Negative positions place from end", {
   layout <- gtable_add_cols(layout, rep(cm, 3))
 
   col_span <- gtable_add_grob(layout, grob1, t = 1, l = 1, r = -1)
-  expect_that(
+  expect_equal(
     gtable_find(col_span, grob1),
-    equals(loc_df(t = 1, l = 1, b = 1, r = 3))
+    loc_df(t = 1, l = 1, b = 1, r = 3)
   )
 
   row_span <- gtable_add_grob(layout, grob1, t = 1, l = 1, b = -1)
-  expect_that(
+  expect_equal(
     gtable_find(row_span, grob1),
-    equals(loc_df(t = 1, l = 1, b = 3, r = 1))
+    loc_df(t = 1, l = 1, b = 3, r = 1)
   )
 })
 

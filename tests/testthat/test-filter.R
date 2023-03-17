@@ -1,5 +1,3 @@
-context("filter")
-
 gt <- gtable(widths = unit(1, "null"), heights = unit(rep(1, 4), "null"))
 gt <- gtable_add_grob(
   gt,

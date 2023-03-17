@@ -62,7 +62,9 @@ rbind.gtable <- function(..., size = "max", z = NULL) {
 }
 
 rbind_gtable <- function(x, y, size = "max") {
-  if (length(x$widths) != length(y$widths)) stop("x and y must have the same number of columns", call. = FALSE)
+  if (length(x$widths) != length(y$widths)) {
+    cli::cli_abort("{.arg x} and {.arg y} must have the same number of columns")
+  }
   x_row <- length(x$heights)
   y_row <- length(y$heights)
   if (x_row == 0) return(y)
@@ -109,7 +111,9 @@ cbind.gtable <- function(..., size = "max", z = NULL) {
 }
 
 cbind_gtable <- function(x, y, size = "max") {
-  if (length(x$heights) != length(y$heights)) stop("x and y must have the same number of rows", call. = FALSE)
+  if (length(x$heights) != length(y$heights)) {
+    cli::cli_abort("{.arg x} and {.arg y} must have the same number of rows")
+  }
   x_col <- length(x$widths)
   y_col <- length(y$widths)
   if (x_col == 0) return(y)
