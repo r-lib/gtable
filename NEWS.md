@@ -1,4 +1,4 @@
-# gtable (development version)
+# gtable 0.3.2
 
 * General upkeep
 
