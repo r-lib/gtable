@@ -35,11 +35,13 @@ NULL
 #' @export
 #' @rdname gtable_add_space
 gtable_add_col_space <- function(x, width) {
-  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
+  check_gtable(x)
   n <- length(x$widths) - 1
   if (n == 0) return(x)
 
-  if (!(length(width) == 1 || length(width) == n)) stop("width must be of length 1 or ncol - 1", call. = FALSE)
+  if (!(length(width) == 1 || length(width) == n)) {
+    cli::cli_abort("{.arg width} must be of length 1 or ncol - 1")
+  }
   width <- rep(width, length.out = n)
 
   for (i in rev(seq_len(n))) {
@@ -53,11 +55,13 @@ gtable_add_col_space <- function(x, width) {
 #' @export
 #' @rdname gtable_add_space
 gtable_add_row_space <- function(x, height) {
-  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
+  check_gtable(x)
   n <- length(x$heights) - 1
   if (n == 0) return(x)
 
-  if (!(length(height) == 1 || length(height) == n)) stop("height must be of length 1 or nrow - 1", call. = FALSE)
+  if (!(length(height) == 1 || length(height) == n)) {
+    cli::cli_abort("{.arg height} must be of length 1 or nrow - 1")
+  }
   height <- rep(height, length.out = n)
 
   for (i in rev(seq_len(n))) {

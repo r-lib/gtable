@@ -5,12 +5,12 @@ Authors@R:
     c(person(given = "Hadley",
              family = "Wickham",
              role = c("aut", "cre"),
-             email = "hadley@rstudio.com"),
+             email = "hadley@posit.co"),
       person(given = "Thomas Lin",
              family = "Pedersen",
              role = "aut",
-             email = "thomas.pedersen@rstudio.com"),
-      person(given = "RStudio",
+             email = "thomas.pedersen@posit.co"),
+      person(given = "Posit Software, PBC",
              role = "cph"))
 Description: Tools to make it easier to work with "tables" of
     'grobs'. The 'gtable' package defines a 'gtable' grob class that specifies a
@@ -19,35 +19,26 @@ Description: Tools to make it easier to work with "tables" of
     complex compositions can be built up sequentially.
 License: MIT + file LICENSE
 Depends:
-    R (>= 3.0)
+    R (>= 3.5)
 Imports:
-    grid
+    cli,
+    glue,
+    grid,
+    lifecycle,
+    rlang
 Suggests:
     covr,
-    testthat,
-    knitr,
-    rmarkdown,
     ggplot2,
-    profvis
+    knitr,
+    profvis,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
-Collate:
-    'new-data-frame.r'
-    'add-grob.r'
-    'add-rows-cols.r'
-    'add-space.r'
-    'grid.r'
-    'gtable-layouts.r'
-    'gtable-package.R'
-    'gtable.r'
-    'rbind-cbind.r'
-    'utils.r'
-    'trim.r'
-    'filter.r'
-    'align.r'
-    'padding.r'
-    'z.r'
+RoxygenNote: 7.2.3
 URL: https://gtable.r-lib.org, https://github.com/r-lib/gtable
 BugReports: https://github.com/r-lib/gtable/issues
-VignetteBuilder: knitr
+Config/testthat/edition: 3
+Config/Needs/website: tidyverse/tidytemplate

@@ -12,6 +12,10 @@ new_data_frame <- function(x, n = NULL) {
 }
 
 validate_data_frame <- function(x) {
-  if (length(unique(lengths(x))) != 1) stop('All elements in a data.frame must be of equal length', call. = FALSE)
-  if (is.null(names(x))) stop('Columns must be named', call. = FALSE)
+  if (length(unique(lengths(x))) != 1) {
+    cli::cli_abort('All elements in a data.frame must be of equal length')
+  }
+  if (is.null(names(x))) {
+    cli::cli_abort('columns must be named')
+  }
 }

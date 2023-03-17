@@ -23,7 +23,7 @@ gtable_join <- function(x, y, along = 1L, join = "left") {
   switch(along,
     cbind(aligned$x, aligned$y),
     rbind(aligned$x, aligned$y),
-    stop("along > 2 no implemented")
+    cli::cli_abort("{.arg along} > 2 no implemented")
   )
 }
 
@@ -41,13 +41,13 @@ gtable_join <- function(x, y, along = 1L, join = "left") {
 #  @return a list with elements \code{x} and \code{y} corresponding to the
 #    input gtables with extra rows/columns so that they now align.
 gtable_align <- function(x, y, along = 1L, join = "left") {
-  join <- match.arg(join, c("left", "right", "inner", "outer"))
+  join <- arg_match0(join, c("left", "right", "inner", "outer"))
 
   names_x <- dimnames(x)[[along]]
   names_y <- dimnames(y)[[along]]
 
   if (is.null(names_x) || is.null(names_y)) {
-    stop("Both gtables must have names along dimension to be aligned")
+    cli::cli_abort("Both gtables must have names along dimension to be aligned")
   }
 
   idx <- switch(join,
@@ -73,12 +73,14 @@ gtable_align <- function(x, y, along = 1L, join = "left") {
 #  rownames(gtable:::gtable_reindex(gt, c("a")))
 #  rownames(gtable:::gtable_reindex(gt, c("a", "d", "e")))
 gtable_reindex <- function(x, index, along = 1) {
-  if (!is.character(index)) stop("index must be a character", call. = FALSE)
+  check_character(index)
   if (length(dim(x)) > 2L || along > 2L) {
-    stop("reindex only supports 2d objects")
+    cli::cli_abort("only 2d objects can be reindexed")
   }
   old_index <- switch(along, rownames(x), colnames(x))
-  if (is.null(old_index)) stop("index is NULL in the given dimension", call. = FALSE)
+  if (is.null(old_index)) {
+    cli::cli_abort("{.arg index} is NULL in the given dimension")
+  }
 
   if (identical(index, old_index)) {
     return(x)

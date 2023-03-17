@@ -43,9 +43,11 @@
 #' plot(gt)
 #'
 gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", name = x$name) {
-  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
+  check_gtable(x)
   if (is.grob(grobs)) grobs <- list(grobs)
-  if (!is.list(grobs)) stop("grobs must either be a single grob or a list of grobs", call. = FALSE)
+  if (!is.list(grobs)) {
+    stop_input_type(grobs, "a single grob or a list of grobs")
+  }
   n_grobs <- length(grobs)
 
   if (is.logical(clip)) {
@@ -59,7 +61,7 @@ gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", 
     list(t, r, b, l, z, clip, name), len_same_or_1,
     logical(1), n_grobs
   ))) {
-    stop("Not all inputs have either length 1 or same length same as 'grobs'")
+    cli::cli_abort("Not all inputs have either length 1 or same length same as {.arg grobs}")
   }
 
   # If z is just one value, replicate to same length as grobs

@@ -33,7 +33,7 @@ z_normalise <- function(x, i = 1) {
 #' @noRd
 z_arrange_gtables <- function(gtables, z) {
   if (length(gtables) != length(z)) {
-    stop("'gtables' and 'z' must be the same length")
+    cli::cli_abort("{.arg gtables} and {.arg z} must be the same length")
   }
 
   # Keep track of largest z value encountered so far

@@ -29,7 +29,7 @@
 #' plot(row)
 #' plot(gtable_trim(row))
 gtable_trim <- function(x) {
-  if (!is.gtable(x)) stop("x must be a gtable", call. = FALSE)
+  check_gtable(x)
   if (length(x) == 0) {
     return(gtable(respect = x$respect, name = x$name, vp = x$vp))
   }
