@@ -1,6 +1,6 @@
 Package: gtable
 Title: Arrange 'Grobs' in Tables
-Version: 0.3.3
+Version: 0.3.3.9000
 Authors@R: 
     c(person(given = "Hadley",
              family = "Wickham",
