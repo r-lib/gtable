@@ -1,5 +1,5 @@
 #' @keywords internal
-#' @aliases NULL
+#' @aliases gtable-package
 "_PACKAGE"
 
 ## usethis namespace: start

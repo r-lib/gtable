@@ -2,6 +2,8 @@
 % Please edit documentation in R/gtable-package.R
 \docType{package}
 \name{gtable-package}
+\alias{gtable-package}
+\alias{_PACKAGE}
 \title{gtable: Arrange 'Grobs' in Tables}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
