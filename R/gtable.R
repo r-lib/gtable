@@ -117,7 +117,7 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
       name = name,
       x = vp$x, y = vp$y,
       width = vp$width, height = vp$height,
-      just = vp$just, gp = vp$gp, xscale = vp$xscale,
+      just = vp$justification, gp = vp$gp, xscale = vp$xscale,
       yscale = vp$yscale, angle = vp$angle, clip = vp$clip
     )
   }
