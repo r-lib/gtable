@@ -3,7 +3,6 @@
 \docType{package}
 \name{gtable-package}
 \alias{gtable-package}
-\alias{_PACKAGE}
 \title{gtable: Arrange 'Grobs' in Tables}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
@@ -29,7 +28,7 @@ Authors:
 
 Other contributors:
 \itemize{
-  \item Posit Software, PBC [copyright holder]
+  \item Posit Software, PBC [copyright holder, funder]
 }
 
 }

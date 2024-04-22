@@ -43,9 +43,9 @@ gtable_show_layout(gt)
 }
 \seealso{
 Other gtable construction: 
+\code{\link{gtable}()},
 \code{\link{gtable_col}()},
 \code{\link{gtable_matrix}()},
-\code{\link{gtable_spacer}},
-\code{\link{gtable}()}
+\code{\link{gtable_spacer}}
 }
 \concept{gtable construction}

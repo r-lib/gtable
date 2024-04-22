@@ -66,9 +66,9 @@ gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
 }
 \seealso{
 Other gtable construction: 
+\code{\link{gtable}()},
 \code{\link{gtable_col}()},
 \code{\link{gtable_row}()},
-\code{\link{gtable_spacer}},
-\code{\link{gtable}()}
+\code{\link{gtable_spacer}}
 }
 \concept{gtable construction}

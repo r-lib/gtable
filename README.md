@@ -53,26 +53,30 @@ p <- ggplot(mtcars, aes(mpg, disp)) + geom_point()
 p_table <- ggplotGrob(p)
 
 p_table
-#> TableGrob (12 x 9) "layout": 18 grobs
-#>     z         cells       name                                         grob
-#> 1   0 ( 1-12, 1- 9) background               rect[plot.background..rect.39]
-#> 2   5 ( 6- 6, 4- 4)     spacer                               zeroGrob[NULL]
-#> 3   7 ( 7- 7, 4- 4)     axis-l           absoluteGrob[GRID.absoluteGrob.26]
-#> 4   3 ( 8- 8, 4- 4)     spacer                               zeroGrob[NULL]
-#> 5   6 ( 6- 6, 5- 5)     axis-t                               zeroGrob[NULL]
-#> 6   1 ( 7- 7, 5- 5)      panel                      gTree[panel-1.gTree.17]
-#> 7   9 ( 8- 8, 5- 5)     axis-b           absoluteGrob[GRID.absoluteGrob.22]
-#> 8   4 ( 6- 6, 6- 6)     spacer                               zeroGrob[NULL]
-#> 9   8 ( 7- 7, 6- 6)     axis-r                               zeroGrob[NULL]
-#> 10  2 ( 8- 8, 6- 6)     spacer                               zeroGrob[NULL]
-#> 11 10 ( 5- 5, 5- 5)     xlab-t                               zeroGrob[NULL]
-#> 12 11 ( 9- 9, 5- 5)     xlab-b titleGrob[axis.title.x.bottom..titleGrob.30]
-#> 13 12 ( 7- 7, 3- 3)     ylab-l   titleGrob[axis.title.y.left..titleGrob.33]
-#> 14 13 ( 7- 7, 7- 7)     ylab-r                               zeroGrob[NULL]
-#> 15 14 ( 4- 4, 5- 5)   subtitle         zeroGrob[plot.subtitle..zeroGrob.35]
-#> 16 15 ( 3- 3, 5- 5)      title            zeroGrob[plot.title..zeroGrob.34]
-#> 17 16 (10-10, 5- 5)    caption          zeroGrob[plot.caption..zeroGrob.37]
-#> 18 17 ( 2- 2, 2- 2)        tag              zeroGrob[plot.tag..zeroGrob.36]
+#> TableGrob (16 x 13) "layout": 22 grobs
+#>     z         cells             name                                         grob
+#> 1   0 ( 1-16, 1-13)       background               rect[plot.background..rect.38]
+#> 2   5 ( 8- 8, 6- 6)           spacer                               zeroGrob[NULL]
+#> 3   7 ( 9- 9, 6- 6)           axis-l           absoluteGrob[GRID.absoluteGrob.26]
+#> 4   3 (10-10, 6- 6)           spacer                               zeroGrob[NULL]
+#> 5   6 ( 8- 8, 7- 7)           axis-t                               zeroGrob[NULL]
+#> 6   1 ( 9- 9, 7- 7)            panel                      gTree[panel-1.gTree.17]
+#> 7   9 (10-10, 7- 7)           axis-b           absoluteGrob[GRID.absoluteGrob.22]
+#> 8   4 ( 8- 8, 8- 8)           spacer                               zeroGrob[NULL]
+#> 9   8 ( 9- 9, 8- 8)           axis-r                               zeroGrob[NULL]
+#> 10  2 (10-10, 8- 8)           spacer                               zeroGrob[NULL]
+#> 11 10 ( 7- 7, 7- 7)           xlab-t                               zeroGrob[NULL]
+#> 12 11 (11-11, 7- 7)           xlab-b titleGrob[axis.title.x.bottom..titleGrob.30]
+#> 13 12 ( 9- 9, 5- 5)           ylab-l   titleGrob[axis.title.y.left..titleGrob.33]
+#> 14 13 ( 9- 9, 9- 9)           ylab-r                               zeroGrob[NULL]
+#> 15 14 ( 9- 9,11-11)  guide-box-right                               zeroGrob[NULL]
+#> 16 15 ( 9- 9, 3- 3)   guide-box-left                               zeroGrob[NULL]
+#> 17 16 (13-13, 7- 7) guide-box-bottom                               zeroGrob[NULL]
+#> 18 17 ( 5- 5, 7- 7)    guide-box-top                               zeroGrob[NULL]
+#> 19 18 ( 9- 9, 7- 7) guide-box-inside                               zeroGrob[NULL]
+#> 20 19 ( 4- 4, 7- 7)         subtitle         zeroGrob[plot.subtitle..zeroGrob.35]
+#> 21 20 ( 3- 3, 7- 7)            title            zeroGrob[plot.title..zeroGrob.34]
+#> 22 21 (14-14, 7- 7)          caption          zeroGrob[plot.caption..zeroGrob.36]
 ```
 
 A gtable object is a collection of graphic elements along with their

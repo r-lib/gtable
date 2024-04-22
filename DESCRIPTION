@@ -1,23 +1,19 @@
 Package: gtable
 Title: Arrange 'Grobs' in Tables
 Version: 0.3.4.9000
-Authors@R: 
-    c(person(given = "Hadley",
-             family = "Wickham",
-             role = "aut",
-             email = "hadley@posit.co"),
-      person(given = "Thomas Lin",
-             family = "Pedersen",
-             role = c("aut", "cre"),
-             email = "thomas.pedersen@posit.co"),
-      person(given = "Posit Software, PBC",
-             role = "cph"))
-Description: Tools to make it easier to work with "tables" of
-    'grobs'. The 'gtable' package defines a 'gtable' grob class that specifies a
-    grid along with a list of grobs and their placement in the grid. Further the
-    package makes it easy to manipulate and combine 'gtable' objects so that 
-    complex compositions can be built up sequentially.
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@posit.co", role = "aut"),
+    person("Thomas Lin", "Pedersen", , "thomas.pedersen@posit.co", role = c("aut", "cre")),
+    person("Posit Software, PBC", role = c("cph", "fnd"))
+  )
+Description: Tools to make it easier to work with "tables" of 'grobs'. The
+    'gtable' package defines a 'gtable' grob class that specifies a grid
+    along with a list of grobs and their placement in the grid. Further
+    the package makes it easy to manipulate and combine 'gtable' objects
+    so that complex compositions can be built up sequentially.
 License: MIT + file LICENSE
+URL: https://gtable.r-lib.org, https://github.com/r-lib/gtable
+BugReports: https://github.com/r-lib/gtable/issues
 Depends:
     R (>= 3.5)
 Imports:
@@ -35,10 +31,8 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
+Config/Needs/website: tidyverse/tidytemplate
+Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
-URL: https://gtable.r-lib.org, https://github.com/r-lib/gtable
-BugReports: https://github.com/r-lib/gtable/issues
-Config/testthat/edition: 3
-Config/Needs/website: tidyverse/tidytemplate
+RoxygenNote: 7.3.1

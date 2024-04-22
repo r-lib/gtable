@@ -24,9 +24,9 @@ respectively.
 }
 \seealso{
 Other gtable construction: 
+\code{\link{gtable}()},
 \code{\link{gtable_col}()},
 \code{\link{gtable_matrix}()},
-\code{\link{gtable_row}()},
-\code{\link{gtable}()}
+\code{\link{gtable_row}()}
 }
 \concept{gtable construction}
