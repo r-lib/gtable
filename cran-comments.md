@@ -1,1 +1,1 @@
-Small fix to package doc as requested by CRAN
+Small patch to fix partial matching in indexing
