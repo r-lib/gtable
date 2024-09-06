@@ -19,7 +19,6 @@ Depends:
 Imports:
     cli,
     grid,
-    lifecycle,
     rlang (>= 1.1.0)
 Suggests:
     covr,
