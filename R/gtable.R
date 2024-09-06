@@ -295,6 +295,8 @@ as.gtable.gtable <- function(x, ...) x
 
 #' @export
 #' @describeIn as.gtable Creates a 1-cell gtable containing the grob.
+#' @param widths,heights Scalar unit setting the size of the table. Defaults
+#'   to [grid::grobWidth()] and [grid::grobHeight()] of `x` respectively.
 as.gtable.grob <- function(x, widths = NULL, heights = NULL, ...) {
   if (length(widths) > 1) {
     widths <- widths[1]

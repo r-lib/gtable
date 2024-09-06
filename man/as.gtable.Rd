@@ -13,6 +13,9 @@ as.gtable(x, ...)
 \item{x}{An object to convert.}
 
 \item{...}{Arguments forwarded to methods.}
+
+\item{widths, heights}{Scalar unit setting the size of the table. Defaults
+to \code{\link[grid:grobWidth]{grid::grobWidth()}} and \code{\link[grid:grobWidth]{grid::grobHeight()}} of \code{x} respectively.}
 }
 \value{
 A gtable object
