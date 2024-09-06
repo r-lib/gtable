@@ -18,7 +18,6 @@ Depends:
     R (>= 3.5)
 Imports:
     cli,
-    glue,
     grid,
     lifecycle,
     rlang (>= 1.1.0)
