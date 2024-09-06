@@ -19,6 +19,7 @@ reference:
   - gtable_col
   - gtable_row
   - gtable_spacer
+  - as.gtable
 
 - title: Modification
   contents:
