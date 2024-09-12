@@ -272,3 +272,43 @@ gtable_height <- function(x) sum(x$heights)
 #' @param x A gtable object
 #' @export
 gtable_width <- function(x) sum(x$widths)
+
+#' Convert to a gtable
+#'
+#' @param x An object to convert.
+#' @param ... Arguments forwarded to methods.
+#'
+#' @return A gtable object
+#' @export
+as.gtable <- function(x, ...) {
+  check_dots_used()
+  UseMethod("as.gtable")
+}
+
+#' @export
+as.gtable.default <- function(x, ...) {
+  cli::cli_abort("Can't convert {.obj_type_friendly {x}} to a {.cls gtable}.")
+}
+
+#' @export
+as.gtable.gtable <- function(x, ...) x
+
+#' @export
+#' @describeIn as.gtable Creates a 1-cell gtable containing the grob.
+#' @param widths,heights Scalar unit setting the size of the table. Defaults
+#'   to [grid::grobWidth()] and [grid::grobHeight()] of `x` respectively.
+as.gtable.grob <- function(x, widths = NULL, heights = NULL, ...) {
+  if (length(widths) > 1) {
+    widths <- widths[1]
+    cli::cli_warn("{.arg widths} truncated to length 1.")
+  }
+  if (length(heights) > 1) {
+    heights <- heights[1]
+    cli::cli_warn("{.arg heights} truncated to length 1.")
+  }
+  table <- gtable(
+    widths  = widths  %||% grobWidth(x),
+    heights = heights %||% grobHeight(x)
+  )
+  gtable_add_grob(table, x, t = 1L, l = 1L, b = 1L, r = 1L, ...)
+}
