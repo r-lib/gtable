@@ -1,4 +1,4 @@
-# gtable (development version)
+# gtable 0.3.6
 
 * Added `as.gtable()` S3 method (#97).
 * Add `clip` argument to `gtable_col()` and `gtable_row()` (#56)
