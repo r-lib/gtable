@@ -44,8 +44,10 @@
 #'
 gtable_add_grob <- function(x, grobs, t, l, b = t, r = l, z = Inf, clip = "on", name = x$name) {
   check_gtable(x)
-  if (is.grob(grobs)) grobs <- list(grobs)
-  if (!is.list(grobs)) {
+  if (is.grob(grobs)) {
+    grobs <- list(grobs)
+  }
+  if (!is_list(grobs) || any(!vapply(grobs, is.grob, logical(1)))) {
     stop_input_type(grobs, "a single grob or a list of grobs")
   }
   n_grobs <- length(grobs)
