@@ -4,7 +4,9 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r setup, include = FALSE}
+```{r}
+#| label: setup
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -20,7 +22,7 @@ options(width = 90)
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/r-lib/gtable/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/gtable/actions/workflows/R-CMD-check.yaml)
 [![CRAN status](https://www.r-pkg.org/badges/version/gtable)](https://CRAN.R-project.org/package=gtable)
-[![Codecov test coverage](https://codecov.io/gh/r-lib/gtable/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/gtable?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/r-lib/gtable/graph/badge.svg)](https://app.codecov.io/gh/r-lib/gtable)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
@@ -44,7 +46,8 @@ pak::pak("r-lib/gtable")
 ## Example
 ggplot2 uses gtable for laying out plots, and it is possible to access the gtable representation of a plot for inspection and modification:
 
-```{r, message=FALSE}
+```{r}
+#| message: false
 library(gtable)
 library(ggplot2)
 
@@ -60,6 +63,10 @@ A gtable object is a collection of graphic elements along with their placement i
 A gtable object is itself a grob, and can thus be drawn using standard functions from the grid package:
 
 ```{r}
+#| fig-alt: >
+#|   A scatterplot of miles per gallon against displacement based on the mtcars
+#|   dataset. The plot is rendered by first converting the ggplot object to a
+#|   gtable and then plotting the gtable
 library(grid)
 grid.draw(p_table) # alternative use plot(p_table)
 ```
@@ -67,6 +74,9 @@ grid.draw(p_table) # alternative use plot(p_table)
 While most people will interact with gtable through ggplot2, it is possible to build a plot from the ground up.
 
 ```{r}
+#| fig-alt: >
+#|   A scatterplot of random numbers. The scatterplot is created by combining
+#|   separate grobs created with grid using gtable.
 # Construct some graphical elements using grid
 points <- pointsGrob(
   x = runif(10),

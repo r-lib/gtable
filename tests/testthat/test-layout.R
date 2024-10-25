@@ -150,7 +150,7 @@ test_that("Adding multiple grobs", {
 
   # Error if inputs are not length 1 or same length as grobs
   layout <- gtable_add_cols(gtable_add_rows(gtable(), rep(cm, 3)), rep(cm, 3))
-  expect_error(gtable_add_grob(layout, grobs, c(1:3), 1, 3, 3))
-  expect_error(gtable_add_grob(layout, grobs, tval, 1:2, 3, 3))
-  expect_error(gtable_add_grob(layout, grobs, tval, 1, 3, 3, z = 1:4))
+  expect_snapshot(gtable_add_grob(layout, grobs, c(1:3), 1, 3, 3), error = TRUE)
+  expect_snapshot(gtable_add_grob(layout, grobs, tval, 1:2, 3, 3), error = TRUE)
+  expect_snapshot(gtable_add_grob(layout, grobs, tval, 1, 3, 3, z = 1:4), error = TRUE)
 })

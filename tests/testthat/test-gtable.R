@@ -11,14 +11,9 @@ test_that("as.gtable sensibly converts objects", {
   expect_equal(as.numeric(convertUnit(gtable_width(test), "cm")), 2)
   expect_equal(as.numeric(convertUnit(gtable_height(test), "cm")), 2)
 
-  expect_warning(
-    as.gtable(g2, widths = unit(c(1, 1), "cm")),
-    "truncated to length 1"
-  )
-  expect_warning(
-    as.gtable(g2, heights = unit(c(1, 1), "cm")),
-    "truncated to length 1"
-  )
-  expect_snapshot_error(as.gtable(1:5))
-  expect_snapshot_error(as.gtable(g1, foo = "bar"))
+  expect_snapshot(as.gtable(g2, widths = unit(c(1, 1), "cm")))
+  expect_snapshot(as.gtable(g2, heights = unit(c(1, 1), "cm")))
+
+  expect_snapshot(as.gtable(1:5), error = TRUE)
+  expect_snapshot(as.gtable(g1, foo = "bar"), error = TRUE)
 })
