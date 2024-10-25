@@ -2,6 +2,8 @@
 
 * Added `as.gtable()` S3 method (#97).
 * Add `clip` argument to `gtable_col()` and `gtable_row()` (#56)
+* Indexing a gtable with `NA` will now insert a zero-dimension row/column at the
+  position of the `NA`-index (#13)
 
 # gtable 0.3.5
 

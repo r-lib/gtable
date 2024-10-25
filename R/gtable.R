@@ -225,27 +225,30 @@ t.gtable <- function(x) {
   rows <- stats::setNames(seq_along(x$heights), rownames(x))[i]
   cols <- stats::setNames(seq_along(x$widths), colnames(x))[j]
 
-  if ((length(rows) > 1 && any(diff(rows) < 1)) ||
-      (length(cols) > 1 && any(diff(cols) < 1))) {
+  rows_cur <- stats::na.omit(rows)
+  cols_cur <- stats::na.omit(cols)
+
+  if ((length(rows) > 1 && any(diff(rows_cur) < 1)) ||
+      (length(cols) > 1 && any(diff(cols_cur) < 1))) {
     cli::cli_abort("{.arg i} and {.arg j} must be increasing sequences of numbers")
   }
 
-  i <- seq_along(x$heights) %in% seq_along(x$heights)[rows]
-  j <- seq_along(x$widths) %in% seq_along(x$widths)[cols]
+  i <- seq_along(x$heights) %in% seq_along(x$heights)[rows_cur]
+  j <- seq_along(x$widths) %in% seq_along(x$widths)[cols_cur]
 
-  x$heights <- x$heights[rows]
-  x$rownames <- x$rownames[rows]
-  x$widths <- x$widths[cols]
-  x$colnames <- x$colnames[cols]
+  x$heights <- x$heights[rows_cur]
+  x$rownames <- x$rownames[rows_cur]
+  x$widths <- x$widths[cols_cur]
+  x$colnames <- x$colnames[cols_cur]
 
   layout <- unclass(x$layout)
 
-  keep <- layout$t %in% rows & layout$b %in% rows &
-          layout$l %in% cols & layout$r %in% cols
+  keep <- layout$t %in% rows_cur & layout$b %in% rows_cur &
+          layout$l %in% cols_cur & layout$r %in% cols_cur
   x$grobs <- x$grobs[keep]
 
-  adj_rows <- cumsum(!i)
-  adj_cols <- cumsum(!j)
+  adj_rows <- cumsum(!stats::na.omit(i))
+  adj_cols <- cumsum(!stats::na.omit(j))
 
   layout$r <- layout$r - adj_cols[layout$r]
   layout$l <- layout$l - adj_cols[layout$l]
@@ -254,6 +257,17 @@ t.gtable <- function(x) {
 
   # Drop the unused rows from layout
   x$layout <- new_data_frame(layout)[keep, ]
+
+  if (anyNA(rows)) {
+    for (i in which(is.na(rows))) {
+      x <- gtable_add_rows(x, unit(0, "mm"), i - 1)
+    }
+  }
+  if (anyNA(cols)) {
+    for (i in which(is.na(cols))) {
+      x <- gtable_add_cols(x, unit(0, "mm"), i - 1)
+    }
+  }
   x
 }
 
