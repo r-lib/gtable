@@ -182,11 +182,15 @@ dimnames.gtable <- function(x, ...) list(x$rownames, x$colnames)
 }
 
 #' @export
-plot.gtable <- function(x, ...) {
+plot.gtable <- function(x, bg = NULL, grill = NULL, ...) {
   grid.newpage()
-  grid.rect(gp = gpar(fill = "grey95"))
-  grid <- seq(0, 1, length.out = 20)
-  grid.grill(h = grid, v = grid, gp = gpar(col = "white"))
+  if (!is.null(bg)) {
+    grid.rect(gp = gpar(fill = bg))
+  }
+  if (!is.null(grill)) {
+    grid <- seq(0, 1, length.out = 20)
+    grid.grill(h = grid, v = grid, gp = gpar(col = grill))
+  }
   grid.draw(x)
 }
 
