@@ -4,7 +4,15 @@
 \alias{gtable_col}
 \title{Create a single column gtable}
 \usage{
-gtable_col(name, grobs, width = NULL, heights = NULL, z = NULL, vp = NULL)
+gtable_col(
+  name,
+  grobs,
+  width = NULL,
+  heights = NULL,
+  z = NULL,
+  vp = NULL,
+  clip = "inherit"
+)
 }
 \arguments{
 \item{name}{a string giving the name of the table. This is used to name
@@ -22,6 +30,10 @@ below all existing grobs. By default positions are on the integers,
 giving plenty of room to insert new grobs between existing grobs.}
 
 \item{vp}{a grid viewport object (or NULL).}
+
+\item{clip}{should drawing be clipped to the specified cells
+(\code{"on"}), the entire table (\code{"inherit"}), or not at all
+(\code{"off"})}
 }
 \value{
 A gtable with one column and as many rows as elements in the grobs

@@ -1,8 +1,12 @@
 # gtable (development version)
 
 * Added `as.gtable()` S3 method (#97).
+* Add `clip` argument to `gtable_col()` and `gtable_row()` (#56)
 
 # gtable 0.3.5
+
+* Fixed partial matching issue when constructing viewport in `gtable()` (#94)
+* General upkeep
 
 # gtable 0.3.4
 
@@ -24,7 +28,7 @@
 
 # gtable 0.3.0
 
-* Made a range of internal changes to increase performance of gtable 
+* Made a range of internal changes to increase performance of gtable
   construction, these include:
   - Use more performant `data.frame` constructor .
   - Treat layout data.frame as list when indexing and modifying it.
@@ -39,7 +43,7 @@
 
 * It is now an error to index into a gtable with non-increasing indices.
 
-* Dimnames are now inherited from the grobs data in `gtable_col()`, 
+* Dimnames are now inherited from the grobs data in `gtable_col()`,
   `gtable_row()`, and `gtable_matrix()`
 
 * `gtable_trim` now works with empty gtables

@@ -25,7 +25,7 @@
 #' plot(gt)
 #' gtable_show_layout(gt)
 gtable_col <- function(name, grobs, width = NULL, heights = NULL,
-                       z = NULL, vp = NULL) {
+                       z = NULL, vp = NULL, clip = "inherit") {
   width <- width %||% unit(max(unlist(lapply(grobs, width_cm))), "cm")
   heights <- heights %||% rep(unit(1, "null"), length(grobs))
 
@@ -41,7 +41,7 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL,
                   rownames = names(grobs))
   table <- gtable_add_grob(table, grobs,
     t = seq_along(grobs), l = 1,
-    z = z, clip = "off"
+    z = z, clip = clip
   )
 
   table
@@ -74,7 +74,7 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL,
 #' plot(gt)
 #' gtable_show_layout(gt)
 gtable_row <- function(name, grobs, height = NULL, widths = NULL,
-                       z = NULL, vp = NULL) {
+                       z = NULL, vp = NULL, clip = "inherit") {
   height <- height %||% unit(max(unlist(lapply(grobs, height_cm))), "cm")
   widths <- widths %||% rep(unit(1, "null"), length(grobs))
 
@@ -90,7 +90,7 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
                   colnames = names(grobs))
   table <- gtable_add_grob(table, grobs,
     l = seq_along(grobs), t = 1,
-    z = z, clip = "off"
+    z = z, clip = clip
   )
 
   table
