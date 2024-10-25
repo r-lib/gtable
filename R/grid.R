@@ -29,7 +29,7 @@ gtable_layout <- function(x) {
 
 vpname <- function(row) {
   row <- unclass(row)
-  paste(row$name, ".", row$t, "-", row$r, "-", row$b, "-", row$l, sep = "")
+  paste0(row$name, ".", row$t, "-", row$r, "-", row$b, "-", row$l)
 }
 
 #' @export
@@ -51,30 +51,18 @@ makeContext.gtable <- function(x) {
 
 #' @export
 makeContent.gtable <- function(x) {
+  child_name <- vpname(x$layout)
   children_vps <- mapply(child_vp,
-    vp_name = vpname(x$layout),
+    vp_name = child_name,
     t = .subset2(x$layout, "t"), r = .subset2(x$layout, "r"),
     b = .subset2(x$layout, "b"), l = .subset2(x$layout, "l"),
     clip = .subset2(x$layout, "clip"),
     SIMPLIFY = FALSE
   )
-  x$grobs <- mapply(wrap_gtableChild, x$grobs, children_vps,
+  x$grobs <- mapply(grobTree, x$grobs, name = child_name, vp = children_vps,
     SIMPLIFY = FALSE
   )
-  setChildren(x, do.call("gList", x$grobs[order(.subset2(x$layout, "z"))]))
-}
-
-#' @export
-makeContext.gTableChild <- function(x) {
-  if (is.null(x$vp)) {
-    x$vp <- x$wrapvp
-  } else {
-    x$vp <- vpStack(x$wrapvp, x$vp)
-  }
-  # A gTableChild extends an arbitrary grob class
-  # so allow existing makeContext() behaviour of
-  # original grob class to still occur
-  NextMethod()
+  setChildren(x, inject(gList(!!!x$grobs[order(.subset2(x$layout, "z"))])))
 }
 
 # Return the viewport for a child grob in a gtable
@@ -83,10 +71,4 @@ child_vp <- function(vp_name, t, r, b, l, clip) {
     name = vp_name, layout.pos.row = t:b,
     layout.pos.col = l:r, clip = clip
   )
-}
-
-# Turn a grob into a gtableChild, and store information about the
-# viewport used within the gtable
-wrap_gtableChild <- function(grob, vp) {
-  grobTree(grob, name = vp$name, vp = vp)
 }
