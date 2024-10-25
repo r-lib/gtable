@@ -45,7 +45,15 @@ width and heights.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gtable_col</span><span class="op">(</span><span class="va">name</span>, <span class="va">grobs</span>, width <span class="op">=</span> <span class="cn">NULL</span>, heights <span class="op">=</span> <span class="cn">NULL</span>, z <span class="op">=</span> <span class="cn">NULL</span>, vp <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gtable_col</span><span class="op">(</span></span>
+<span>  <span class="va">name</span>,</span>
+<span>  <span class="va">grobs</span>,</span>
+<span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  heights <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  z <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  vp <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  clip <span class="op">=</span> <span class="st">"inherit"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -78,6 +86,12 @@ giving plenty of room to insert new grobs between existing grobs.</p></dd>
 
 <dt id="arg-vp">vp<a class="anchor" aria-label="anchor" href="#arg-vp"></a></dt>
 <dd><p>a grid viewport object (or NULL).</p></dd>
+
+
+<dt id="arg-clip">clip<a class="anchor" aria-label="anchor" href="#arg-clip"></a></dt>
+<dd><p>should drawing be clipped to the specified cells
+(<code>"on"</code>), the entire table (<code>"inherit"</code>), or not at all
+(<code>"off"</code>)</p></dd>
 
 </dl></div>
     <div class="section level2">
