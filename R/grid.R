@@ -14,8 +14,6 @@
 #' gtable_show_layout(gt)
 #'
 gtable_show_layout <- function(x, ...) {
-  check_gtable(x)
-
   grid.show.layout(gtable_layout(x), ...)
 }
 
