@@ -75,7 +75,7 @@ following piece of code is used to generate a profile and inspect
 it:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/profvis/" class="external-link">profvis</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://profvis.r-lib.org" class="external-link">profvis</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="va">disp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -83,7 +83,7 @@ it:</p>
 <span></span>
 <span><span class="va">p_build</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot_build.html" class="external-link">ggplot_build</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">profile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html" class="external-link">profvis</a></span><span class="op">(</span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot_gtable.html" class="external-link">ggplot_gtable</a></span><span class="op">(</span><span class="va">p_build</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">profile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://profvis.r-lib.org/reference/profvis.html" class="external-link">profvis</a></span><span class="op">(</span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot_gtable.html" class="external-link">ggplot_gtable</a></span><span class="op">(</span><span class="va">p_build</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">profile</span></span></code></pre></div>
 <p>The use of an empty ggplot2 ensures that the profile is based on
@@ -141,7 +141,7 @@ to <code><a href="https://rdrr.io/r/base/length.html" class="external-link">leng
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
   </div></footer>
