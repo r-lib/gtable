@@ -27,8 +27,7 @@ height and width specified in null units be respected.  See
 the layout viewport}
 
 \item{rownames, colnames}{character vectors of row and column names, used
-for characteric subsetting, particularly for \code{gtable_align},
-and \code{gtable_join}.}
+for characteric subsetting.}
 
 \item{vp}{a grid viewport object (or NULL).}
 }

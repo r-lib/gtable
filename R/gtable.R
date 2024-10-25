@@ -51,8 +51,7 @@
 #' @param name a string giving the name of the table. This is used to name
 #'   the layout viewport
 #' @param rownames,colnames character vectors of row and column names, used
-#'   for characteric subsetting, particularly for `gtable_align`,
-#'   and `gtable_join`.
+#'   for characteric subsetting.
 #' @param vp a grid viewport object (or NULL).
 #'
 #' @return A gtable object
