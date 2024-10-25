@@ -1,14 +1,14 @@
-# ggPMX
+# dartR.base
 
 <details>
 
-* Version: 1.2.8
-* GitHub: https://github.com/ggPMXdevelopment/ggPMX
-* Source code: https://github.com/cran/ggPMX
-* Date/Publication: 2022-06-17 23:10:02 UTC
-* Number of recursive dependencies: 174
+* Version: 0.98
+* GitHub: NA
+* Source code: https://github.com/cran/dartR.base
+* Date/Publication: 2024-09-19 13:20:02 UTC
+* Number of recursive dependencies: 286
 
-Run `cloud_details(, "ggPMX")` for more info
+Run `revdepcheck::cloud_details(, "dartR.base")` for more info
 
 </details>
 
@@ -17,27 +17,27 @@ Run `cloud_details(, "ggPMX")` for more info
 ### Devel
 
 ```
-* using log directory ‘/tmp/workdir/ggPMX/new/ggPMX.Rcheck’
-* using R version 4.1.1 (2021-08-10)
+* using log directory ‘/tmp/workdir/dartR.base/new/dartR.base.Rcheck’
+* using R version 4.3.1 (2023-06-16)
 * using platform: x86_64-pc-linux-gnu (64-bit)
+* R was compiled by
+    gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+    GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+* running under: Ubuntu 24.04.1 LTS
 * using session charset: UTF-8
 * using option ‘--no-manual’
-* checking for file ‘ggPMX/DESCRIPTION’ ... OK
-* this is package ‘ggPMX’ version ‘1.2.8’
-* package encoding: UTF-8
-* checking package namespace information ... OK
-* checking package dependencies ... NOTE
+* checking for file ‘dartR.base/DESCRIPTION’ ... OK
 ...
-  [ FAIL 1 | WARN 14 | SKIP 8 | PASS 327 ]
-  Error: Test failures
-  Execution halted
-* checking for unstated dependencies in vignettes ... OK
-* checking package vignettes in ‘inst/doc’ ... OK
-* checking running R code from vignettes ... NONE
-  ‘ggPMX-guide.Rmd’ using ‘UTF-8’... OK
-* checking re-building of vignette outputs ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘dartR.base’ can be installed ... ERROR
+Installation failed.
+See ‘/tmp/workdir/dartR.base/new/dartR.base.Rcheck/00install.out’ for details.
 * DONE
-Status: 1 ERROR, 2 NOTEs
+Status: 1 ERROR
 
 
 
@@ -47,44 +47,44 @@ Status: 1 ERROR, 2 NOTEs
 ### CRAN
 
 ```
-* using log directory ‘/tmp/workdir/ggPMX/old/ggPMX.Rcheck’
-* using R version 4.1.1 (2021-08-10)
+* using log directory ‘/tmp/workdir/dartR.base/old/dartR.base.Rcheck’
+* using R version 4.3.1 (2023-06-16)
 * using platform: x86_64-pc-linux-gnu (64-bit)
+* R was compiled by
+    gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+    GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+* running under: Ubuntu 24.04.1 LTS
 * using session charset: UTF-8
 * using option ‘--no-manual’
-* checking for file ‘ggPMX/DESCRIPTION’ ... OK
-* this is package ‘ggPMX’ version ‘1.2.8’
-* package encoding: UTF-8
-* checking package namespace information ... OK
-* checking package dependencies ... NOTE
+* checking for file ‘dartR.base/DESCRIPTION’ ... OK
 ...
-  [ FAIL 1 | WARN 14 | SKIP 8 | PASS 327 ]
-  Error: Test failures
-  Execution halted
-* checking for unstated dependencies in vignettes ... OK
-* checking package vignettes in ‘inst/doc’ ... OK
-* checking running R code from vignettes ... NONE
-  ‘ggPMX-guide.Rmd’ using ‘UTF-8’... OK
-* checking re-building of vignette outputs ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘dartR.base’ can be installed ... ERROR
+Installation failed.
+See ‘/tmp/workdir/dartR.base/old/dartR.base.Rcheck/00install.out’ for details.
 * DONE
-Status: 1 ERROR, 2 NOTEs
+Status: 1 ERROR
 
 
 
 
 
 ```
-# loon.ggplot
+# Hmisc
 
 <details>
 
-* Version: 1.3.3
-* GitHub: https://github.com/great-northern-diver/loon.ggplot
-* Source code: https://github.com/cran/loon.ggplot
-* Date/Publication: 2022-11-12 22:30:02 UTC
-* Number of recursive dependencies: 104
+* Version: 5.1-3
+* GitHub: NA
+* Source code: https://github.com/cran/Hmisc
+* Date/Publication: 2024-05-28 07:10:02 UTC
+* Number of recursive dependencies: 170
 
-Run `cloud_details(, "loon.ggplot")` for more info
+Run `revdepcheck::cloud_details(, "Hmisc")` for more info
 
 </details>
 
@@ -93,20 +93,98 @@ Run `cloud_details(, "loon.ggplot")` for more info
 ### Devel
 
 ```
-* using log directory ‘/tmp/workdir/loon.ggplot/new/loon.ggplot.Rcheck’
-* using R version 4.1.1 (2021-08-10)
+* using log directory ‘/tmp/workdir/Hmisc/new/Hmisc.Rcheck’
+* using R version 4.3.1 (2023-06-16)
 * using platform: x86_64-pc-linux-gnu (64-bit)
+* R was compiled by
+    gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+    GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+* running under: Ubuntu 24.04.1 LTS
 * using session charset: UTF-8
 * using option ‘--no-manual’
-* checking for file ‘loon.ggplot/DESCRIPTION’ ... OK
-* checking extension type ... Package
-* this is package ‘loon.ggplot’ version ‘1.3.3’
+* checking for file ‘Hmisc/DESCRIPTION’ ... OK
+...
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking line endings in C/C++/Fortran sources/headers ... OK
+* checking compiled code ... OK
+* checking examples ... OK
+* DONE
+Status: 4 NOTEs
+
+
+
+
+
+```
+### CRAN
+
+```
+* using log directory ‘/tmp/workdir/Hmisc/old/Hmisc.Rcheck’
+* using R version 4.3.1 (2023-06-16)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* R was compiled by
+    gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+    GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+* running under: Ubuntu 24.04.1 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘Hmisc/DESCRIPTION’ ... OK
+...
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking line endings in C/C++/Fortran sources/headers ... OK
+* checking compiled code ... OK
+* checking examples ... OK
+* DONE
+Status: 4 NOTEs
+
+
+
+
+
+```
+# snplinkage
+
+<details>
+
+* Version: 1.2.0
+* GitHub: NA
+* Source code: https://github.com/cran/snplinkage
+* Date/Publication: 2024-09-09 19:10:02 UTC
+* Number of recursive dependencies: 153
+
+Run `revdepcheck::cloud_details(, "snplinkage")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+* using log directory ‘/tmp/workdir/snplinkage/new/snplinkage.Rcheck’
+* using R version 4.3.1 (2023-06-16)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* R was compiled by
+    gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+    GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+* running under: Ubuntu 24.04.1 LTS
+* using session charset: UTF-8
+* using option ‘--no-manual’
+* checking for file ‘snplinkage/DESCRIPTION’ ... OK
+...
+* this is package ‘snplinkage’ version ‘1.2.0’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... ERROR
-Package required but not available: ‘loon’
-
-Package suggested but not available for checking: ‘zenplots’
+Package required but not available: ‘GWASTools’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
@@ -121,20 +199,22 @@ Status: 1 ERROR
 ### CRAN
 
 ```
-* using log directory ‘/tmp/workdir/loon.ggplot/old/loon.ggplot.Rcheck’
-* using R version 4.1.1 (2021-08-10)
+* using log directory ‘/tmp/workdir/snplinkage/old/snplinkage.Rcheck’
+* using R version 4.3.1 (2023-06-16)
 * using platform: x86_64-pc-linux-gnu (64-bit)
+* R was compiled by
+    gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+    GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+* running under: Ubuntu 24.04.1 LTS
 * using session charset: UTF-8
 * using option ‘--no-manual’
-* checking for file ‘loon.ggplot/DESCRIPTION’ ... OK
-* checking extension type ... Package
-* this is package ‘loon.ggplot’ version ‘1.3.3’
+* checking for file ‘snplinkage/DESCRIPTION’ ... OK
+...
+* this is package ‘snplinkage’ version ‘1.2.0’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... ERROR
-Package required but not available: ‘loon’
-
-Package suggested but not available for checking: ‘zenplots’
+Package required but not available: ‘GWASTools’
 
 See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
@@ -146,79 +226,75 @@ Status: 1 ERROR
 
 
 ```
-# tidySEM
+# spikeSlabGAM
 
 <details>
 
-* Version: 0.2.3
-* GitHub: https://github.com/cjvanlissa/tidySEM
-* Source code: https://github.com/cran/tidySEM
-* Date/Publication: 2022-04-14 17:50:02 UTC
-* Number of recursive dependencies: 171
+* Version: 1.1-20
+* GitHub: https://github.com/fabian-s/spikeSlabGAM
+* Source code: https://github.com/cran/spikeSlabGAM
+* Date/Publication: 2024-10-22 17:30:02 UTC
+* Number of recursive dependencies: 77
 
-Run `cloud_details(, "tidySEM")` for more info
+Run `revdepcheck::cloud_details(, "spikeSlabGAM")` for more info
 
 </details>
 
-## Error before installation
+## In both
+
+*   checking whether package ‘spikeSlabGAM’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/tmp/workdir/spikeSlabGAM/new/spikeSlabGAM.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
 
 ### Devel
 
 ```
-* using log directory ‘/tmp/workdir/tidySEM/new/tidySEM.Rcheck’
-* using R version 4.1.1 (2021-08-10)
-* using platform: x86_64-pc-linux-gnu (64-bit)
-* using session charset: UTF-8
-* using option ‘--no-manual’
-* checking for file ‘tidySEM/DESCRIPTION’ ... OK
-* checking extension type ... Package
-* this is package ‘tidySEM’ version ‘0.2.3’
-* package encoding: UTF-8
-* checking package namespace information ... OK
-...
-* checking for unstated dependencies in vignettes ... OK
-* checking package vignettes in ‘inst/doc’ ... OK
-* checking running R code from vignettes ... NONE
-  ‘Generating_syntax.Rmd’ using ‘UTF-8’... OK
-  ‘Plotting_graphs.Rmd’ using ‘UTF-8’... OK
-  ‘Tabulating_results.Rmd’ using ‘UTF-8’... OK
-  ‘sem_graph.Rmd’ using ‘UTF-8’... OK
-* checking re-building of vignette outputs ... OK
-* DONE
-Status: 1 NOTE
-
-
-
+* installing *source* package ‘spikeSlabGAM’ ...
+** package ‘spikeSlabGAM’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C compiler: ‘gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0’
+gcc -I"/opt/R/4.3.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c sampler.c -o sampler.o
+gcc -I"/opt/R/4.3.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c spikeSlabGAM_init.c -o spikeSlabGAM_init.o
+gcc -shared -L/opt/R/4.3.1/lib/R/lib -L/usr/local/lib -o spikeSlabGAM.so sampler.o spikeSlabGAM_init.o -llapack -lblas -lgfortran -lm -lquadmath -L/opt/R/4.3.1/lib/R/lib -lR
+installing to /tmp/workdir/spikeSlabGAM/new/spikeSlabGAM.Rcheck/00LOCK-spikeSlabGAM/00new/spikeSlabGAM/libs
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  namespace ‘Matrix’ 1.5-4.1 is already loaded, but >= 1.6.0 is required
+Calls: <Anonymous> ... namespaceImportFrom -> asNamespace -> loadNamespace
+Execution halted
+ERROR: lazy loading failed for package ‘spikeSlabGAM’
+* removing ‘/tmp/workdir/spikeSlabGAM/new/spikeSlabGAM.Rcheck/spikeSlabGAM’
 
 
 ```
 ### CRAN
 
 ```
-* using log directory ‘/tmp/workdir/tidySEM/old/tidySEM.Rcheck’
-* using R version 4.1.1 (2021-08-10)
-* using platform: x86_64-pc-linux-gnu (64-bit)
-* using session charset: UTF-8
-* using option ‘--no-manual’
-* checking for file ‘tidySEM/DESCRIPTION’ ... OK
-* checking extension type ... Package
-* this is package ‘tidySEM’ version ‘0.2.3’
-* package encoding: UTF-8
-* checking package namespace information ... OK
-...
-* checking for unstated dependencies in vignettes ... OK
-* checking package vignettes in ‘inst/doc’ ... OK
-* checking running R code from vignettes ... NONE
-  ‘Generating_syntax.Rmd’ using ‘UTF-8’... OK
-  ‘Plotting_graphs.Rmd’ using ‘UTF-8’... OK
-  ‘Tabulating_results.Rmd’ using ‘UTF-8’... OK
-  ‘sem_graph.Rmd’ using ‘UTF-8’... OK
-* checking re-building of vignette outputs ... OK
-* DONE
-Status: 1 NOTE
-
-
-
+* installing *source* package ‘spikeSlabGAM’ ...
+** package ‘spikeSlabGAM’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C compiler: ‘gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0’
+gcc -I"/opt/R/4.3.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c sampler.c -o sampler.o
+gcc -I"/opt/R/4.3.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c spikeSlabGAM_init.c -o spikeSlabGAM_init.o
+gcc -shared -L/opt/R/4.3.1/lib/R/lib -L/usr/local/lib -o spikeSlabGAM.so sampler.o spikeSlabGAM_init.o -llapack -lblas -lgfortran -lm -lquadmath -L/opt/R/4.3.1/lib/R/lib -lR
+installing to /tmp/workdir/spikeSlabGAM/old/spikeSlabGAM.Rcheck/00LOCK-spikeSlabGAM/00new/spikeSlabGAM/libs
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  namespace ‘Matrix’ 1.5-4.1 is already loaded, but >= 1.6.0 is required
+Calls: <Anonymous> ... namespaceImportFrom -> asNamespace -> loadNamespace
+Execution halted
+ERROR: lazy loading failed for package ‘spikeSlabGAM’
+* removing ‘/tmp/workdir/spikeSlabGAM/old/spikeSlabGAM.Rcheck/spikeSlabGAM’
 
 
 ```

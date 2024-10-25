@@ -1,10 +1,11 @@
 # Revdeps
 
-## Failed to check (3)
+## Failed to check (4)
 
-|package     |version |error |warning |note |
-|:-----------|:-------|:-----|:-------|:----|
-|ggPMX       |?       |      |        |     |
-|loon.ggplot |?       |      |        |     |
-|tidySEM     |?       |      |        |     |
+|package      |version |error |warning |note |
+|:------------|:-------|:-----|:-------|:----|
+|dartR.base   |?       |      |        |     |
+|Hmisc        |?       |      |        |     |
+|snplinkage   |?       |      |        |     |
+|spikeSlabGAM |1.1-20  |1     |        |     |
 
