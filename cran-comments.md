@@ -1,1 +1,17 @@
-Small patch to fix partial matching in indexing
+Small patch release with some utility functions and general upkeep
+
+## revdepcheck results
+
+We checked 98 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 0 new problems
+ * We failed to check 4 packages
+
+Issues with CRAN packages are summarised below.
+
+### Failed to check
+
+* dartR.base   (NA)
+* Hmisc        (NA)
+* snplinkage   (NA)
+* spikeSlabGAM (NA)
