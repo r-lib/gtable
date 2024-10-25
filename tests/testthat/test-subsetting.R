@@ -43,10 +43,10 @@ test_that("spanning grobs kept if ends kept", {
 })
 
 test_that("indexing errors are caught", {
-  expect_error(base[2:1,])
-  expect_error(base[c(2,2), ])
-  expect_error(base[, 2:1])
-  expect_error(base[, c(1,1)])
+  expect_snapshot(base[2:1,], error = TRUE)
+  expect_snapshot(base[c(2,2), ], error = TRUE)
+  expect_snapshot(base[, 2:1], error = TRUE)
+  expect_snapshot(base[, c(1,1)], error = TRUE)
 
   expect_silent(base[1:2, 1:2])
 })
