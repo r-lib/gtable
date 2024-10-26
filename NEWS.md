@@ -1,3 +1,5 @@
+# gtable (development version)
+
 # gtable 0.3.6
 
 * Added `as.gtable()` S3 method (#97).
