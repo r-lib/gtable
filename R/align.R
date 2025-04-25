@@ -20,7 +20,8 @@
 #  # gtable_join(a, b)
 gtable_join <- function(x, y, along = 1L, join = "left") {
   aligned <- gtable_align(x, y, along = along, join = join)
-  switch(along,
+  switch(
+    along,
     cbind(aligned$x, aligned$y),
     rbind(aligned$x, aligned$y),
     cli::cli_abort("{.arg along} > 2 no implemented")
@@ -50,7 +51,8 @@ gtable_align <- function(x, y, along = 1L, join = "left") {
     cli::cli_abort("Both gtables must have names along dimension to be aligned")
   }
 
-  idx <- switch(join,
+  idx <- switch(
+    join,
     left = names_x,
     right = names_y,
     inner = intersect(names_x, names_y),
@@ -108,13 +110,9 @@ gtable_reindex <- function(x, index, along = 1) {
     }
   }
 
-
   # Reorder & subset
 
-  switch(along,
-    x[index, ],
-    x[, index]
-  )
+  switch(along, x[index, ], x[, index])
 }
 
 "%contains%" <- function(x, y) all(y %in% x)

@@ -1,8 +1,10 @@
-check_gtable <- function(x,
-                         ...,
-                         allow_null = FALSE,
-                         arg = caller_arg(x),
-                         call = caller_env()) {
+check_gtable <- function(
+  x,
+  ...,
+  allow_null = FALSE,
+  arg = caller_arg(x),
+  call = caller_env()
+) {
   if (!missing(x)) {
     if (is.gtable(x)) {
       return(invisible(NULL))
@@ -22,11 +24,13 @@ check_gtable <- function(x,
   )
 }
 
-check_unit <- function(x,
-                       ...,
-                       allow_null = FALSE,
-                       arg = caller_arg(x),
-                       call = caller_env()) {
+check_unit <- function(
+  x,
+  ...,
+  allow_null = FALSE,
+  arg = caller_arg(x),
+  call = caller_env()
+) {
   if (!missing(x)) {
     if (is.unit(x)) {
       return(invisible(NULL))
@@ -71,7 +75,9 @@ compare_unit <- function(x, y, comp = `=`) {
   y_unit <- attr(x, "unit")
 
   if (!all(x_unit == y_unit)) {
-    cli::cli_abort("comparison of units with different types currently not supported")
+    cli::cli_abort(
+      "comparison of units with different types currently not supported"
+    )
   }
 
   `attributes<-`(comp(x_val, y_val), x_attr)
@@ -123,4 +129,3 @@ height_cm <- function(x) {
 len_same_or_1 <- function(x, n) {
   length(x) == 1 || length(x) == n
 }
-

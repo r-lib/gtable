@@ -4,18 +4,20 @@ vcontext("z-order")
 # =====================================================================
 
 # Make an empty frame for use later, with 2x2 grid of 2x2cm squares
-gtf <- gtable_matrix("gtf", 
+gtf <- gtable_matrix(
+  "gtf",
   matrix(rep(list(circleGrob(gp = gpar(fill = "grey95"))), 4), nrow = 2),
-  widths  = unit(rep(4, 2), "cm"),
-  heights = unit(rep(4, 2), "cm"))
+  widths = unit(rep(4, 2), "cm"),
+  heights = unit(rep(4, 2), "cm")
+)
 
 # Make a list of four colored circleGrobs
 circle_grobs <- function() {
   grobs <- list()
   for (i in 1:4) {
     grobs[[i]] <- circleGrob(
-      r  = unit(3, "cm"),
-      gp = gpar(fill = gray(i/4))
+      r = unit(3, "cm"),
+      gp = gpar(fill = gray(i / 4))
     )
   }
   grobs
@@ -24,10 +26,13 @@ circle_grobs <- function() {
 # Turn a list of grobs into a 2-row gtable
 # 'size' is the height/width of each cell, in cm
 make_gtable <- function(name, grobs, size = 4) {
-  gtable_matrix(name, matrix(grobs, nrow = 2),
-    widths  = unit(rep(size, length(grobs)/2), "cm"),
+  gtable_matrix(
+    name,
+    matrix(grobs, nrow = 2),
+    widths = unit(rep(size, length(grobs) / 2), "cm"),
     heights = unit(rep(size, 2), "cm"),
-    clip = "off")
+    clip = "off"
+  )
 }
 
 # No justification

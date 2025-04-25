@@ -33,7 +33,13 @@
 #' plot(gtable_filter(gt, "circ"))
 #' plot(gtable_filter(gt, "circ", trim = FALSE))
 #'
-gtable_filter <- function(x, pattern, fixed = FALSE, trim = TRUE, invert = FALSE) {
+gtable_filter <- function(
+  x,
+  pattern,
+  fixed = FALSE,
+  trim = TRUE,
+  invert = FALSE
+) {
   matches <- grepl(pattern, .subset2(x$layout, "name"), fixed = fixed)
   if (invert) matches <- !matches
   x$layout <- x$layout[matches, , drop = FALSE]

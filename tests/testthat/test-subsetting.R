@@ -3,7 +3,7 @@ rownames(base) <- LETTERS[1:3]
 colnames(base) <- letters[1:3]
 
 test_that("dimensions correct after subsetting", {
-  expect_equal(dim(base[, ]), c(3, 3))
+  expect_equal(dim(base[,]), c(3, 3))
   expect_equal(dim(base[1:3, 1:3]), c(3, 3))
   expect_equal(dim(base[T, T]), c(3, 3))
   expect_equal(dim(base[c("A", "B", "C"), c("a", "b", "c")]), c(3, 3))
@@ -43,10 +43,10 @@ test_that("spanning grobs kept if ends kept", {
 })
 
 test_that("indexing errors are caught", {
-  expect_snapshot(base[2:1,], error = TRUE)
-  expect_snapshot(base[c(2,2), ], error = TRUE)
+  expect_snapshot(base[2:1, ], error = TRUE)
+  expect_snapshot(base[c(2, 2), ], error = TRUE)
   expect_snapshot(base[, 2:1], error = TRUE)
-  expect_snapshot(base[, c(1,1)], error = TRUE)
+  expect_snapshot(base[, c(1, 1)], error = TRUE)
 
   expect_silent(base[1:2, 1:2])
 })
@@ -94,8 +94,11 @@ equal_gtable <- function(a, b) {
 # using the specified cols and rows from grobmat.
 # The sizes of the rows/cols are the same as the index values (but in cm)
 make_gt <- function(grobmat, rows, cols) {
-  gtable_matrix("test", grobmat[rows, cols, drop = FALSE],
-    heights = unit(rows, "cm"), widths = unit(cols, "cm")
+  gtable_matrix(
+    "test",
+    grobmat[rows, cols, drop = FALSE],
+    heights = unit(rows, "cm"),
+    widths = unit(cols, "cm")
   )
 }
 
@@ -142,13 +145,13 @@ test_that("Indexing with names", {
 })
 
 
-
 # Make a gtable with grobs that span cells
 make_span_gt <- function(rows, cols) {
   # Make gtable with one grob at (1:1, 1:3) and another at (1:2, 1:2)
   gt <- gtable(
     name = "test",
-    heights = unit(rows, "cm"), widths = unit(cols, "cm")
+    heights = unit(rows, "cm"),
+    widths = unit(cols, "cm")
   )
 
   if (all(1 %in% rows) && all(c(1, 3) %in% cols)) {
@@ -161,7 +164,6 @@ make_span_gt <- function(rows, cols) {
 }
 
 test_that("Indexing with grobs that span cells", {
-
   # Make a gtable with two grobs that span cells
   gt <- make_span_gt(1:2, 1:3)
 

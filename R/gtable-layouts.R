@@ -24,24 +24,42 @@
 #' gt
 #' plot(gt)
 #' gtable_show_layout(gt)
-gtable_col <- function(name, grobs, width = NULL, heights = NULL,
-                       z = NULL, vp = NULL, clip = "inherit") {
+gtable_col <- function(
+  name,
+  grobs,
+  width = NULL,
+  heights = NULL,
+  z = NULL,
+  vp = NULL,
+  clip = "inherit"
+) {
   width <- width %||% unit(max(unlist(lapply(grobs, width_cm))), "cm")
   heights <- heights %||% rep(unit(1, "null"), length(grobs))
 
   # z is either NULL, or a vector of the same length as grobs
   if (!(is.null(z) || length(z) == length(grobs))) {
-    cli::cli_abort("{.arg z} must be either NULL or the same length as {.arg grobs}")
+    cli::cli_abort(
+      "{.arg z} must be either NULL or the same length as {.arg grobs}"
+    )
   }
   if (is.null(z)) {
     z <- Inf
   }
 
-  table <- gtable(widths = width, heights = heights, name = name, vp = vp,
-                  rownames = names(grobs))
-  table <- gtable_add_grob(table, grobs,
-    t = seq_along(grobs), l = 1,
-    z = z, clip = clip
+  table <- gtable(
+    widths = width,
+    heights = heights,
+    name = name,
+    vp = vp,
+    rownames = names(grobs)
+  )
+  table <- gtable_add_grob(
+    table,
+    grobs,
+    t = seq_along(grobs),
+    l = 1,
+    z = z,
+    clip = clip
   )
 
   table
@@ -73,24 +91,42 @@ gtable_col <- function(name, grobs, width = NULL, heights = NULL,
 #' gt
 #' plot(gt)
 #' gtable_show_layout(gt)
-gtable_row <- function(name, grobs, height = NULL, widths = NULL,
-                       z = NULL, vp = NULL, clip = "inherit") {
+gtable_row <- function(
+  name,
+  grobs,
+  height = NULL,
+  widths = NULL,
+  z = NULL,
+  vp = NULL,
+  clip = "inherit"
+) {
   height <- height %||% unit(max(unlist(lapply(grobs, height_cm))), "cm")
   widths <- widths %||% rep(unit(1, "null"), length(grobs))
 
   # z is either NULL, or a vector of the same length as grobs
   if (!(is.null(z) || length(z) == length(grobs))) {
-    cli::cli_abort("{.arg z} must be either NULL or the same length as {.arg grobs}")
+    cli::cli_abort(
+      "{.arg z} must be either NULL or the same length as {.arg grobs}"
+    )
   }
   if (is.null(z)) {
     z <- Inf
   }
 
-  table <- gtable(widths = widths, heights = height, name = name, vp = vp,
-                  colnames = names(grobs))
-  table <- gtable_add_grob(table, grobs,
-    l = seq_along(grobs), t = 1,
-    z = z, clip = clip
+  table <- gtable(
+    widths = widths,
+    heights = height,
+    name = name,
+    vp = vp,
+    colnames = names(grobs)
+  )
+  table <- gtable_add_grob(
+    table,
+    grobs,
+    l = seq_along(grobs),
+    t = 1,
+    z = z,
+    clip = clip
   )
 
   table
@@ -131,27 +167,51 @@ gtable_row <- function(name, grobs, height = NULL, widths = NULL,
 #' # Can specify z ordering
 #' z <- matrix(c(3, 1, 2, 4), nrow = 2)
 #' gtable_matrix("demo", mat, unit(c(1, 1), "null"), unit(c(1, 1), "null"), z = z)
-gtable_matrix <- function(name, grobs, widths = NULL, heights = NULL,
-                          z = NULL, respect = FALSE, clip = "on", vp = NULL) {
+gtable_matrix <- function(
+  name,
+  grobs,
+  widths = NULL,
+  heights = NULL,
+  z = NULL,
+  respect = FALSE,
+  clip = "on",
+  vp = NULL
+) {
   if (length(widths) != ncol(grobs)) {
-    cli::cli_abort("{.arg widths} must be the same as the number of columns in {.arg grobs}")
+    cli::cli_abort(
+      "{.arg widths} must be the same as the number of columns in {.arg grobs}"
+    )
   }
   if (length(heights) != nrow(grobs)) {
-    cli::cli_abort("{.arg heights} must be the same as the number of rows in {.arg grobs}")
+    cli::cli_abort(
+      "{.arg heights} must be the same as the number of rows in {.arg grobs}"
+    )
   }
   # z is either NULL or a matrix of the same dimensions as grobs
   if (!(is.null(z) || identical(dim(grobs), dim(z)))) {
-    cli::cli_abort("{.arg z} must be either NULL or have the same dimensions as {.arg grobs}")
+    cli::cli_abort(
+      "{.arg z} must be either NULL or have the same dimensions as {.arg grobs}"
+    )
   }
   if (is.null(z)) {
     z <- Inf
   }
-  table <- gtable(widths = widths, heights = heights, name = name,
-                  respect = respect, vp = vp,
-                  rownames = rownames(grobs), colnames = colnames(grobs))
-  table <- gtable_add_grob(table, grobs,
-    t = c(row(grobs)), l = c(col(grobs)),
-    z = as.vector(z), clip = clip
+  table <- gtable(
+    widths = widths,
+    heights = heights,
+    name = name,
+    respect = respect,
+    vp = vp,
+    rownames = rownames(grobs),
+    colnames = colnames(grobs)
+  )
+  table <- gtable_add_grob(
+    table,
+    grobs,
+    t = c(row(grobs)),
+    l = c(col(grobs)),
+    z = as.vector(z),
+    clip = clip
   )
 
   table

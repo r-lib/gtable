@@ -21,8 +21,10 @@ gtable_layout <- function(x) {
   check_gtable(x)
 
   grid.layout(
-    nrow = length(x$heights), heights = x$heights,
-    ncol = length(x$widths), widths = x$widths,
+    nrow = length(x$heights),
+    heights = x$heights,
+    ncol = length(x$widths),
+    widths = x$widths,
     respect = x$respect
   )
 }
@@ -52,14 +54,21 @@ makeContext.gtable <- function(x) {
 #' @export
 makeContent.gtable <- function(x) {
   child_name <- vpname(x$layout)
-  children_vps <- mapply(child_vp,
+  children_vps <- mapply(
+    child_vp,
     vp_name = child_name,
-    t = .subset2(x$layout, "t"), r = .subset2(x$layout, "r"),
-    b = .subset2(x$layout, "b"), l = .subset2(x$layout, "l"),
+    t = .subset2(x$layout, "t"),
+    r = .subset2(x$layout, "r"),
+    b = .subset2(x$layout, "b"),
+    l = .subset2(x$layout, "l"),
     clip = .subset2(x$layout, "clip"),
     SIMPLIFY = FALSE
   )
-  x$grobs <- mapply(grobTree, x$grobs, name = child_name, vp = children_vps,
+  x$grobs <- mapply(
+    grobTree,
+    x$grobs,
+    name = child_name,
+    vp = children_vps,
     SIMPLIFY = FALSE
   )
   setChildren(x, inject(gList(!!!x$grobs[order(.subset2(x$layout, "z"))])))
@@ -68,7 +77,9 @@ makeContent.gtable <- function(x) {
 # Return the viewport for a child grob in a gtable
 child_vp <- function(vp_name, t, r, b, l, clip) {
   viewport(
-    name = vp_name, layout.pos.row = t:b,
-    layout.pos.col = l:r, clip = clip
+    name = vp_name,
+    layout.pos.row = t:b,
+    layout.pos.col = l:r,
+    clip = clip
   )
 }
