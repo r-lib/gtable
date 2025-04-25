@@ -92,7 +92,7 @@ library(grid)
 grid.draw(p_table) # alternative use plot(p_table)
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" alt="A scatterplot of miles per gallon against displacement based on the mtcars dataset. The plot is rendered by first converting the ggplot object to a gtable and then plotting the gtable" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="A scatterplot of miles per gallon against displacement based on the mtcars dataset. The plot is rendered by first converting the ggplot object to a gtable and then plotting the gtable" width="100%" />
 
 While most people will interact with gtable through ggplot2, it is
 possible to build a plot from the ground up.
@@ -126,4 +126,4 @@ plot <- gtable_add_grob(
 grid.draw(plot)
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" alt="A scatterplot of random numbers. The scatterplot is created by combining separate grobs created with grid using gtable." width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="A scatterplot of random numbers. The scatterplot is created by combining separate grobs created with grid using gtable." width="100%" />
