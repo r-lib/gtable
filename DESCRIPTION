@@ -15,7 +15,7 @@ License: MIT + file LICENSE
 URL: https://gtable.r-lib.org, https://github.com/r-lib/gtable
 BugReports: https://github.com/r-lib/gtable/issues
 Depends:
-    R (>= 4.0)
+    R (>= 4.1)
 Imports:
     cli,
     glue,
