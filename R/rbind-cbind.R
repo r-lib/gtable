@@ -87,7 +87,8 @@ rbind_gtable <- function(x, y, size = "max") {
   x$rownames <- c(x$rownames, y$rownames)
 
   size <- match.arg(size, c("first", "last", "max", "min"))
-  x$widths <- switch(size,
+  x$widths <- switch(
+    size,
     first = x$widths,
     last = y$widths,
     min = compare_unit(x$widths, y$widths, pmin),
@@ -136,7 +137,8 @@ cbind_gtable <- function(x, y, size = "max") {
   x$colnames <- c(x$colnames, y$colnames)
 
   size <- match.arg(size, c("first", "last", "max", "min"))
-  x$heights <- switch(size,
+  x$heights <- switch(
+    size,
     first = x$heights,
     last = y$heights,
     min = compare_unit(x$heights, y$heights, pmin),

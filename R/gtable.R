@@ -91,40 +91,71 @@
 #' rownames(b)[2] <- 200
 #' colnames(b) <- letters[1:3]
 #' dimnames(b)
-gtable <- function(widths = list(), heights = list(), respect = FALSE,
-                   name = "layout", rownames = NULL, colnames = NULL, vp = NULL) {
+gtable <- function(
+  widths = list(),
+  heights = list(),
+  respect = FALSE,
+  name = "layout",
+  rownames = NULL,
+  colnames = NULL,
+  vp = NULL
+) {
   if (length(widths) > 0) {
     check_unit(widths)
     if (!(is.null(colnames) || length(colnames == length(widths)))) {
-      cli::cli_abort("{.arg colnames} must either be NULL or have the same length as {.arg widths}")
+      cli::cli_abort(
+        "{.arg colnames} must either be NULL or have the same length as {.arg widths}"
+      )
     }
   }
   if (length(heights) > 0) {
     check_unit(heights)
     if (!(is.null(rownames) || length(rownames == length(heights)))) {
-      cli::cli_abort("{.arg rownames} must either be NULL or have the same length as {.arg heights}")
+      cli::cli_abort(
+        "{.arg rownames} must either be NULL or have the same length as {.arg heights}"
+      )
     }
   }
 
-  layout <- new_data_frame(list(
-    t = numeric(), l = numeric(), b = numeric(), r = numeric(), z = numeric(),
-    clip = character(), name = character()
-  ), n = 0)
+  layout <- new_data_frame(
+    list(
+      t = numeric(),
+      l = numeric(),
+      b = numeric(),
+      r = numeric(),
+      z = numeric(),
+      clip = character(),
+      name = character()
+    ),
+    n = 0
+  )
 
   if (!is.null(vp)) {
     vp <- viewport(
       name = name,
-      x = vp$x, y = vp$y,
-      width = vp$width, height = vp$height,
-      just = vp$justification, gp = vp$gp, xscale = vp$xscale,
-      yscale = vp$yscale, angle = vp$angle, clip = vp$clip
+      x = vp$x,
+      y = vp$y,
+      width = vp$width,
+      height = vp$height,
+      just = vp$justification,
+      gp = vp$gp,
+      xscale = vp$xscale,
+      yscale = vp$yscale,
+      angle = vp$angle,
+      clip = vp$clip
     )
   }
 
   gTree(
-    grobs = list(), layout = layout, widths = widths,
-    heights = heights, respect = respect, name = name,
-    rownames = rownames, colnames = colnames, vp = vp,
+    grobs = list(),
+    layout = layout,
+    widths = widths,
+    heights = heights,
+    respect = respect,
+    name = name,
+    rownames = rownames,
+    colnames = colnames,
+    vp = vp,
     cl = "gtable"
   )
 }
@@ -137,19 +168,41 @@ gtable <- function(widths = list(), heights = list(), respect = FALSE,
 #' @export
 #' @method print gtable
 print.gtable <- function(x, zsort = FALSE, ...) {
-  cat("TableGrob (", length(x$heights), " x ", length(x$widths), ") \"", x$name, "\": ",
-      length(x$grobs), " grobs\n", sep = "")
+  cat(
+    "TableGrob (",
+    length(x$heights),
+    " x ",
+    length(x$widths),
+    ") \"",
+    x$name,
+    "\": ",
+    length(x$grobs),
+    " grobs\n",
+    sep = ""
+  )
 
   if (nrow(x$layout) == 0) return()
 
-  pos <- as.data.frame(format(as.matrix(x$layout[c("t", "r", "b", "l")])),
+  pos <- as.data.frame(
+    format(as.matrix(x$layout[c("t", "r", "b", "l")])),
     stringsAsFactors = FALSE
   )
   grobNames <- vapply(x$grobs, as.character, character(1))
 
   info <- data.frame(
     z = x$layout$z,
-    cells = paste("(", pos$t, "-", pos$b, ",", pos$l, "-", pos$r, ")", sep = ""),
+    cells = paste(
+      "(",
+      pos$t,
+      "-",
+      pos$b,
+      ",",
+      pos$l,
+      "-",
+      pos$r,
+      ")",
+      sep = ""
+    ),
     name = x$layout$name,
     grob = grobNames
   )
@@ -228,9 +281,13 @@ t.gtable <- function(x) {
   rows_cur <- stats::na.omit(rows)
   cols_cur <- stats::na.omit(cols)
 
-  if ((length(rows) > 1 && any(diff(rows_cur) < 1)) ||
-      (length(cols) > 1 && any(diff(cols_cur) < 1))) {
-    cli::cli_abort("{.arg i} and {.arg j} must be increasing sequences of numbers")
+  if (
+    (length(rows) > 1 && any(diff(rows_cur) < 1)) ||
+      (length(cols) > 1 && any(diff(cols_cur) < 1))
+  ) {
+    cli::cli_abort(
+      "{.arg i} and {.arg j} must be increasing sequences of numbers"
+    )
   }
 
   i <- seq_along(x$heights) %in% seq_along(x$heights)[rows_cur]
@@ -243,8 +300,11 @@ t.gtable <- function(x) {
 
   layout <- unclass(x$layout)
 
-  keep <- layout$t %in% rows_cur & layout$b %in% rows_cur &
-          layout$l %in% cols_cur & layout$r %in% cols_cur
+  keep <- layout$t %in%
+    rows_cur &
+    layout$b %in% rows_cur &
+    layout$l %in% cols_cur &
+    layout$r %in% cols_cur
   x$grobs <- x$grobs[keep]
 
   adj_rows <- cumsum(!stats::na.omit(i))
@@ -324,7 +384,7 @@ as.gtable.grob <- function(x, widths = NULL, heights = NULL, ...) {
     cli::cli_warn("{.arg heights} truncated to length 1.")
   }
   table <- gtable(
-    widths  = widths  %||% grobWidth(x),
+    widths = widths %||% grobWidth(x),
     heights = heights %||% grobHeight(x)
   )
   gtable_add_grob(table, x, t = 1L, l = 1L, b = 1L, r = 1L, ...)

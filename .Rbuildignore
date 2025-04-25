@@ -13,3 +13,5 @@ visual_test
 ^LICENSE\.md$
 ^\.github$
 ^CRAN-SUBMISSION$
+^[\.]?air\.toml$
+^\.vscode$

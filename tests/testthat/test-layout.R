@@ -7,8 +7,14 @@ gtable_find <- function(x, grob) {
 }
 
 loc_df <- function(t, l, b, r) {
-  data.frame(t, l, b, r,
-    z = 1, clip = "on", name = "layout",
+  data.frame(
+    t,
+    l,
+    b,
+    r,
+    z = 1,
+    clip = "on",
+    name = "layout",
     stringsAsFactors = FALSE
   )
 }
@@ -103,7 +109,10 @@ test_that("Spacing adds rows/cols in correct place", {
   layout <- gtable_add_row_space(layout, null)
 
   expect_equal(as.vector(layout$heights), rep(1, 3))
-  expect_equal(sub('1', '', as.character(layout$heights)), c("cm", "null", "cm"))
+  expect_equal(
+    sub('1', '', as.character(layout$heights)),
+    c("cm", "null", "cm")
+  )
 
   expect_equal(as.vector(layout$widths), rep(1, 3))
   expect_equal(sub('1', '', as.character(layout$widths)), c("cm", "null", "cm"))
@@ -152,5 +161,8 @@ test_that("Adding multiple grobs", {
   layout <- gtable_add_cols(gtable_add_rows(gtable(), rep(cm, 3)), rep(cm, 3))
   expect_snapshot(gtable_add_grob(layout, grobs, c(1:3), 1, 3, 3), error = TRUE)
   expect_snapshot(gtable_add_grob(layout, grobs, tval, 1:2, 3, 3), error = TRUE)
-  expect_snapshot(gtable_add_grob(layout, grobs, tval, 1, 3, 3, z = 1:4), error = TRUE)
+  expect_snapshot(
+    gtable_add_grob(layout, grobs, tval, 1, 3, 3, z = 1:4),
+    error = TRUE
+  )
 })

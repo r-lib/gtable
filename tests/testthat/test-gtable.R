@@ -1,5 +1,4 @@
 test_that("as.gtable sensibly converts objects", {
-
   # gtable --> gtable is a no-op
   g1 <- gtable(unit(1, "npc"), unit(1, "npc"))
   g2 <- circleGrob(r = unit(1, "cm"))
